@@ -1,0 +1,1674 @@
+<html lang="en"><head>
+<style data-omelette-injected="">html,body{background:transparent}</style><script data-omelette-injected="">(()=>{var A=["https://claude.ai","https://preview.claude.ai","https://eap-omelette.claude.ai"];var L=30000;var u=3000;document.addEventListener("DOMContentLoaded",()=>{const V=window.Babel;const $="om-src-id";if(V&&V.registerPlugin&&!(V.availablePlugins&&V.availablePlugins[$])){V.registerPlugin($,({types:Q})=>({visitor:{JSXOpeningElement(W,X){const K=W.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let J=0;J<K.attributes.length;J++){const w=K.attributes[J];if(w.type==="JSXAttribute"&&w.name&&w.name.name==="data-om-id")return}const z=X.file&&X.file.opts&&X.file.opts.filename||"?";const k=K.loc&&K.loc.start;const C=`jsx:${z}:${K.start??0}:${k?k.line:0}:${k?k.column+1:0}`;K.attributes.push(Q.jsxAttribute(Q.jsxIdentifier("data-om-id"),Q.stringLiteral(C)))}}}))}const Z=["transform-react-jsx-source",$];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((Q,W)=>{const X=Q.getAttribute("data-plugins")||"";const K=Z.filter((z)=>X.indexOf(z)<0);if(K.length){Q.setAttribute("data-plugins",X?`${X},${K.join(",")}`:K.join(","))}if(!Q.hasAttribute("data-filename")){Q.setAttribute("data-filename",Q.getAttribute("src")||`inline-${W}`)}})});var b=window.parent;if(b&&b!==window){const V=(z,k)=>{try{b.postMessage({__omelette_log:true,type:z,data:k},"*")}catch{}};["log","warn","error"].forEach((z)=>{const k=console[z];console[z]=(...C)=>{const J=C.map((w)=>{try{return typeof w==="object"?JSON.stringify(w):String(w)}catch{try{return String(w)}catch{return"[unstringifiable]"}}}).join(" ");V(z,J);k.apply(console,C)}});window.addEventListener("error",(z)=>{const k=z.target;if(k&&k!==window&&k.tagName){const C=k.src||k.href||"";V("resource_error",`${k.tagName} failed to load: ${C}`)}else{V("error",`${z.message||"Unknown error"} at ${z.filename||"?"}:${z.lineno||0}:${z.colno||0}`)}},true);window.addEventListener("unhandledrejection",(z)=>{const k=z.reason;const C=k instanceof Error?`${k.message} ${k.stack}`:String(k);V("error",`Unhandled rejection: ${C}`)});const $=()=>{try{b.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(document.readyState==="complete")$();else window.addEventListener("load",$);if(window.ResizeObserver)new ResizeObserver($).observe(document.documentElement);const Z={};let Q=0;window.claude={complete(z){return new Promise((k,C)=>{if(!A.length){C(new Error("claude.complete: no parent origin"));return}const J=`c${++Q}`;const w=()=>setTimeout(()=>{delete Z[J];C(new Error(`claude.complete: no data for ${L/1000}s`))},L);const Y=w();Z[J]={resolve:k,reject:C,text:"",t:Y,arm:w};try{for(const F of A){b.postMessage({__om_api:true,id:J,body:z},F)}}catch(F){clearTimeout(Y);delete Z[J];C(F)}})}};const W={};let X=0;window.omelette={writeFile:(z,k)=>new Promise((C,J)=>{if(!A.length){C();return}const w=`f${++X}`;const Y=setTimeout(()=>{delete W[w];C()},u);W[w]={resolve:C,reject:J,t:Y};try{for(const F of A){b.postMessage({__om_file:true,id:w,op:"write",path:z,content:k},F)}}catch{clearTimeout(Y);delete W[w];C()}})};const K=(z)=>{try{return JSON.stringify(z)}catch{return JSON.stringify(String(z))}};window.addEventListener("message",(z)=>{if(A.indexOf(z.origin)<0)return;if(z.source!==b)return;const k=z.data;if(!k)return;if(k.__om_file_r){const w=W[k.id];if(!w)return;clearTimeout(w.t);delete W[k.id];if(k.ok)w.resolve();else w.reject(new Error(k.error||"write failed"));return}if(k.__om_api_r){const w=Z[k.id];if(!w)return;if(k.error!=null){clearTimeout(w.t);delete Z[k.id];w.reject(new Error(k.error));return}if(k.chunk!=null){clearTimeout(w.t);w.t=w.arm();w.text+=k.chunk;return}if(k.done){clearTimeout(w.t);delete Z[k.id];w.resolve(k.text!=null?k.text:w.text);return}return}if(!k.__om_eval)return;const C=k;const J=(w)=>{z.source.postMessage({...w,__om_eval_r:1,id:C.id},z.origin)};try{const w=(0,eval)(C.code);if(w&&typeof w.then==="function"){w.then((Y)=>J({ok:1,v:K(Y)}),(Y)=>J({ok:0,e:String(Y)}))}else{J({ok:1,v:K(w)})}}catch(w){J({ok:0,e:String(w)})}})}})();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Craiglands Hotel · Ilkley · Est. 1859</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;
+  --ink:#111827;
+  --ivory:#f7f3ed;
+  --paper:#fbf8f3;
+  --gold:#b8965a;
+  --gold-soft:#c9a972;
+  --gold-deep:#9c7c44;
+  --line:rgba(184,150,90,0.32);
+  --hairline:rgba(10,10,10,0.12);
+  --hairline-light:rgba(247,243,237,0.18);
+  --display:'Cormorant Garamond', Georgia, serif;
+  --sans:'Inter', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--ivory);
+  color:var(--ink);
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+/* ============ TYPOGRAPHY ============ */
+.display{font-family:var(--display);font-weight:400;letter-spacing:-0.01em;line-height:0.95;}
+.display-italic{font-family:var(--display);font-style:italic;font-weight:400;}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:0.7rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.eyebrow-num{
+  font-family:var(--sans);
+  font-size:0.62rem;
+  letter-spacing:0.4em;
+  text-transform:uppercase;
+  font-weight:500;
+  opacity:0.65;
+}
+.body-text{font-size:1.02rem;line-height:1.85;font-weight:300;color:#3a3f4a;}
+.body-text.dark{color:rgba(247,243,237,0.72);}
+
+/* ============ ANNOUNCEMENT BAR ============ */
+.announce{
+  background:var(--black);
+  color:var(--gold-soft);
+  text-align:center;
+  padding:11px 20px;
+  font-size:0.72rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  font-weight:400;
+  position:relative;
+  z-index:200;
+}
+.announce span{margin:0 18px;opacity:0.85;}
+.announce span.bullet{opacity:0.45;}
+
+/* ============ NAVIGATION ============ */
+.nav{
+  position:fixed;
+  top:38px;
+  left:0;right:0;
+  z-index:150;
+  padding:18px 56px;
+  background:rgba(10,10,10,0.55);
+  backdrop-filter:blur(20px) saturate(140%);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);
+  border-bottom:1px solid rgba(247,243,237,0.08);
+  transition:all 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.nav.solid{background:rgba(10,10,10,0.92);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1600px;margin:0 auto;}
+.nav-brand{
+  font-family:var(--display);
+  font-size:1.65rem;
+  color:var(--ivory);
+  letter-spacing:0.02em;
+  font-weight:500;
+}
+.nav-brand .est{
+  display:block;
+  font-family:var(--sans);
+  font-size:0.55rem;
+  letter-spacing:0.4em;
+  color:var(--gold-soft);
+  margin-top:-2px;
+  font-weight:400;
+}
+.nav-links{display:flex;gap:42px;align-items:center;}
+.nav-link{
+  color:var(--ivory);
+  font-size:0.72rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  font-weight:400;
+  position:relative;
+  padding:6px 0;
+  transition:color 0.3s;
+}
+.nav-link::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:0;
+  width:0;height:1px;
+  background:var(--gold);
+  transition:width 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.nav-link:hover::after, .nav-link.active::after{width:100%;}
+.nav-link.active{color:var(--gold-soft);}
+.nav-cta{
+  border:1px solid var(--gold);
+  color:var(--gold-soft);
+  padding:10px 22px;
+  font-size:0.7rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  transition:all 0.4s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--black);}
+.nav-burger{display:none;color:var(--ivory);font-size:1.4rem;}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:18px 38px;
+  font-size:0.72rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  font-weight:500;
+  transition:all 0.5s cubic-bezier(0.4,0,0.2,1);
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.btn-gold{background:var(--gold);color:var(--black);}
+.btn-gold:hover{background:var(--gold-deep);transform:translateY(-2px);box-shadow:0 14px 30px rgba(184,150,90,0.3);}
+.btn-ghost{border:1px solid rgba(247,243,237,0.5);color:var(--ivory);}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-soft);}
+.btn-dark{background:var(--black);color:var(--ivory);}
+.btn-dark:hover{background:var(--gold);color:var(--black);}
+.btn i{font-size:0.85rem;}
+
+/* ============ PAGE / ROUTING ============ */
+.page{display:none;opacity:0;transition:opacity 0.6s ease;}
+.page.active{display:block;opacity:1;animation:pageFadeIn 0.7s ease forwards;}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:760px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--ivory);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  animation:kenburns 16s ease-out infinite alternate;
+}
+@keyframes kenburns{
+  from{transform:scale(1.0) translate(0,0);}
+  to{transform:scale(1.12) translate(-1%,-1%);}
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.35) 35%, rgba(10,10,10,0.75) 100%),
+    radial-gradient(ellipse at center, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.6) 100%);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  max-width:1200px;
+  padding:0 40px;
+}
+.hero h1{
+  font-size:clamp(3.5rem, 9vw, 9.5rem);
+  line-height:0.92;
+  font-weight:400;
+  letter-spacing:-0.015em;
+  margin:32px 0;
+}
+.hero h1 .line2{
+  font-style:italic;
+  color:var(--gold-soft);
+  font-weight:400;
+  display:block;
+}
+.hero-rule{
+  width:1px;
+  height:80px;
+  background:var(--gold);
+  margin:42px auto 0;
+  opacity:0.7;
+}
+.hero-buttons{display:flex;gap:18px;justify-content:center;margin-top:54px;flex-wrap:wrap;}
+.hero-meta{
+  position:absolute;
+  bottom:48px;
+  left:0;right:0;
+  text-align:center;
+  z-index:2;
+  font-size:0.65rem;
+  letter-spacing:0.42em;
+  color:rgba(247,243,237,0.6);
+  text-transform:uppercase;
+}
+
+/* ============ STATS BAR ============ */
+.stats{
+  background:var(--black);
+  color:var(--ivory);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+}
+.stats-item{
+  padding:54px 30px;
+  text-align:center;
+  border-right:1px solid rgba(247,243,237,0.1);
+  transition:background 0.5s;
+}
+.stats-item:last-child{border-right:none;}
+.stats-item:hover{background:#141414;}
+.stats-num{
+  font-family:var(--display);
+  font-size:3.4rem;
+  font-weight:400;
+  color:var(--gold-soft);
+  line-height:1;
+  margin-bottom:14px;
+  letter-spacing:-0.02em;
+}
+.stats-label{
+  font-size:0.62rem;
+  letter-spacing:0.42em;
+  text-transform:uppercase;
+  color:rgba(247,243,237,0.55);
+  font-weight:400;
+}
+
+/* ============ BOOKING WIDGET ============ */
+.booking{
+  background:#0f1116;
+  color:var(--ivory);
+  padding:36px 56px;
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.booking-field{
+  padding:8px 30px;
+  border-right:1px solid rgba(247,243,237,0.1);
+}
+.booking-field:last-child{border-right:none;display:flex;align-items:center;justify-content:center;}
+.booking-field label{
+  display:block;
+  font-size:0.6rem;
+  letter-spacing:0.36em;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+  margin-bottom:8px;
+}
+.booking-field .val{font-family:var(--display);font-size:1.4rem;font-weight:400;}
+.booking-field .val small{font-size:0.85rem;color:rgba(247,243,237,0.6);}
+
+/* ============ SECTIONS ============ */
+section{position:relative;}
+.section-pad{padding:140px 56px;}
+.section-pad-lg{padding:180px 56px;}
+.bg-ivory{background:var(--ivory);}
+.bg-paper{background:var(--paper);}
+.bg-black{background:var(--black);color:var(--ivory);}
+.bg-ink{background:#0d1117;color:var(--ivory);}
+
+/* ============ STORY SECTION ============ */
+.story{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:120px;
+  align-items:center;
+  max-width:1500px;
+  margin:0 auto;
+}
+.story-img{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+}
+.story-img-frame{
+  position:absolute;
+  inset:-22px;
+  border:1px solid var(--gold);
+  pointer-events:none;
+  z-index:1;
+}
+.story-img-frame::before, .story-img-frame::after{
+  content:'';
+  position:absolute;
+  background:var(--ivory);
+}
+.story-img-frame::before{top:-1px;left:30px;right:30px;height:3px;}
+.story-img-frame::after{bottom:-1px;left:30px;right:30px;height:3px;}
+.story-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+.story-img:hover img{transform:scale(1.06);}
+.story-content .eyebrow-num{margin-bottom:24px;color:var(--gold);}
+.story-content h2{
+  font-size:clamp(2.6rem,5vw,4.8rem);
+  margin-bottom:36px;
+  letter-spacing:-0.015em;
+}
+.story-content h2 em{color:var(--gold-deep);}
+.story-content .body-text{margin-bottom:30px;}
+.pullquote{
+  border-left:1px solid var(--gold);
+  padding:18px 0 18px 32px;
+  margin:42px 0;
+  font-family:var(--display);
+  font-style:italic;
+  font-size:1.55rem;
+  line-height:1.4;
+  color:var(--ink);
+}
+.pullquote cite{
+  display:block;
+  font-style:normal;
+  font-family:var(--sans);
+  font-size:0.65rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-top:20px;
+  font-weight:500;
+}
+
+/* ============ OFFERS DARK ============ */
+.offers-dark{padding:160px 56px;}
+.offers-head{text-align:center;margin-bottom:96px;}
+.offers-head .eyebrow{color:var(--gold-soft);margin-bottom:24px;display:block;}
+.offers-head h2{font-size:clamp(2.6rem,5vw,4.8rem);color:var(--ivory);}
+.offers-head h2 em{color:var(--gold-soft);}
+.offers-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+  max-width:1500px;
+  margin:0 auto;
+}
+.offer-card{
+  position:relative;
+  height:620px;
+  overflow:hidden;
+  cursor:pointer;
+}
+.offer-card-img{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  transition:transform 1.4s cubic-bezier(0.4,0,0.2,1);
+}
+.offer-card:hover .offer-card-img{transform:scale(1.08);}
+.offer-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.55) 50%, rgba(10,10,10,0.95) 100%);
+}
+.offer-card-content{
+  position:absolute;
+  bottom:42px;
+  left:38px;right:38px;
+  z-index:2;
+  color:var(--ivory);
+}
+.offer-card-content .eyebrow{color:var(--gold-soft);margin-bottom:14px;display:block;}
+.offer-card-content h3{
+  font-family:var(--display);
+  font-size:2.4rem;
+  font-weight:400;
+  margin-bottom:14px;
+  line-height:1.05;
+}
+.offer-card-content p{font-size:0.92rem;color:rgba(247,243,237,0.7);margin-bottom:22px;line-height:1.6;}
+.offer-card-link{
+  font-size:0.7rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid var(--gold);
+  padding-bottom:6px;
+  transition:gap 0.4s;
+}
+.offer-card:hover .offer-card-link{gap:20px;}
+
+/* ============ ROOMS TEASER ============ */
+.rooms-teaser{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:48px;
+  max-width:1500px;
+  margin:0 auto;
+  align-items:start;
+}
+.rooms-teaser-head{padding:60px 0;}
+.rooms-teaser-head h2{
+  font-size:clamp(2.4rem,4.5vw,4.2rem);
+  margin:24px 0 32px;
+}
+.rooms-teaser-head h2 em{color:var(--gold-deep);}
+.rooms-teaser-imgs{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.rt-img{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+}
+.rt-img:nth-child(2){margin-top:80px;}
+.rt-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.5s ease;}
+.rt-img:hover img{transform:scale(1.06);}
+.rt-img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(10,10,10,0.85) 100%);
+  display:flex;
+  align-items:flex-end;
+  padding:32px;
+  opacity:0;
+  transition:opacity 0.6s ease;
+}
+.rt-img:hover .rt-img-overlay{opacity:1;}
+.rt-img-overlay-content{color:var(--ivory);}
+.rt-img-overlay-content .eyebrow{color:var(--gold-soft);margin-bottom:8px;display:block;}
+.rt-img-overlay-content h4{font-family:var(--display);font-size:1.7rem;font-weight:400;}
+
+/* ============ DINING TEASER FULL BLEED ============ */
+.dining-teaser{
+  position:relative;
+  height:780px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--ivory);
+}
+.dining-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  transition:transform 8s ease;
+}
+.dining-teaser:hover .dining-bg{transform:scale(1.05);}
+.dining-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0.5),rgba(10,10,10,0.75));}
+.dining-content{position:relative;z-index:2;max-width:780px;padding:0 32px;}
+.dining-content .eyebrow{color:var(--gold-soft);margin-bottom:28px;display:block;}
+.dining-content h2{
+  font-size:clamp(4rem,8vw,7.5rem);
+  font-style:italic;
+  color:var(--gold-soft);
+  font-weight:400;
+  line-height:0.95;
+  margin-bottom:24px;
+}
+.dining-content .tagline{
+  font-family:var(--display);
+  font-size:1.6rem;
+  font-style:italic;
+  margin-bottom:42px;
+  color:rgba(247,243,237,0.85);
+}
+.dining-rule{width:1px;height:60px;background:var(--gold);margin:0 auto 36px;}
+
+/* ============ WEDDINGS TEASER ============ */
+.weddings-teaser{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:120px;
+  align-items:center;
+  max-width:1500px;
+  margin:0 auto;
+}
+.wt-content{padding:40px 0;}
+.wt-content h2{font-size:clamp(2.6rem,5vw,4.6rem);margin:24px 0 32px;}
+.wt-content h2 em{color:var(--gold-deep);}
+.wt-img{
+  position:relative;
+  aspect-ratio:5/6;
+  overflow:hidden;
+}
+.wt-img-frame{position:absolute;inset:-18px;border:1px solid var(--gold);pointer-events:none;z-index:1;}
+.wt-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s ease;}
+.wt-img:hover img{transform:scale(1.06);}
+
+/* ============ FOOTER ============ */
+footer{
+  background:var(--black);
+  color:var(--ivory);
+  padding:110px 56px 40px;
+  border-top:1px solid var(--line);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:64px;
+  max-width:1500px;
+  margin:0 auto 80px;
+}
+.footer-brand{font-family:var(--display);font-size:2.2rem;color:var(--gold-soft);margin-bottom:18px;}
+.footer-brand .est{display:block;font-family:var(--sans);font-size:0.6rem;letter-spacing:0.4em;color:rgba(247,243,237,0.5);margin-top:4px;}
+.footer-tag{font-family:var(--display);font-style:italic;font-size:1.2rem;color:rgba(247,243,237,0.65);margin:24px 0 32px;line-height:1.5;}
+.footer-col h5{font-size:0.65rem;letter-spacing:0.36em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:24px;font-weight:500;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:14px;font-size:0.92rem;color:rgba(247,243,237,0.7);font-weight:300;}
+.footer-col li a:hover{color:var(--gold-soft);}
+.footer-bottom{
+  border-top:1px solid rgba(247,243,237,0.08);
+  padding-top:36px;
+  display:flex;
+  justify-content:space-between;
+  font-size:0.7rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:rgba(247,243,237,0.4);
+  max-width:1500px;
+  margin:0 auto;
+}
+
+/* ============ INNER HERO ============ */
+.inner-hero{
+  position:relative;
+  height:78vh;
+  min-height:600px;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  color:var(--ivory);
+}
+.inner-hero-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  animation:kenburns 18s ease-out infinite alternate;
+}
+.inner-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0.4) 0%,rgba(10,10,10,0.85) 100%);}
+.inner-hero-content{position:relative;z-index:2;padding:80px 56px;max-width:1500px;width:100%;margin:0 auto;}
+.inner-hero h1{font-size:clamp(3.4rem,7vw,7rem);line-height:0.95;margin:24px 0 0;letter-spacing:-0.015em;}
+.inner-hero h1 em{color:var(--gold-soft);font-style:italic;}
+.inner-hero .eyebrow{color:var(--gold-soft);}
+
+/* ============ ROOM CARDS ALTERNATING ============ */
+.room-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:100px;
+  align-items:center;
+  max-width:1500px;
+  margin:0 auto;
+  padding:120px 0;
+}
+.room-row.reverse .room-img{order:2;}
+.room-row.reverse .room-content{order:1;}
+.room-img{position:relative;aspect-ratio:5/4;overflow:hidden;}
+.room-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.5s ease;}
+.room-img:hover img{transform:scale(1.05);}
+.room-img .num{
+  position:absolute;
+  top:24px;left:24px;
+  font-family:var(--display);
+  font-size:1rem;
+  color:var(--ivory);
+  background:rgba(10,10,10,0.6);
+  backdrop-filter:blur(10px);
+  padding:8px 16px;
+  letter-spacing:0.3em;
+  z-index:2;
+}
+.room-content .eyebrow-num{color:var(--gold-deep);margin-bottom:20px;display:block;}
+.room-content h2{font-size:clamp(2.4rem,4.5vw,4.2rem);margin-bottom:24px;}
+.room-content h2 em{color:var(--gold-deep);}
+.room-features{margin:36px 0;list-style:none;}
+.room-features li{
+  padding:14px 0;
+  border-bottom:1px solid var(--hairline);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  font-size:0.95rem;
+  color:#3a3f4a;
+}
+.room-features li:first-child{border-top:1px solid var(--hairline);}
+.room-features i{color:var(--gold);font-size:0.9rem;}
+.room-price{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  margin:32px 0 36px;
+}
+.room-price .from{font-size:0.65rem;letter-spacing:0.36em;text-transform:uppercase;color:#6b7280;}
+.room-price .amt{font-family:var(--display);font-size:3rem;color:var(--gold-deep);font-weight:400;}
+.room-price .per{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:#6b7280;}
+
+/* ============ AMENITIES STRIP ============ */
+.amenities{
+  background:var(--black);
+  color:var(--ivory);
+  padding:100px 56px;
+}
+.amenities-head{text-align:center;margin-bottom:72px;}
+.amenities-head .eyebrow{color:var(--gold-soft);margin-bottom:18px;display:block;}
+.amenities-head h2{font-size:clamp(2.2rem,4vw,3.6rem);}
+.amenities-head h2 em{color:var(--gold-soft);}
+.amenities-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:0;
+  max-width:1500px;
+  margin:0 auto;
+  border-top:1px solid rgba(247,243,237,0.12);
+}
+.am-item{
+  padding:42px 20px;
+  text-align:center;
+  border-right:1px solid rgba(247,243,237,0.1);
+  border-bottom:1px solid rgba(247,243,237,0.1);
+}
+.am-item:nth-child(6n){border-right:none;}
+.am-item i{font-size:1.7rem;color:var(--gold-soft);margin-bottom:18px;display:block;}
+.am-item .lbl{font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(247,243,237,0.8);}
+
+/* ============ CTA BANNER ============ */
+.cta-banner{
+  background:var(--ink);
+  color:var(--ivory);
+  padding:140px 56px;
+  text-align:center;
+}
+.cta-banner .eyebrow{color:var(--gold-soft);margin-bottom:24px;display:block;}
+.cta-banner h2{font-size:clamp(2.6rem,5.5vw,5.2rem);margin-bottom:20px;}
+.cta-banner h2 em{color:var(--gold-soft);}
+.cta-banner p{font-family:var(--display);font-style:italic;font-size:1.4rem;color:rgba(247,243,237,0.7);margin-bottom:40px;}
+
+/* ============ DINING ============ */
+.dining-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  max-width:1600px;
+  margin:0 auto;
+  gap:0;
+}
+.dining-split-img{
+  height:760px;
+  background-size:cover;
+  background-position:center;
+}
+.dining-split-content{
+  padding:120px 80px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.dining-split-content h2{font-size:clamp(2.4rem,4.5vw,4rem);margin:24px 0 36px;}
+.dining-split-content h2 em{color:var(--gold-deep);font-style:italic;}
+
+.hours-table{
+  max-width:780px;
+  margin:0 auto;
+  background:var(--paper);
+  padding:80px;
+  border:1px solid var(--hairline);
+}
+.hours-table h3{
+  font-family:var(--display);
+  font-size:2.6rem;
+  text-align:center;
+  margin-bottom:18px;
+  font-weight:400;
+}
+.hours-table h3 em{color:var(--gold-deep);font-style:italic;}
+.hours-table .sub{text-align:center;font-size:0.7rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:48px;}
+.hours-list{list-style:none;}
+.hours-list li{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid var(--hairline);
+  font-family:var(--display);
+}
+.hours-list li:last-child{border-bottom:none;}
+.hours-list .day{font-size:1.3rem;font-weight:500;}
+.hours-list .time{font-size:1rem;color:#6b7280;letter-spacing:0.04em;}
+
+/* ============ WEDDINGS ============ */
+.wedding-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  background:var(--paper);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.wedding-stats .stats-item{
+  border-right-color:var(--hairline);
+  padding:72px 30px;
+  background:transparent;
+}
+.wedding-stats .stats-item:hover{background:rgba(184,150,90,0.05);}
+.wedding-stats .stats-num{color:var(--gold-deep);}
+.wedding-stats .stats-label{color:#6b7280;}
+
+.wed-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  align-items:center;
+  max-width:1700px;
+  margin:0 auto;
+  padding:120px 56px;
+}
+.wed-row.reverse .wed-img{order:2;}
+.wed-row.reverse .wed-content{order:1;padding-right:80px;padding-left:0;}
+.wed-row .wed-content{padding-left:80px;padding-right:0;}
+.wed-img{aspect-ratio:5/4;overflow:hidden;position:relative;}
+.wed-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s ease;}
+.wed-img:hover img{transform:scale(1.05);}
+.wed-content h2{font-size:clamp(2.4rem,4.5vw,3.8rem);margin:20px 0 28px;}
+.wed-content h2 em{color:var(--gold-deep);font-style:italic;}
+
+/* asymmetric gallery */
+.wed-gallery{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:140px;
+  gap:24px;
+  max-width:1600px;
+  margin:0 auto;
+  padding:120px 56px;
+}
+.wed-gallery .g{overflow:hidden;}
+.wed-gallery .g img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s ease;}
+.wed-gallery .g:hover img{transform:scale(1.06);}
+.wed-gallery .g1{grid-column:1/6;grid-row:1/4;}
+.wed-gallery .g2{grid-column:6/13;grid-row:1/3;}
+.wed-gallery .g3{grid-column:6/10;grid-row:3/5;}
+.wed-gallery .g4{grid-column:10/13;grid-row:3/5;}
+
+/* package cards */
+.packages{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  max-width:1500px;
+  margin:0 auto;
+}
+.pkg-card{
+  background:var(--paper);
+  padding:80px 48px;
+  text-align:center;
+  border:1px solid var(--hairline);
+  transition:all 0.6s;
+  position:relative;
+}
+.pkg-card:hover{background:#fff;transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.08);}
+.pkg-card.featured{background:var(--black);color:var(--ivory);}
+.pkg-card.featured h3{color:var(--gold-soft);}
+.pkg-card.featured .pkg-rule{background:var(--gold);}
+.pkg-card.featured ul li{color:rgba(247,243,237,0.75);border-color:rgba(247,243,237,0.1);}
+.pkg-card .eyebrow{color:var(--gold-deep);margin-bottom:18px;display:block;}
+.pkg-card.featured .eyebrow{color:var(--gold-soft);}
+.pkg-card h3{font-family:var(--display);font-size:2.6rem;font-weight:400;margin-bottom:14px;}
+.pkg-card .pkg-from{font-size:0.65rem;letter-spacing:0.36em;text-transform:uppercase;color:#6b7280;margin-bottom:6px;}
+.pkg-card.featured .pkg-from{color:rgba(247,243,237,0.5);}
+.pkg-card .pkg-amt{font-family:var(--display);font-size:3.4rem;color:var(--gold-deep);font-weight:400;line-height:1;}
+.pkg-card.featured .pkg-amt{color:var(--gold-soft);}
+.pkg-rule{width:40px;height:1px;background:var(--gold);margin:32px auto;}
+.pkg-card ul{list-style:none;text-align:left;margin-bottom:42px;}
+.pkg-card ul li{padding:14px 0;border-bottom:1px solid var(--hairline);font-size:0.92rem;display:flex;gap:12px;align-items:center;}
+.pkg-card ul li i{color:var(--gold);font-size:0.8rem;}
+.pkg-card.featured ul li i{color:var(--gold-soft);}
+
+/* ============ OFFERS PAGE GRID ============ */
+.offers-page-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+  max-width:1600px;
+  margin:0 auto;
+  padding:0 56px;
+}
+.op-card{
+  background:#0f1116;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  border:1px solid rgba(247,243,237,0.06);
+  transition:all 0.6s;
+}
+.op-card:hover{transform:translateY(-8px);border-color:var(--line);}
+.op-img{
+  height:340px;
+  overflow:hidden;
+  position:relative;
+}
+.op-img-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  transition:transform 1.5s ease;
+}
+.op-card:hover .op-img-bg{transform:scale(1.08);}
+.op-tag{
+  position:absolute;
+  top:24px;left:24px;
+  background:var(--gold);
+  color:var(--black);
+  padding:8px 16px;
+  font-size:0.6rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  font-weight:500;
+  z-index:2;
+}
+.op-body{padding:42px 38px;}
+.op-body .eyebrow-num{color:var(--gold-soft);margin-bottom:14px;display:block;}
+.op-body h3{font-family:var(--display);font-size:2rem;font-weight:400;color:var(--ivory);margin-bottom:14px;line-height:1.1;}
+.op-body p{font-size:0.92rem;color:rgba(247,243,237,0.6);margin-bottom:28px;line-height:1.7;}
+.op-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid rgba(247,243,237,0.1);
+  padding-top:22px;
+}
+.op-price{font-family:var(--display);font-size:1.8rem;color:var(--gold-soft);}
+.op-price small{font-size:0.65rem;letter-spacing:0.32em;color:rgba(247,243,237,0.4);text-transform:uppercase;display:block;}
+
+.offers-bookbar{
+  background:var(--gold);
+  color:var(--black);
+  padding:48px 56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.offers-bookbar h3{font-family:var(--display);font-size:2.2rem;font-weight:400;}
+.offers-bookbar h3 em{font-style:italic;}
+.offers-bookbar p{font-size:0.7rem;letter-spacing:0.32em;text-transform:uppercase;}
+
+/* ============ REVEAL ANIMATIONS ============ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-fade{opacity:0;transition:opacity 1.2s ease;}
+.reveal-fade.in{opacity:1;}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:992px){
+  .nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .nav-burger{display:block;}
+  .nav-cta{display:none;}
+  .section-pad, .section-pad-lg, .offers-dark{padding:90px 24px;}
+  .story, .rooms-teaser, .weddings-teaser, .room-row, .wed-row, .dining-split{
+    grid-template-columns:1fr;
+    gap:60px;
+  }
+  .room-row.reverse .room-img, .wed-row.reverse .wed-img{order:1;}
+  .room-row.reverse .room-content, .wed-row.reverse .wed-content{order:2;padding:0;}
+  .room-row .room-content, .wed-row .wed-content{padding:0;}
+  .wed-row{padding:60px 24px;}
+  .stats, .wedding-stats{grid-template-columns:repeat(2,1fr);}
+  .booking{grid-template-columns:1fr;padding:24px;gap:16px;}
+  .booking-field{border-right:none;border-bottom:1px solid rgba(247,243,237,0.1);padding:14px 0;}
+  .offers-grid, .offers-page-grid, .packages, .amenities-grid{grid-template-columns:1fr;padding:0 24px;}
+  .amenities-grid{grid-template-columns:repeat(2,1fr);}
+  .am-item:nth-child(6n){border-right:1px solid rgba(247,243,237,0.1);}
+  .am-item:nth-child(2n){border-right:none;}
+  .footer-grid{grid-template-columns:1fr;gap:48px;}
+  .dining-split-content{padding:60px 24px;}
+  .dining-split-img{height:400px;}
+  .hours-table{padding:48px 24px;}
+  .wed-gallery{grid-template-columns:1fr;grid-auto-rows:300px;}
+  .wed-gallery .g1, .wed-gallery .g2, .wed-gallery .g3, .wed-gallery .g4{grid-column:1/-1;grid-row:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ANNOUNCEMENT ============ -->
+<div class="announce">
+  <span>Book Direct</span><span class="bullet">·</span><span>Best Rate Guaranteed</span><span class="bullet">·</span><span>01943 430001</span>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav solid" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">
+      Craiglands
+      <span class="est">Hotel · Est. 1859</span>
+    </a>
+    <div class="nav-links">
+      <a href="#home" class="nav-link" data-page="home">Home</a>
+      <a href="#rooms" class="nav-link" data-page="rooms">Rooms</a>
+      <a href="#dining" class="nav-link" data-page="dining">Dining</a>
+      <a href="#weddings" class="nav-link" data-page="weddings">Weddings</a>
+      <a href="#offers" class="nav-link active" data-page="offers">Offers</a>
+    </div>
+    <a href="#offers" class="nav-cta">Reserve</a>
+    <button class="nav-burger" aria-label="Menu"><i class="bi bi-list"></i></button>
+  </div>
+</nav>
+
+<!-- ============================================== HOME ============================================== -->
+<div class="page" id="page-home" data-screen-label="01 Home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2024/10/about-10-01.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="eyebrow reveal-fade in" style="color:var(--gold-soft);">Ilkley · West Yorkshire · Est. 1859</div>
+      <h1 class="display reveal-fade in">
+        Where the Moors
+        <span class="line2 display-italic">Meet Grandeur</span>
+      </h1>
+      <div class="hero-rule reveal-fade in"></div>
+      <div class="hero-buttons reveal-fade in">
+        <a href="#offers" class="btn btn-gold">Book Your Stay <i class="bi bi-arrow-right"></i></a>
+        <a href="#rooms" class="btn btn-ghost">Explore the Hotel</a>
+      </div>
+    </div>
+    <div class="hero-meta">Cowpasture Road · Ilkley · LS29 8RQ</div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-item reveal in"><div class="stats-num">63</div><div class="stats-label">Bedrooms</div></div>
+    <div class="stats-item reveal in"><div class="stats-num">500</div><div class="stats-label">Guests</div></div>
+    <div class="stats-item reveal in"><div class="stats-num">1859</div><div class="stats-label">Established</div></div>
+    <div class="stats-item reveal in"><div class="stats-num">01</div><div class="stats-label">Restaurant</div></div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking">
+    <div class="booking-field"><label>Arrive</label><div class="val">Fri 15 May <small>2026</small></div></div>
+    <div class="booking-field"><label>Depart</label><div class="val">Sun 17 May <small>2026</small></div></div>
+    <div class="booking-field"><label>Guests</label><div class="val">2 Adults</div></div>
+    <div class="booking-field"><label>Rooms</label><div class="val">1 Room</div></div>
+    <div class="booking-field"><a href="#offers" class="btn btn-gold">Check Availability</a></div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section-pad-lg bg-ivory">
+    <div class="story">
+      <div class="story-img reveal in">
+        <div class="story-img-frame"></div>
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/about-10-01.jpg" alt="Craiglands Hotel exterior">
+      </div>
+      <div class="story-content reveal in">
+        <div class="eyebrow-num">01 — Our Story</div>
+        <h2 class="display">A Yorkshire landmark <em>since 1859.</em></h2>
+        <p class="body-text">Set against the storied backdrop of Ilkley Moor, Craiglands has welcomed travellers for more than a century and a half. Stone walls, sweeping lawns and cathedral-quiet drawing rooms — every corner whispers of an older, slower England.</p>
+        <p class="body-text">Today, sixty-three thoughtfully appointed bedrooms, an acclaimed brasserie, and ballrooms that have hosted generations of weddings continue a quiet legacy of hospitality.</p>
+        <blockquote class="pullquote">
+          "There is a particular kind of stillness here — the kind only old stones and good company can hold."
+          <cite>— Country Living Magazine</cite>
+        </blockquote>
+        <a href="#rooms" class="btn btn-dark" style="margin-top:24px;">Discover the Hotel <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS DARK -->
+  <section class="offers-dark bg-black">
+    <div class="offers-head reveal in">
+      <span class="eyebrow">02 — Curated Stays</span>
+      <h2 class="display">Memorable <em class="display-italic">escapes.</em></h2>
+    </div>
+    <div class="offers-grid">
+      <div class="offer-card reveal in">
+        <div class="offer-card-img" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-007.jpg');"></div>
+        <div class="offer-card-overlay"></div>
+        <div class="offer-card-content">
+          <span class="eyebrow">From £99</span>
+          <h3 class="display">A Night on the Moors</h3>
+          <p>An overnight retreat with breakfast in the brasserie and full use of the gardens.</p>
+          <span class="offer-card-link">Discover <i class="bi bi-arrow-right"></i></span>
+        </div>
+      </div>
+      <div class="offer-card reveal in">
+        <div class="offer-card-img" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2021/08/Couples-Get-Away.jpg');"></div>
+        <div class="offer-card-overlay"></div>
+        <div class="offer-card-content">
+          <span class="eyebrow">From £289</span>
+          <h3 class="display">The Couples Getaway</h3>
+          <p>Two nights, dinner for two, and a sparkling welcome — quiet luxury for two.</p>
+          <span class="offer-card-link">Discover <i class="bi bi-arrow-right"></i></span>
+        </div>
+      </div>
+      <div class="offer-card reveal in">
+        <div class="offer-card-img" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2021/08/Family-Staycation-Offer.jpg');"></div>
+        <div class="offer-card-overlay"></div>
+        <div class="offer-card-content">
+          <span class="eyebrow">From £219</span>
+          <h3 class="display">Family Staycation</h3>
+          <p>Connecting family rooms, a hearty breakfast, and adventures across Ilkley Moor.</p>
+          <span class="offer-card-link">Discover <i class="bi bi-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS TEASER -->
+  <section class="section-pad-lg bg-ivory">
+    <div class="rooms-teaser">
+      <div class="rooms-teaser-head reveal in">
+        <span class="eyebrow-num" style="color:var(--gold-deep);">03 — The Rooms</span>
+        <h2 class="display">Sixty-three rooms,<br>each with its <em>own quiet hour.</em></h2>
+        <p class="body-text">From classic doubles dressed in muted linens to luxury suites with views across the moors — every room is a private sanctuary, considered down to the stitch.</p>
+        <a href="#rooms" class="btn btn-dark" style="margin-top:24px;">Explore the Rooms <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="rooms-teaser-imgs">
+        <div class="rt-img reveal in">
+          <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-007.jpg" alt="Classic room">
+          <div class="rt-img-overlay"><div class="rt-img-overlay-content"><span class="eyebrow">From £99</span><h4>Classic Double</h4></div></div>
+        </div>
+        <div class="rt-img reveal in">
+          <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/accommodation-01-PH.jpg" alt="Luxury room">
+          <div class="rt-img-overlay"><div class="rt-img-overlay-content"><span class="eyebrow">From £179</span><h4>Luxury Suite</h4></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DINING TEASER -->
+  <section class="dining-teaser">
+    <div class="dining-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/restaurant-bar-006.jpg');"></div>
+    <div class="dining-overlay"></div>
+    <div class="dining-content reveal-fade in">
+      <span class="eyebrow">04 — Dining</span>
+      <h2 class="display">Brasserie<span class="display-italic">1</span></h2>
+      <div class="dining-rule"></div>
+      <p class="tagline">Slow food, candle-soft rooms, and a wine list to linger over.</p>
+      <a href="#dining" class="btn btn-ghost">Discover the Brasserie</a>
+    </div>
+  </section>
+
+  <!-- WEDDINGS TEASER -->
+  <section class="section-pad-lg bg-paper">
+    <div class="weddings-teaser">
+      <div class="wt-img reveal in">
+        <div class="wt-img-frame"></div>
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/09/ch-weddings-001.jpg" alt="Weddings at Craiglands">
+      </div>
+      <div class="wt-content reveal in">
+        <span class="eyebrow-num" style="color:var(--gold-deep);">05 — Weddings</span>
+        <h2 class="display">Forever begins <em class="display-italic">somewhere beautiful.</em></h2>
+        <p class="body-text">For more than a century, Craiglands has been the setting for the most important day in countless lives. With ballrooms for five hundred and gardens for the ceremony, ours is a stage built for the great moments.</p>
+        <a href="#weddings" class="btn btn-dark" style="margin-top:24px;">Begin Your Story <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================== ROOMS ============================================== -->
+<div class="page" id="page-rooms" data-screen-label="02 Rooms">
+  <section class="inner-hero">
+    <div class="inner-hero-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2024/10/accommodation-01-PH.jpg');"></div>
+    <div class="inner-hero-overlay"></div>
+    <div class="inner-hero-content">
+      <span class="eyebrow">02 — Accommodation</span>
+      <h1 class="display">Sixty-three rooms.<br><em class="display-italic">Each its own world.</em></h1>
+    </div>
+  </section>
+
+  <section class="bg-ivory">
+    <!-- Classic Double -->
+    <div class="room-row">
+      <div class="room-img reveal in">
+        <span class="num">№ 01</span>
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-007.jpg" alt="Classic Double">
+      </div>
+      <div class="room-content reveal in">
+        <span class="eyebrow-num">Room № 01</span>
+        <h2 class="display">Classic <em class="display-italic">Double</em></h2>
+        <p class="body-text">A quiet, considered room dressed in soft linens and tailored furnishings. The original Yorkshire stone framing the windows lets in the morning light just so.</p>
+        <ul class="room-features">
+          <li><i class="bi bi-arrows-fullscreen"></i>Approx. 24 m²</li>
+          <li><i class="bi bi-cup-hot"></i>Full English breakfast included</li>
+          <li><i class="bi bi-wifi"></i>Complimentary high-speed Wi-Fi</li>
+          <li><i class="bi bi-tv"></i>Smart television &amp; streaming</li>
+        </ul>
+        <div class="room-price">
+          <span class="from">From</span>
+          <span class="amt display">£99</span>
+          <span class="per">Per Night</span>
+        </div>
+        <a href="#offers" class="btn btn-gold">Book Now <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Executive -->
+    <div class="room-row reverse" style="background:var(--paper);">
+      <div class="room-img reveal">
+        <span class="num">№ 02</span>
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-006.jpg" alt="Executive">
+      </div>
+      <div class="room-content reveal">
+        <span class="eyebrow-num">Room № 02</span>
+        <h2 class="display">Executive <em class="display-italic">Room</em></h2>
+        <p class="body-text">More space to settle in. A larger bedroom and a separate seating area, with generous wardrobes and a writing desk for those longer stays.</p>
+        <ul class="room-features">
+          <li><i class="bi bi-arrows-fullscreen"></i>Approx. 32 m²</li>
+          <li><i class="bi bi-cup-hot"></i>Full English breakfast included</li>
+          <li><i class="bi bi-bag-check"></i>Spacious dressing area</li>
+          <li><i class="bi bi-mug-fill"></i>Nespresso &amp; artisan teas</li>
+        </ul>
+        <div class="room-price">
+          <span class="from">From</span>
+          <span class="amt display">£139</span>
+          <span class="per">Per Night</span>
+        </div>
+        <a href="#offers" class="btn btn-gold">Book Now <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Luxury -->
+    <div class="room-row">
+      <div class="room-img reveal">
+        <span class="num">№ 03</span>
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/accommodation-01-PH.jpg" alt="Luxury">
+      </div>
+      <div class="room-content reveal">
+        <span class="eyebrow-num">Room № 03</span>
+        <h2 class="display">Luxury <em class="display-italic">Suite</em></h2>
+        <p class="body-text">Our most considered rooms — spacious, quiet, and arranged with a particular eye for detail. Bath robes warmed by the time you step from the rolltop tub.</p>
+        <ul class="room-features">
+          <li><i class="bi bi-arrows-fullscreen"></i>Approx. 42 m²</li>
+          <li><i class="bi bi-cup-hot"></i>Breakfast &amp; afternoon tea</li>
+          <li><i class="bi bi-droplet"></i>Free-standing bathtub</li>
+          <li><i class="bi bi-flower2"></i>Garden or moor view</li>
+        </ul>
+        <div class="room-price">
+          <span class="from">From</span>
+          <span class="amt display">£179</span>
+          <span class="per">Per Night</span>
+        </div>
+        <a href="#offers" class="btn btn-gold">Book Now <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Family -->
+    <div class="room-row reverse" style="background:var(--paper);">
+      <div class="room-img reveal">
+        <span class="num">№ 04</span>
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-021.jpg" alt="Family Suite">
+      </div>
+      <div class="room-content reveal">
+        <span class="eyebrow-num">Room № 04</span>
+        <h2 class="display">Family <em class="display-italic">Suite</em></h2>
+        <p class="body-text">Two interconnecting rooms with the warmth of a family home. Books, board games and tea-time biscuits arrive on request.</p>
+        <ul class="room-features">
+          <li><i class="bi bi-arrows-fullscreen"></i>Approx. 48 m²</li>
+          <li><i class="bi bi-people"></i>Sleeps 2 adults + 2 children</li>
+          <li><i class="bi bi-cup-hot"></i>Family breakfast included</li>
+          <li><i class="bi bi-puzzle"></i>Welcome treats for little ones</li>
+        </ul>
+        <div class="room-price">
+          <span class="from">From</span>
+          <span class="amt display">£219</span>
+          <span class="per">Per Night</span>
+        </div>
+        <a href="#offers" class="btn btn-gold">Book Now <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="amenities">
+    <div class="amenities-head reveal">
+      <span class="eyebrow">Every room. Every guest.</span>
+      <h2 class="display">In each room, <em class="display-italic">these comforts.</em></h2>
+    </div>
+    <div class="amenities-grid">
+      <div class="am-item reveal"><i class="bi bi-cup-hot"></i><div class="lbl">Breakfast</div></div>
+      <div class="am-item reveal"><i class="bi bi-wifi"></i><div class="lbl">Wi-Fi</div></div>
+      <div class="am-item reveal"><i class="bi bi-tv"></i><div class="lbl">Smart TV</div></div>
+      <div class="am-item reveal"><i class="bi bi-droplet"></i><div class="lbl">Toiletries</div></div>
+      <div class="am-item reveal"><i class="bi bi-mug-fill"></i><div class="lbl">Tea &amp; Coffee</div></div>
+      <div class="am-item reveal"><i class="bi bi-p-square"></i><div class="lbl">Free Parking</div></div>
+      <div class="am-item reveal"><i class="bi bi-thermometer-half"></i><div class="lbl">Climate</div></div>
+      <div class="am-item reveal"><i class="bi bi-headphones"></i><div class="lbl">Concierge</div></div>
+      <div class="am-item reveal"><i class="bi bi-bag-check"></i><div class="lbl">Dressing</div></div>
+      <div class="am-item reveal"><i class="bi bi-flower2"></i><div class="lbl">Gardens</div></div>
+      <div class="am-item reveal"><i class="bi bi-shield-check"></i><div class="lbl">Safe</div></div>
+      <div class="am-item reveal"><i class="bi bi-moon-stars"></i><div class="lbl">Black-out</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <span class="eyebrow">Reserve Direct</span>
+    <h2 class="display">Your <em class="display-italic">room</em> is waiting.</h2>
+    <p>Best rate guaranteed when you book with us.</p>
+    <a href="#offers" class="btn btn-gold">Reserve Your Stay <i class="bi bi-arrow-right"></i></a>
+  </section>
+</div>
+
+<!-- ============================================== DINING ============================================== -->
+<div class="page" id="page-dining" data-screen-label="03 Dining">
+  <section class="inner-hero">
+    <div class="inner-hero-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/restaurant-bar-006.jpg');"></div>
+    <div class="inner-hero-overlay"></div>
+    <div class="inner-hero-content">
+      <span class="eyebrow">03 — Brasserie1</span>
+      <h1 class="display"><em class="display-italic">Brasserie</em><span style="color:var(--gold-soft);">1</span></h1>
+    </div>
+  </section>
+
+  <section class="bg-ivory" style="padding:0;">
+    <div class="dining-split">
+      <div class="dining-split-img reveal" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/restaurant-bar-006.jpg');"></div>
+      <div class="dining-split-content reveal">
+        <span class="eyebrow-num" style="color:var(--gold-deep);">01 — Our Kitchen</span>
+        <h2 class="display">Yorkshire larder, <em class="display-italic">unhurried.</em></h2>
+        <p class="body-text">Our kitchen is built around the people we know — the farmers, smokers, and growers within an hour's drive. Lamb from the moors. Trout from the dales. Vegetables pulled the morning they arrive.</p>
+        <p class="body-text">The result is a menu that changes with the season and the weather, and a room that never seems in a hurry.</p>
+        <blockquote class="pullquote">
+          "The kind of dining room you want to fold an afternoon into."
+        </blockquote>
+        <a href="#offers" class="btn btn-dark" style="margin-top:16px;">Reserve a Table <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS -->
+  <section class="section-pad bg-paper">
+    <div class="hours-table reveal">
+      <h3 class="display">Opening <em class="display-italic">Hours</em></h3>
+      <div class="sub">Breakfast · Lunch · Dinner</div>
+      <ul class="hours-list">
+        <li><span class="day">Monday — Friday</span><span class="time">07:00 — 22:30</span></li>
+        <li><span class="day">Saturday</span><span class="time">08:00 — 23:00</span></li>
+        <li><span class="day">Sunday</span><span class="time">08:00 — 21:00</span></li>
+        <li><span class="day">Afternoon Tea</span><span class="time">14:00 — 17:00 Daily</span></li>
+        <li><span class="day">Sunday Lunch</span><span class="time">12:00 — 16:00</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRIVATE DINING -->
+  <section class="section-pad bg-ivory">
+    <div class="story" style="gap:80px;">
+      <div class="story-content reveal">
+        <span class="eyebrow-num" style="color:var(--gold-deep);">02 — Private Dining</span>
+        <h2 class="display">A room of your own,<br><em class="display-italic">a night to remember.</em></h2>
+        <p class="body-text">Our private dining rooms host gatherings of every shape — anniversary suppers, milestone birthdays, board dinners, and the quiet celebrations that matter most.</p>
+        <p class="body-text">Tasting menus paired with hand-picked wines, available for parties of eight to forty.</p>
+        <a href="#offers" class="btn btn-dark" style="margin-top:24px;">Enquire <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="story-img reveal">
+        <div class="story-img-frame"></div>
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/restaurant-bar-006.jpg" alt="Private dining">
+      </div>
+    </div>
+  </section>
+
+  <!-- GOLD CTA -->
+  <section class="offers-bookbar">
+    <div>
+      <p class="eyebrow">Reserve a Table</p>
+      <h3 class="display">Brasserie<em>1</em> — by reservation, with pleasure.</h3>
+    </div>
+    <a href="tel:01943430001" class="btn btn-dark">01943 430001</a>
+  </section>
+</div>
+
+<!-- ============================================== WEDDINGS ============================================== -->
+<div class="page" id="page-weddings" data-screen-label="04 Weddings">
+  <section class="inner-hero">
+    <div class="inner-hero-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/09/ch-weddings-001.jpg');"></div>
+    <div class="inner-hero-overlay"></div>
+    <div class="inner-hero-content">
+      <span class="eyebrow">04 — Weddings</span>
+      <h1 class="display">Begin Your <em class="display-italic">Forever.</em></h1>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="wedding-stats">
+    <div class="stats-item reveal"><div class="stats-num">500</div><div class="stats-label">Guests</div></div>
+    <div class="stats-item reveal"><div class="stats-num">03</div><div class="stats-label">Ballrooms</div></div>
+    <div class="stats-item reveal"><div class="stats-num">63</div><div class="stats-label">Bedrooms</div></div>
+    <div class="stats-item reveal"><div class="stats-num">167</div><div class="stats-label">Years Hosting</div></div>
+  </section>
+
+  <!-- ROW 1 -->
+  <section class="bg-ivory">
+    <div class="wed-row">
+      <div class="wed-img reveal">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/weddings-004.jpg" alt="Ceremony">
+      </div>
+      <div class="wed-content reveal">
+        <span class="eyebrow-num" style="color:var(--gold-deep);">01 — The Ceremony</span>
+        <h2 class="display">Vows beneath <em class="display-italic">cathedral ceilings.</em></h2>
+        <p class="body-text">Say your words in a room of stone, candlelight and quiet attention. The Grand Ballroom holds five hundred — and feels intimate enough for fifty.</p>
+        <a href="#offers" class="btn btn-dark" style="margin-top:18px;">Begin <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROW 2 -->
+  <section class="bg-paper">
+    <div class="wed-row reverse">
+      <div class="wed-img reveal">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/weddings-007.jpg" alt="Reception">
+      </div>
+      <div class="wed-content reveal">
+        <span class="eyebrow-num" style="color:var(--gold-deep);">02 — The Reception</span>
+        <h2 class="display">A long table,<br><em class="display-italic">a longer night.</em></h2>
+        <p class="body-text">Polished silver, pressed linen, and a wine list curated to the occasion. Our team has built four generations of expertise — and they apply every minute of it to your day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROW 3 -->
+  <section class="bg-ivory">
+    <div class="wed-row">
+      <div class="wed-img reveal">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/weddings-010.jpg" alt="Celebration">
+      </div>
+      <div class="wed-content reveal">
+        <span class="eyebrow-num" style="color:var(--gold-deep);">03 — The Celebration</span>
+        <h2 class="display">Dance until <em class="display-italic">last light.</em></h2>
+        <p class="body-text">Bands, fires in the lounges, late-night cheese boards and a sleepy walk back to your room — every detail considered, none of them rushed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="bg-paper">
+    <div class="wed-gallery">
+      <div class="g g1 reveal"><img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/wedding-gallery-021-700x500.jpg" alt=""></div>
+      <div class="g g2 reveal"><img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/weddings-003.jpg" alt=""></div>
+      <div class="g g3 reveal"><img src="https://www.craiglands.co.uk/wp-content/uploads/2023/09/ch-weddings-001.jpg" alt=""></div>
+      <div class="g g4 reveal"><img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/weddings-004.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section-pad-lg bg-ivory">
+    <div class="offers-head reveal" style="margin-bottom:80px;">
+      <span class="eyebrow" style="color:var(--gold-deep);">Three Collections</span>
+      <h2 class="display" style="color:var(--ink);">Considered <em class="display-italic" style="color:var(--gold-deep);">packages.</em></h2>
+    </div>
+    <div class="packages">
+      <div class="pkg-card reveal">
+        <span class="eyebrow">Silver</span>
+        <h3 class="display">The Intimate</h3>
+        <div class="pkg-from">From</div>
+        <div class="pkg-amt">£89</div>
+        <div class="pkg-rule"></div>
+        <ul>
+          <li><i class="bi bi-check2"></i>Up to 60 guests</li>
+          <li><i class="bi bi-check2"></i>3-course wedding breakfast</li>
+          <li><i class="bi bi-check2"></i>Sparkling reception drink</li>
+          <li><i class="bi bi-check2"></i>Bridal suite included</li>
+          <li><i class="bi bi-check2"></i>Dedicated wedding coordinator</li>
+        </ul>
+        <a href="#offers" class="btn btn-dark">Enquire</a>
+      </div>
+      <div class="pkg-card featured reveal">
+        <span class="eyebrow">Gold · Most Loved</span>
+        <h3 class="display">The Classic</h3>
+        <div class="pkg-from">From</div>
+        <div class="pkg-amt">£129</div>
+        <div class="pkg-rule"></div>
+        <ul>
+          <li><i class="bi bi-check2"></i>Up to 150 guests</li>
+          <li><i class="bi bi-check2"></i>4-course tasting menu</li>
+          <li><i class="bi bi-check2"></i>Half bottle of wine per guest</li>
+          <li><i class="bi bi-check2"></i>Evening buffet</li>
+          <li><i class="bi bi-check2"></i>Bridal suite &amp; 4 superior rooms</li>
+          <li><i class="bi bi-check2"></i>Toastmaster &amp; coordinator</li>
+        </ul>
+        <a href="#offers" class="btn btn-gold">Enquire</a>
+      </div>
+      <div class="pkg-card reveal">
+        <span class="eyebrow">Platinum</span>
+        <h3 class="display">The Grand</h3>
+        <div class="pkg-from">From</div>
+        <div class="pkg-amt">£189</div>
+        <div class="pkg-rule"></div>
+        <ul>
+          <li><i class="bi bi-check2"></i>Up to 500 guests</li>
+          <li><i class="bi bi-check2"></i>5-course chef's tasting</li>
+          <li><i class="bi bi-check2"></i>Premium wine pairing</li>
+          <li><i class="bi bi-check2"></i>Champagne toast</li>
+          <li><i class="bi bi-check2"></i>Bridal suite &amp; 10 luxury rooms</li>
+          <li><i class="bi bi-check2"></i>Live band &amp; late-night supper</li>
+        </ul>
+        <a href="#offers" class="btn btn-dark">Enquire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <span class="eyebrow">Begin a Conversation</span>
+    <h2 class="display">Tell us your <em class="display-italic">story.</em></h2>
+    <p>Our wedding team will arrange a private viewing at your convenience.</p>
+    <a href="tel:01943430001" class="btn btn-gold">Enquire — 01943 430001 <i class="bi bi-arrow-right"></i></a>
+  </section>
+</div>
+
+<!-- ============================================== OFFERS ============================================== -->
+<div class="page active" id="page-offers" data-screen-label="05 Offers">
+  <section class="inner-hero">
+    <div class="inner-hero-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-009.jpg');"></div>
+    <div class="inner-hero-overlay"></div>
+    <div class="inner-hero-content">
+      <span class="eyebrow">05 — Offers</span>
+      <h1 class="display">Curated <em class="display-italic">Escapes.</em></h1>
+    </div>
+  </section>
+
+  <section class="section-pad bg-black">
+    <div class="offers-head reveal in" style="margin-bottom:90px;">
+      <span class="eyebrow">Six considered offers</span>
+      <h2 class="display">Reasons to <em class="display-italic">stay longer.</em></h2>
+    </div>
+    <div class="offers-page-grid">
+
+      <div class="op-card reveal in">
+        <div class="op-img"><div class="op-img-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-007.jpg');"></div><span class="op-tag">Best Value</span></div>
+        <div class="op-body">
+          <span class="eyebrow-num">№ 01 — Stay</span>
+          <h3>A Night on the Moors</h3>
+          <p>An overnight retreat with breakfast, parking and use of the gardens.</p>
+          <div class="op-foot">
+            <div><div class="op-price">£99</div><small>Per Room</small></div>
+            <a href="#" class="offer-card-link">Book <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="op-card reveal in">
+        <div class="op-img"><div class="op-img-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2021/08/Couples-Get-Away.jpg');"></div><span class="op-tag">Couples</span></div>
+        <div class="op-body">
+          <span class="eyebrow-num">№ 02 — Romance</span>
+          <h3>The Couples Getaway</h3>
+          <p>Two nights, dinner for two, sparkling welcome and a slow morning.</p>
+          <div class="op-foot">
+            <div><div class="op-price">£289</div><small>Per Stay</small></div>
+            <a href="#" class="offer-card-link">Book <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="op-card reveal in">
+        <div class="op-img"><div class="op-img-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2021/08/Family-Staycation-Offer.jpg');"></div><span class="op-tag">Family</span></div>
+        <div class="op-body">
+          <span class="eyebrow-num">№ 03 — Family</span>
+          <h3>Family Staycation</h3>
+          <p>Connecting rooms, breakfast for all, and walks across the moors.</p>
+          <div class="op-foot">
+            <div><div class="op-price">£219</div><small>Per Room</small></div>
+            <a href="#" class="offer-card-link">Book <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="op-card reveal">
+        <div class="op-img"><div class="op-img-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-008.jpg');"></div><span class="op-tag">Celebrate</span></div>
+        <div class="op-body">
+          <span class="eyebrow-num">№ 04 — Celebrate</span>
+          <h3>The Baby Shower</h3>
+          <p>Afternoon tea, a private room, and gentle care for the guest of honour.</p>
+          <div class="op-foot">
+            <div><div class="op-price">From £29</div><small>Per Guest</small></div>
+            <a href="#" class="offer-card-link">Enquire <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="op-card reveal">
+        <div class="op-img"><div class="op-img-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-009.jpg');"></div><span class="op-tag">Inclusive</span></div>
+        <div class="op-body">
+          <span class="eyebrow-num">№ 05 — Inclusive</span>
+          <h3>Almost All Inclusive</h3>
+          <p>Stay, dine, and unwind — three meals a day with selected drinks.</p>
+          <div class="op-foot">
+            <div><div class="op-price">From £179</div><small>Per Person</small></div>
+            <a href="#" class="offer-card-link">Book <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="op-card reveal">
+        <div class="op-img"><div class="op-img-bg" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-010.jpg');"></div><span class="op-tag">2025</span></div>
+        <div class="op-body">
+          <span class="eyebrow-num">№ 06 — Wedding</span>
+          <h3>The 2025 Wedding</h3>
+          <p>A complete wedding package for the spring &amp; autumn calendar — limited dates.</p>
+          <div class="op-foot">
+            <div><div class="op-price">From £4,800</div><small>Total Package</small></div>
+            <a href="#" class="offer-card-link">Enquire <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOOKING BAR -->
+  <section class="offers-bookbar">
+    <div>
+      <p class="eyebrow">Book Direct</p>
+      <h3 class="display">Best rate, <em>guaranteed.</em></h3>
+    </div>
+    <a href="tel:01943430001" class="btn btn-dark">Reserve — 01943 430001</a>
+  </section>
+</div>
+
+<!-- ============================================== FOOTER ============================================== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Craiglands<span class="est">Hotel · Ilkley · Est. 1859</span></div>
+      <p class="footer-tag">Where the moors meet grandeur — a quietly grand hotel for the way you want to travel now.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Visit</h5>
+      <ul>
+        <li>Cowpasture Road</li>
+        <li>Ilkley, West Yorkshire</li>
+        <li>LS29 8RQ</li>
+        <li>01943 430001</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>The Hotel</h5>
+      <ul>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#dining">Brasserie1</a></li>
+        <li><a href="#weddings">Weddings</a></li>
+        <li><a href="#offers">Offers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Craiglands Hotel</span>
+    <span>Privacy · Terms · Cookies</span>
+  </div>
+</footer>
+
+<script>
+// ============ HASH ROUTING ============
+const pages = ['home','rooms','dining','weddings','offers'];
+function route(){
+  let hash = (location.hash || '#home').replace('#','');
+  if(!pages.includes(hash)) hash = 'home';
+  pages.forEach(p => {
+    const el = document.getElementById('page-'+p);
+    if(el) el.classList.toggle('active', p === hash);
+  });
+  document.querySelectorAll('.nav-link').forEach(l => {
+    l.classList.toggle('active', l.dataset.page === hash);
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+  // re-trigger reveals
+  setTimeout(initReveals, 50);
+}
+window.addEventListener('hashchange', route);
+
+// ============ NAV SOLID ON SCROLL ============
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 80);
+});
+
+// ============ REVEAL OBSERVER ============
+let observer;
+function initReveals(){
+  if(observer) observer.disconnect();
+  const els = document.querySelectorAll('.page.active .reveal, .page.active .reveal-fade');
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if(entry.isIntersecting){
+        const idx = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('in'), Math.min(idx, 6) * 150);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+  els.forEach(el => {
+    el.classList.remove('in');
+    observer.observe(el);
+  });
+  // immediately reveal hero/above-fold
+  setTimeout(() => {
+    document.querySelectorAll('.page.active .hero .reveal-fade, .page.active .inner-hero .reveal-fade').forEach((el,i) => {
+      setTimeout(() => el.classList.add('in'), 200 + i*200);
+    });
+  }, 100);
+}
+
+// init
+route();
+</script>
+
+
+<div id="claude-static-indicator-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); align-items: center; justify-content: center; padding: 6px 6px 6px 16px; background: rgb(250, 249, 245); border: 0.5px solid rgba(31, 30, 29, 0.3); border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.15) 0px 40px 80px 0px; z-index: 2147483647; pointer-events: none; white-space: nowrap; user-select: none; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex-shrink: 0; margin-right: 8px;">
+        <path d="M3.13946 10.6399L6.28757 8.87462L6.37405 8.73821L6.28757 8.6339H6.13189L5.60432 8.6018L3.80541 8.55366L2.24865 8.48947L0.735135 8.40923H0.492973L0.354595 8.32899L0.181622 8.1685L0.0345946 8.01605L0 7.85557L0.0345946 7.62287L0.138378 7.44634L0.224865 7.40622H0.354595L0.812973 7.44634L1.82486 7.51856L3.34703 7.62287L4.44541 7.68706L6.08 7.85557H6.33946L6.37405 7.75125L6.28757 7.68706L6.21838 7.62287L4.64432 6.55567L2.94054 5.4323L2.04973 4.78235L1.57405 4.45336L1.33189 4.14845L1.22811 3.92377L1.17622 3.69107L1.22811 3.47442L1.33189 3.28185L1.46162 3.13741L1.66054 2.99298H1.87676L2.24865 3.0331L2.39568 3.07322L2.99243 3.53059L4.26378 4.51755L5.92432 5.73721L6.16649 5.93781H6.27892V5.82548L6.16649 5.64092L5.26703 4.01204L4.30703 2.35105L3.87459 1.66098L3.76216 1.25176C3.7391 1.16082 3.69297 0.977332 3.69297 0.970913V0.762287L3.77946 0.505517L3.93513 0.240722L4.18595 0.0882648L4.4627 0H4.67892L4.83459 0.0240722L5.12865 0.0882648L5.4054 0.328987L5.82054 1.27583L6.48649 2.76028L7.52432 4.78235L7.82703 5.38415L7.99135 5.93781L8.05189 6.10632H8.15567V6.01003L8.24216 4.87061L8.39784 3.47442L8.55351 1.67703L8.6054 1.17151L8.85622 0.561685L8.9773 0.417252L9.21946 0.232698H9.35784L9.74703 0.417252L9.97189 0.665998L10.067 0.874624L10.0238 1.17151L9.83351 2.40722L9.46162 4.34102L9.21946 5.64092H9.35784L9.52216 5.47242L10.1795 4.60582L11.2778 3.22568L11.7622 2.68004L12.333 2.07823L12.6962 1.78937L13.0162 1.67703L13.3881 1.78937L13.7168 2.06219L13.8897 2.54363V2.76028L13.6649 3.32197L12.9557 4.22066L12.3676 4.98295L12.0043 5.56871L11.0011 7.02106V7.08526H11.1741L13.0768 6.67603L14.1059 6.49147L15.3341 6.28285L15.5762 6.34704L15.8876 6.53962L15.9481 6.80441L15.8876 7.12538L15.7319 7.34203L14.4173 7.66299L12.8778 7.97593L10.5854 8.51559C10.5705 8.51909 10.56 8.53236 10.56 8.54764C10.56 8.56468 10.573 8.57891 10.59 8.58044L11.6238 8.67402L12.0649 8.69809H13.1459L15.1611 8.85055L15.6886 9.19559L15.9481 9.39619L16 9.62086L15.9481 9.94985L15.8443 10.1023L15.4119 10.3029L15.1351 10.3591L14.0454 10.1023L11.4941 9.49248L10.6205 9.27583H10.4995V9.34804L11.2259 10.0622L12.5665 11.2658L14.2357 12.8225L14.3222 13.0953V13.2076L14.1059 13.5125L13.9243 13.5206L13.8811 13.4804L12.4108 12.3731L12.2984 12.325L11.84 11.8756L10.56 10.7924H10.4735V10.9047L10.7676 11.338L12.333 13.6891L12.4108 14.4112L12.2984 14.6439L11.8919 14.7884L11.667 14.7563L11.4508 14.7081L11.2605 14.5396L10.5254 13.4162L9.5827 11.9719L8.82162 10.672H8.79342C8.76039 10.672 8.73278 10.6972 8.7297 10.73L8.27676 15.5667L8.06919 15.8154L7.6454 16H7.58486L7.17838 15.6951L6.96216 15.1976L7.17838 14.2106L7.43784 12.9268L7.6454 11.9077L7.83567 10.6399L7.95187 10.2164C7.9548 10.2057 7.95069 10.1944 7.94161 10.1881C7.91157 10.1672 7.87034 10.1741 7.84878 10.2037L6.89297 11.5145L5.44 13.4804L4.28973 14.7081L4.01297 14.8205H3.80541L3.5373 14.5717V14.4514L3.58054 14.1304L3.84865 13.7372L5.44 11.7151L6.4 10.4554L7.01872 9.73222C7.04511 9.70139 7.04245 9.65523 7.0127 9.62763C7.00333 9.61894 6.98925 9.61773 6.97854 9.62471L2.75027 12.3811L1.99784 12.4774L1.66919 12.1725L1.71243 11.675L1.86811 11.5145L3.13946 10.6399Z" fill="#D97757"></path>
+      </svg>
+      <span style="vertical-align: middle; color: #141413; font-size: 14px; display: inline-block;">Claude is active in this tab group</span>
+      <div style="display: inline-block; width: 0.5px; height: 32px; background: rgba(31, 30, 29, 0.15); margin: 0 8px; vertical-align: middle;"></div>
+      <button id="claude-static-chat-button" style="position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px; background: transparent; border: none; cursor: pointer; pointer-events: auto; vertical-align: middle; width: 32px; height: 32px; border-radius: 8px; transition: background 0.2s;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="#141413" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; display: block;">
+          <path d="M10 2.5C14.1421 2.5 17.5 5.85786 17.5 10C17.5 14.1421 14.1421 17.5 10 17.5H3C2.79779 17.5 2.61549 17.3782 2.53809 17.1914C2.4607 17.0046 2.50349 16.7895 2.64648 16.6465L4.35547 14.9365C3.20124 13.6175 2.5 11.8906 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5ZM10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 11.7952 4.22659 13.4199 5.40332 14.5967L5.46582 14.6729C5.52017 14.7544 5.5498 14.8508 5.5498 14.9502C5.5498 15.0828 5.49709 15.2099 5.40332 15.3037L4.20703 16.5H10C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5ZM13.29 9.30371C13.3986 9.05001 13.6925 8.93174 13.9463 9.04004C14.2 9.14863 14.3183 9.44253 14.21 9.69629C13.8506 10.536 13.1645 11.25 12.25 11.25C11.6372 11.25 11.128 10.9289 10.75 10.4648C10.372 10.9289 9.86276 11.25 9.25 11.25C8.63724 11.25 8.12801 10.9289 7.75 10.4648C7.37198 10.9289 6.86276 11.25 6.25 11.25C5.97386 11.25 5.75 11.0261 5.75 10.75C5.75 10.4739 5.97386 10.25 6.25 10.25C6.58764 10.25 7.00448 9.97056 7.29004 9.30371L7.32422 9.2373C7.41431 9.09121 7.5749 9 7.75 9C7.9501 9 8.13123 9.11975 8.20996 9.30371L8.32227 9.53516C8.59804 10.0359 8.95442 10.25 9.25 10.25C9.58764 10.25 10.0045 9.97056 10.29 9.30371L10.3242 9.2373C10.4143 9.09121 10.5749 9 10.75 9C10.9501 9 11.1312 9.11975 11.21 9.30371L11.3223 9.53516C11.598 10.0359 11.9544 10.25 12.25 10.25C12.5876 10.25 13.0045 9.97056 13.29 9.30371Z"></path>
+        </svg>
+        <span id="claude-static-chat-tooltip" style="position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 6px 12px; background: #30302E; color: #FAF9F5; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">Open chat</span>
+      </button>
+      <button id="claude-static-close-button" style="position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px; background: transparent; border: none; cursor: pointer; pointer-events: auto; vertical-align: middle; width: 32px; height: 32px; margin-left: 4px; border-radius: 8px; transition: background 0.2s;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; display: block;">
+          <path d="M15.1464 4.14642C15.3417 3.95121 15.6582 3.95118 15.8534 4.14642C16.0486 4.34168 16.0486 4.65822 15.8534 4.85346L10.7069 9.99997L15.8534 15.1465C16.0486 15.3417 16.0486 15.6583 15.8534 15.8535C15.6826 16.0244 15.4186 16.0461 15.2245 15.918L15.1464 15.8535L9.99989 10.707L4.85338 15.8535C4.65813 16.0486 4.34155 16.0486 4.14634 15.8535C3.95115 15.6583 3.95129 15.3418 4.14634 15.1465L9.29286 9.99997L4.14634 4.85346C3.95129 4.65818 3.95115 4.34162 4.14634 4.14642C4.34154 3.95128 4.65812 3.95138 4.85338 4.14642L9.99989 9.29294L15.1464 4.14642Z" fill="#141413"></path>
+        </svg>
+        <span id="claude-static-close-tooltip" style="position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 6px 12px; background: #30302E; color: #FAF9F5; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">Dismiss</span>
+      </button>
+    </div></body></html>

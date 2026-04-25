@@ -820,6 +820,266 @@
   .pad-x { padding-left: 64px; padding-right: 64px; }
   @media (max-width: 760px) { .pad-x { padding-left: 22px; padding-right: 22px; } }
 
+  /* ─────────────── DINING TABS / MENU ─────────────── */
+  .dining-tabs {
+    background: var(--offwhite);
+    padding: 28px 64px 0;
+    border-bottom: 1px solid rgba(28,43,28,0.1);
+    position: sticky; top: 64px; z-index: 50;
+    background: rgba(250,247,242,0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .dining-tabs__inner {
+    max-width: 1380px; margin: 0 auto;
+    display: flex; gap: 36px; align-items: center;
+    justify-content: space-between;
+  }
+  .dining-tabs__group { display: flex; gap: 36px; }
+  .dining-tab {
+    font-family: var(--sans); font-size: 11.5px; font-weight: 600;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: rgba(13,13,13,0.5);
+    padding: 18px 0; position: relative;
+    transition: color 0.3s ease;
+    cursor: pointer; background: none; border: none;
+  }
+  .dining-tab::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
+    height: 2px; background: var(--brass);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .dining-tab:hover { color: var(--ink); }
+  .dining-tab.active { color: var(--forest); }
+  .dining-tab.active::after { transform: scaleX(1); }
+  .dining-tabs__chip {
+    font-family: var(--serif); font-style: italic;
+    font-size: 14px; color: var(--brass);
+    letter-spacing: 0.05em;
+  }
+
+  .dining-panel { display: none; }
+  .dining-panel.active { display: block; }
+
+  /* Menu */
+  .menu-wrap {
+    background: var(--parchment);
+    padding: 100px 64px 130px;
+  }
+  .menu-inner { max-width: 1280px; margin: 0 auto; }
+
+  .menu-toc {
+    display: flex; flex-wrap: wrap; gap: 8px 14px;
+    padding: 22px 0; margin-bottom: 50px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .menu-toc a {
+    font-family: var(--sans); font-size: 10.5px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--forest); padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  .menu-toc a:hover { border-color: var(--brass); color: var(--brass); }
+  .menu-toc span {
+    color: rgba(28,43,28,0.25); font-size: 10px;
+  }
+
+  .menu-section { margin-bottom: 90px; scroll-margin-top: 140px; }
+  .menu-section__head {
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 60px; align-items: end;
+    padding-bottom: 28px; margin-bottom: 38px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .menu-section__num {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.4em;
+    color: var(--brass);
+    text-transform: uppercase;
+  }
+  .menu-section__title {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: clamp(36px, 4.4vw, 60px); line-height: 0.98;
+    margin: 8px 0 0; color: var(--forest);
+    letter-spacing: -0.005em;
+  }
+  .menu-section__hours {
+    font-family: var(--sans); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--brass); justify-self: end;
+    align-self: end; padding-bottom: 4px;
+  }
+  .menu-section__lede {
+    font-family: var(--bodoni); font-style: italic;
+    font-size: 19px; line-height: 1.5;
+    color: rgba(13,13,13,0.78);
+    margin: 14px 0 0; max-width: 560px;
+  }
+
+  .menu-list {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4px 80px;
+  }
+  .menu-list--single { grid-template-columns: 1fr; }
+  .menu-item {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px dotted rgba(28,43,28,0.18);
+  }
+  .menu-item__name {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 17.5px; color: var(--forest);
+    flex: 0 0 auto;
+  }
+  .menu-item__desc {
+    font-family: var(--sans); font-size: 12.5px;
+    color: rgba(13,13,13,0.55);
+    font-style: italic;
+    flex: 1 1 auto;
+    line-height: 1.4;
+  }
+  .menu-item__leader {
+    flex: 1 1 auto;
+    border-bottom: 1px dotted rgba(28,43,28,0.25);
+    transform: translateY(-5px);
+    min-width: 24px;
+  }
+  .menu-item__price {
+    font-family: var(--serif); font-style: italic;
+    font-size: 17px; color: var(--brass-deep);
+    font-weight: 500;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .menu-item__price small {
+    font-family: var(--sans); font-style: normal;
+    font-size: 10px; color: rgba(13,13,13,0.5);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-right: 6px;
+  }
+
+  .menu-callout {
+    background: var(--forest); color: var(--offwhite);
+    padding: 26px 32px;
+    margin: 22px 0 0;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .menu-callout__l {
+    font-family: var(--serif); font-style: italic;
+    font-size: 22px; line-height: 1.2;
+  }
+  .menu-callout__r {
+    font-family: var(--bodoni); font-style: italic;
+    font-size: 26px; color: var(--brass);
+  }
+
+  .menu-note {
+    font-family: var(--bodoni); font-style: italic;
+    font-size: 16px; color: rgba(13,13,13,0.6);
+    margin-top: 18px;
+  }
+
+  .menu-divider {
+    height: 1px; background: var(--rule);
+    max-width: 200px; margin: 110px auto 90px;
+    position: relative;
+  }
+  .menu-divider::before {
+    content: "✦"; position: absolute; top: -10px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    color: var(--brass); padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .happy-hour {
+    background: var(--blush);
+    border: 1px solid rgba(196,146,42,0.35);
+    padding: 48px 48px 50px;
+    margin-top: 50px;
+    position: relative;
+  }
+  .happy-hour::before {
+    content: "Happy Hour";
+    position: absolute; top: -12px; left: 32px;
+    background: var(--brass); color: var(--forest);
+    padding: 5px 16px;
+    font-family: var(--sans); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+  }
+  .happy-hour h3 {
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: 36px; line-height: 1; margin: 0 0 6px;
+    color: var(--forest);
+  }
+  .happy-hour__when {
+    font-family: var(--sans); font-size: 11px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--brass-deep); margin-bottom: 30px;
+  }
+  .happy-hour__grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .happy-hour__col h4 {
+    font-family: var(--sans); font-size: 10.5px; font-weight: 600;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--brass); margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(28,43,28,0.2);
+  }
+  .happy-hour__col p {
+    font-family: var(--serif); font-size: 15px; line-height: 1.5;
+    margin: 0; color: var(--forest);
+  }
+  .happy-hour__col em {
+    font-style: italic; color: var(--brass-deep);
+    display: block; font-size: 13px; margin-top: 6px;
+  }
+
+  /* wine table style */
+  .wine-table .menu-item__name { font-style: italic; }
+  .wine-sizes {
+    font-family: var(--sans); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(13,13,13,0.5); margin-left: 8px;
+    font-style: normal;
+  }
+
+  @media (max-width: 880px) {
+    .dining-tabs { padding: 18px 22px 0; top: 60px; }
+    .dining-tabs__inner { gap: 18px; }
+    .dining-tabs__group { gap: 22px; flex-wrap: wrap; }
+    .dining-tab { padding: 12px 0; font-size: 10.5px; letter-spacing: 0.22em; }
+    .dining-tabs__chip { display: none; }
+    .menu-wrap { padding: 60px 20px 80px; }
+    .menu-section { margin-bottom: 60px; }
+    .menu-section__head { grid-template-columns: 1fr; gap: 8px; padding-bottom: 22px; margin-bottom: 28px; }
+    .menu-section__hours { justify-self: start; padding-bottom: 0; }
+    .menu-section__title { font-size: clamp(30px, 8.4vw, 44px); }
+    .menu-section__lede { font-size: 16px; }
+    .menu-list { grid-template-columns: 1fr; gap: 0; }
+    .menu-item { padding: 12px 0; }
+    .menu-item__name { font-size: 16px; }
+    .menu-item__price { font-size: 15.5px; }
+    .menu-callout { padding: 20px 22px; }
+    .menu-callout__l { font-size: 18px; }
+    .menu-callout__r { font-size: 22px; }
+    .menu-toc { gap: 6px 12px; }
+    .menu-toc a { font-size: 9.5px; letter-spacing: 0.18em; }
+    .happy-hour { padding: 40px 24px 32px; }
+    .happy-hour__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .happy-hour h3 { font-size: 28px; }
+  }
+  @media (max-width: 480px) {
+    .happy-hour__grid { grid-template-columns: 1fr; }
+  }
+
   /* ─────────────── MOBILE COMPREHENSIVE ─────────────── */
   @media (max-width: 768px) {
     /* Hide duplicate hero image in opener (same photo as hero above) */
@@ -1161,36 +1421,538 @@
     </div>
   </section>
 
-  <section class="ed-header reveal">
-    <div class="ed-header__num">— No. 01 / The Brasserie</div>
-    <p class="ed-header__lede">A kitchen that takes the season at its word. Yorkshire is its larder; the tea trolley its punctuation; an unhurried second pour its quiet creed.</p>
-  </section>
-
-  <section class="dining-split reveal">
-    <div class="dining-split__media" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/restaurant-bar-006.jpg')"></div>
-    <div class="dining-split__copy">
-      <div class="section-label">— Brasserie1</div>
-      <h2 style="font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(38px,4.4vw,64px); line-height:1; margin:0 0 28px;">A small kitchen, a long memory.</h2>
-      <p style="font-family:var(--serif); font-size:18.5px; line-height:1.65; margin:0 0 22px;" class="dropcap">Wensleydale on the cheese board; Whitby crab when the boats are in; hogget from the dale that begins where the lawn ends. The wine list is short, the corkage friendly, and the puddings — to use the proper word — are very good indeed.</p>
-      <div class="dining-hours">
-        <h4>Service Hours</h4>
-        <table>
-          <tbody><tr><td>Breakfast</td><td>07:00 — 10:00</td></tr>
-          <tr><td>Lunch</td><td>12:00 — 14:30</td></tr>
-          <tr><td>Afternoon Tea</td><td>14:30 — 17:00</td></tr>
-          <tr><td>Dinner</td><td>18:00 — 21:30</td></tr>
-          <tr><td>The Antler Bar</td><td>11:00 — Late</td></tr>
-        </tbody></table>
+  <nav class="dining-tabs" id="diningTabs">
+    <div class="dining-tabs__inner">
+      <div class="dining-tabs__group">
+        <button class="dining-tab active" data-tab="overview">Overview</button>
+        <button class="dining-tab" data-tab="menu">The Menu</button>
+        <button class="dining-tab" data-tab="wine">Wine &amp; Bar</button>
+        <button class="dining-tab" data-tab="private">Private Dining</button>
       </div>
+      <div class="dining-tabs__chip">Issue IV · La Carte</div>
     </div>
-  </section>
+  </nav>
 
-  <section class="private-dining reveal">
-    <div class="section-label" style="color:var(--brass); border-color:var(--brass);">— No. 02 / Private Dining</div>
-    <h2>A Table of One's Own.</h2>
-    <p>Three private rooms — the Library (eight), the Conservatory (eighteen), the Long Hall (forty) — with their own service, their own menu, and a door that closes properly. For birthdays of a particular vintage, mostly.</p>
-    <a href="#offers" class="btn-brass" style="background:var(--brass); color:var(--forest);">Enquire</a>
-  </section>
+  <!-- OVERVIEW PANEL -->
+  <div class="dining-panel active" data-panel="overview">
+    <section class="ed-header reveal">
+      <div class="ed-header__num">— No. 01 / The Brasserie</div>
+      <p class="ed-header__lede">A kitchen that takes the season at its word. Yorkshire is its larder; the tea trolley its punctuation; an unhurried second pour its quiet creed.</p>
+    </section>
+
+    <section class="dining-split reveal">
+      <div class="dining-split__media" style="background-image:url('https://www.craiglands.co.uk/wp-content/uploads/2023/10/restaurant-bar-006.jpg')"></div>
+      <div class="dining-split__copy">
+        <div class="section-label">— Brasserie1</div>
+        <h2 style="font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(38px,4.4vw,64px); line-height:1; margin:0 0 28px;">A small kitchen, a long memory.</h2>
+        <p style="font-family:var(--serif); font-size:18.5px; line-height:1.65; margin:0 0 22px;" class="dropcap">Wensleydale on the cheese board; Whitby crab when the boats are in; hogget from the dale that begins where the lawn ends. The wine list is short, the corkage friendly, and the puddings — to use the proper word — are very good indeed.</p>
+        <div class="dining-hours">
+          <h4>Service Hours</h4>
+          <table>
+            <tbody><tr><td>Breakfast</td><td>07:00 — 10:00</td></tr>
+            <tr><td>Sandwich Menu</td><td>12:00 — 15:00</td></tr>
+            <tr><td>Afternoon &amp; Evening</td><td>15:00 — 20:00</td></tr>
+            <tr><td>Afternoon Tea</td><td>14:30 — 17:00</td></tr>
+            <tr><td>The Antler Bar</td><td>11:00 — Late</td></tr>
+          </tbody></table>
+        </div>
+        <a href="#dining" onclick="window.__diningTab('menu')" class="editorial-link" style="margin-top:32px;">Read the Menu <span>→</span></a>
+      </div>
+    </section>
+  </div>
+
+  <!-- MENU PANEL -->
+  <div class="dining-panel" data-panel="menu">
+    <section class="menu-wrap">
+      <div class="menu-inner">
+        <div class="ed-header" style="padding:0 0 30px; max-width:none;">
+          <div class="ed-header__num">— No. 02 / La Carte</div>
+          <h2 class="ed-header__title">The Menu,<br><em>in full.</em></h2>
+        </div>
+
+        <div class="menu-toc">
+          <a href="#m-sandwich">Sandwiches</a><span>·</span>
+          <a href="#m-start">To Start</a><span>·</span>
+          <a href="#m-main">Mains</a><span>·</span>
+          <a href="#m-burger">Burgers</a><span>·</span>
+          <a href="#m-board">Sharing Boards</a><span>·</span>
+          <a href="#m-side">Sides</a><span>·</span>
+          <a href="#m-dessert">Desserts</a><span>·</span>
+          <a href="#m-tea">Afternoon Tea</a><span>·</span>
+          <a href="#m-kids">Kids</a><span>·</span>
+          <a href="#m-hot">Hot Drinks</a><span>·</span>
+          <a href="#m-soft">Soft Drinks</a>
+        </div>
+
+        <!-- SANDWICH -->
+        <section class="menu-section" id="m-sandwich">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 01 · Luncheon</div>
+              <h3 class="menu-section__title">The Sandwich Menu</h3>
+              <p class="menu-section__lede">A short list, properly made, on bread baked in our own oven.</p>
+            </div>
+            <div class="menu-section__hours">Served · 12:00 — 15:00</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Cheese Savoury</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.99</span></div>
+            <div class="menu-item"><span class="menu-item__name">Yorkshire Ham</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.99</span></div>
+            <div class="menu-item"><span class="menu-item__name">Tuna &amp; Red Onion</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.99</span></div>
+            <div class="menu-item"><span class="menu-item__name">Egg Mayonnaise &amp; Watercress</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.99</span></div>
+            <div class="menu-item"><span class="menu-item__name">Vegan Coronation</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.99</span></div>
+          </div>
+          <div class="menu-callout">
+            <div class="menu-callout__l">Soup &amp; Sandwich Combo</div>
+            <div class="menu-callout__r">£9.95</div>
+          </div>
+        </section>
+
+        <!-- TO START -->
+        <section class="menu-section" id="m-start">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 02 · A Proper Start</div>
+              <h3 class="menu-section__title">To Start.</h3>
+            </div>
+            <div class="menu-section__hours">Served · 15:00 — 20:00</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Ham Hock &amp; Pea Terrine</span><span class="menu-item__leader"></span><span class="menu-item__price">£8.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Soup of the Moment</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Creamy Garlic Mushrooms</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Crispy Southern Fried Chicken Strips</span><span class="menu-item__leader"></span><span class="menu-item__price">£8.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Hot Honey Halloumi</span><span class="menu-item__leader"></span><span class="menu-item__price">£8.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Pitta, Olives, Tzatziki &amp; Feta</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+          </div>
+        </section>
+
+        <!-- MAIN EVENT -->
+        <section class="menu-section" id="m-main">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 03 · The Main Event</div>
+              <h3 class="menu-section__title">From the Kitchen.</h3>
+              <p class="menu-section__lede">Yorkshire's pantry, plated quietly. The chargrill, the pie, the supreme.</p>
+            </div>
+            <div class="menu-section__hours">— Brasserie1</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Cajun Rump Steak</span><span class="menu-item__leader"></span><span class="menu-item__price">£22.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Battered Haddock</span><span class="menu-item__leader"></span><span class="menu-item__price">£18.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Chargrilled Salmon Fillet</span><span class="menu-item__leader"></span><span class="menu-item__price">£17.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Steak Pie</span><span class="menu-item__leader"></span><span class="menu-item__price">£18.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Pan-Fried Chicken Supreme</span><span class="menu-item__leader"></span><span class="menu-item__price">£18.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Chicken or Salmon Caesar Salad</span><span class="menu-item__leader"></span><span class="menu-item__price">£16.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Greek-Style Chicken &amp; Feta Salad</span><span class="menu-item__leader"></span><span class="menu-item__price">£16.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Homemade Chicken Curry</span><span class="menu-item__leader"></span><span class="menu-item__price">£17.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sweet Potato &amp; Butternut Squash Wellington</span><span class="menu-item__leader"></span><span class="menu-item__price">£17.95</span></div>
+          </div>
+        </section>
+
+        <!-- BURGERS -->
+        <section class="menu-section" id="m-burger">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 04 · Between Buns</div>
+              <h3 class="menu-section__title">The Burgers.</h3>
+            </div>
+            <div class="menu-section__hours">All served with fries</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Craiglands Double Burger</span><span class="menu-item__leader"></span><span class="menu-item__price">£17.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Double Burger with Cheese &amp; Bacon</span><span class="menu-item__leader"></span><span class="menu-item__price">£18.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Hawaiian Burger</span><span class="menu-item__leader"></span><span class="menu-item__price">£17.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Crispy Vegetable Burger</span><span class="menu-item__leader"></span><span class="menu-item__price">£16.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Southern Fried Chicken Burger</span><span class="menu-item__leader"></span><span class="menu-item__price">£17.95</span></div>
+          </div>
+        </section>
+
+        <!-- SHARING BOARDS & SIDES side by side -->
+        <section class="menu-section" id="m-board">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 05 · For The Table</div>
+              <h3 class="menu-section__title">Sharing Boards &amp; Sides.</h3>
+              <p class="menu-section__lede">Boards designed for two; sides that travel well across the table.</p>
+            </div>
+            <div class="menu-section__hours">— A la Carte</div>
+          </div>
+          <div class="menu-list">
+            <div>
+              <h4 style="font-family:var(--sans); font-size:10.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--brass); margin:0 0 8px;">Sharing Boards · For Two</h4>
+              <div class="menu-item"><span class="menu-item__name">Charcuterie &amp; Cheese Board</span><span class="menu-item__leader"></span><span class="menu-item__price">£22.50</span></div>
+              <div class="menu-item"><span class="menu-item__name">Mediterranean Board</span><span class="menu-item__leader"></span><span class="menu-item__price">£18.95</span></div>
+            </div>
+            <div>
+              <h4 style="font-family:var(--sans); font-size:10.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--brass); margin:0 0 8px;">Sides</h4>
+              <div class="menu-item"><span class="menu-item__name">Beer-Battered Onion Rings</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+              <div class="menu-item"><span class="menu-item__name">Chips</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+              <div class="menu-item"><span class="menu-item__name">Fries</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+              <div class="menu-item"><span class="menu-item__name">Mixed Salad</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+              <div class="menu-item"><span class="menu-item__name">Broccoli &amp; Carrots</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+              <div class="menu-item"><span class="menu-item__name">Creamy Mash</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.95</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- DESSERTS -->
+        <section class="menu-section" id="m-dessert">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 06 · Puddings</div>
+              <h3 class="menu-section__title">Sweet Things.</h3>
+              <p class="menu-section__lede">The proper word, used properly. Each £7.95.</p>
+            </div>
+            <div class="menu-section__hours">— Pastry</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Warm Chocolate Brownie</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Strawberry Jam Pudding</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Lemon Tart</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Ice Cream Selection</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sticky Toffee Pudding</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.95</span></div>
+          </div>
+        </section>
+
+        <!-- AFTERNOON TEA -->
+        <section class="menu-section" id="m-tea">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 07 · The Trolley</div>
+              <h3 class="menu-section__title">Afternoon &amp; Cream Teas.</h3>
+            </div>
+            <div class="menu-section__hours">Served · 14:30 — 17:00</div>
+          </div>
+          <div class="menu-list menu-list--single">
+            <div class="menu-item"><span class="menu-item__name">Traditional Afternoon Tea</span><span class="menu-item__desc">Sandwiches, scones with clotted cream and jam, a tier of patisserie, leaf tea.</span><span class="menu-item__leader"></span><span class="menu-item__price"><small>per person</small>£24.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Cream Tea</span><span class="menu-item__desc">A pot of tea, two scones, cream and jam.</span><span class="menu-item__leader"></span><span class="menu-item__price"><small>per person</small>£7.95</span></div>
+          </div>
+        </section>
+
+        <!-- KIDS -->
+        <section class="menu-section" id="m-kids">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 08 · Twelve &amp; Under</div>
+              <h3 class="menu-section__title">For The Children.</h3>
+              <p class="menu-section__lede">Main with a side · £9.95 &nbsp;·&nbsp; Two courses · £12.95</p>
+            </div>
+            <div class="menu-section__hours">— Smaller Portions</div>
+          </div>
+          <div class="menu-list">
+            <div>
+              <h4 style="font-family:var(--sans); font-size:10.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--brass); margin:0 0 8px;">Mains</h4>
+              <div class="menu-item"><span class="menu-item__name">Fish Fingers</span><span class="menu-item__leader"></span></div>
+              <div class="menu-item"><span class="menu-item__name">Chicken Nuggets</span><span class="menu-item__leader"></span></div>
+              <div class="menu-item"><span class="menu-item__name">Mini Burger</span><span class="menu-item__leader"></span></div>
+              <div class="menu-item"><span class="menu-item__name">Sausage &amp; Chips</span><span class="menu-item__leader"></span></div>
+              <div class="menu-item"><span class="menu-item__name">Pasta in Tomato Sauce</span><span class="menu-item__leader"></span></div>
+            </div>
+            <div>
+              <h4 style="font-family:var(--sans); font-size:10.5px; letter-spacing:0.3em; text-transform:uppercase; color:var(--brass); margin:0 0 8px;">Desserts</h4>
+              <div class="menu-item"><span class="menu-item__name">Ice Cream (two scoops)</span><span class="menu-item__leader"></span></div>
+              <div class="menu-item"><span class="menu-item__name">Warm Chocolate Brownie</span><span class="menu-item__leader"></span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOT DRINKS -->
+        <section class="menu-section" id="m-hot">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 09 · The Cup</div>
+              <h3 class="menu-section__title">Hot Drinks.</h3>
+            </div>
+            <div class="menu-section__hours">— All Day</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Tea</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.20</span></div>
+            <div class="menu-item"><span class="menu-item__name">Americano</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.20</span></div>
+            <div class="menu-item"><span class="menu-item__name">Espresso</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.20</span></div>
+            <div class="menu-item"><span class="menu-item__name">Double Espresso</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Cappuccino</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Latte</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Hot Chocolate</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Herbal &amp; Fruit Tea</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.50</span></div>
+          </div>
+        </section>
+
+        <!-- SOFT DRINKS -->
+        <section class="menu-section" id="m-soft">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 10 · From The Fridge</div>
+              <h3 class="menu-section__title">Soft Drinks.</h3>
+            </div>
+            <div class="menu-section__hours">— All Day</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Appetiser</span><span class="menu-item__leader"></span><span class="menu-item__price">£3.10</span></div>
+            <div class="menu-item"><span class="menu-item__name">Fruit Juice</span><span class="menu-item__leader"></span><span class="menu-item__price">£2.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">J2O</span><span class="menu-item__leader"></span><span class="menu-item__price">£3.25</span></div>
+            <div class="menu-item"><span class="menu-item__name">Mixer 200ml</span><span class="menu-item__leader"></span><span class="menu-item__price">£2.20</span></div>
+            <div class="menu-item"><span class="menu-item__name">Energy Drink</span><span class="menu-item__leader"></span><span class="menu-item__price">£3.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Fruit Shoot</span><span class="menu-item__leader"></span><span class="menu-item__price">£2.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Still Water 330ml</span><span class="menu-item__leader"></span><span class="menu-item__price">£2.10</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sparkling Water 330ml</span><span class="menu-item__leader"></span><span class="menu-item__price">£2.10</span></div>
+            <div class="menu-item"><span class="menu-item__name">Still Water 750ml</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sparkling Water 750ml</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+            <div class="menu-item"><span class="menu-item__name">Pint Coke / Diet Coke / Lemonade</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.25</span></div>
+            <div class="menu-item"><span class="menu-item__name">Half Pint Coke / Diet Coke / Lemonade</span><span class="menu-item__leader"></span><span class="menu-item__price">£2.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Coke / Diet Coke 330ml</span><span class="menu-item__leader"></span><span class="menu-item__price">£3.25</span></div>
+            <div class="menu-item"><span class="menu-item__name">Dash</span><span class="menu-item__leader"></span><span class="menu-item__price">£0.80</span></div>
+          </div>
+        </section>
+
+        <p class="menu-note">All prices in pounds sterling, inclusive of VAT. A discretionary 10% service is added to tables of six or more. Allergens declared on request.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- WINE & BAR PANEL -->
+  <div class="dining-panel" data-panel="wine">
+    <section class="menu-wrap">
+      <div class="menu-inner">
+        <div class="ed-header" style="padding:0 0 30px; max-width:none;">
+          <div class="ed-header__num">— No. 03 / Cellar</div>
+          <h2 class="ed-header__title">Wine, Beer<br><em>&amp; The Bar.</em></h2>
+        </div>
+
+        <div class="menu-toc">
+          <a href="#w-spark">Sparkling &amp; Champagne</a><span>·</span>
+          <a href="#w-white">White</a><span>·</span>
+          <a href="#w-rose">Rosé</a><span>·</span>
+          <a href="#w-red">Red</a><span>·</span>
+          <a href="#w-draught">Draught</a><span>·</span>
+          <a href="#w-bottle">Bottles &amp; Cans</a><span>·</span>
+          <a href="#w-spirit">Spirits</a><span>·</span>
+          <a href="#w-cocktail">Cocktails</a><span>·</span>
+          <a href="#w-happy">Happy Hour</a>
+        </div>
+
+        <!-- SPARKLING -->
+        <section class="menu-section" id="w-spark">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 01 · Bubbles</div>
+              <h3 class="menu-section__title">Sparkling &amp; Champagne.</h3>
+            </div>
+            <div class="menu-section__hours">— Bottle, unless noted</div>
+          </div>
+          <div class="menu-list wine-table">
+            <div class="menu-item"><span class="menu-item__name">Le Alante Prosecco Extra Dry</span><span class="menu-item__leader"></span><span class="menu-item__price">£30.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Galanti Spumante Bianco</span><span class="menu-item__leader"></span><span class="menu-item__price">£28.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Galanti Prosecco Extra Dry <span class="wine-sizes">125ml £7.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£35.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Louis Dornier Brut NV</span><span class="menu-item__leader"></span><span class="menu-item__price">£51.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Laurent-Perrier Brut LP</span><span class="menu-item__leader"></span><span class="menu-item__price">£70.00</span></div>
+          </div>
+        </section>
+
+        <!-- WHITE -->
+        <section class="menu-section" id="w-white">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 02 · By The Glass &amp; Bottle</div>
+              <h3 class="menu-section__title">White Wine.</h3>
+            </div>
+            <div class="menu-section__hours">— 175ml / 250ml / 750ml</div>
+          </div>
+          <div class="menu-list wine-table">
+            <div class="menu-item"><span class="menu-item__name">Borsari Inzolia <span class="wine-sizes">175 £6.75 · 250 £8.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£25.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Pinot Grigio di Pavia <span class="wine-sizes">175 £7.00 · 250 £8.95</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£28.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">The Paddock Chardonnay <span class="wine-sizes">175 £7.00 · 250 £8.95</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£27.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Short Mile Bay Sauvignon Blanc <span class="wine-sizes">175 £7.00 · 250 £9.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£28.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Kleine Zalze Chenin Blanc <span class="wine-sizes">175 £7.50 · 250 £9.75</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£29.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Waipara Hills Sauvignon Blanc</span><span class="menu-item__leader"></span><span class="menu-item__price">£36.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Petit Chablis Les Sermets</span><span class="menu-item__leader"></span><span class="menu-item__price">£38.00</span></div>
+          </div>
+        </section>
+
+        <!-- ROSÉ -->
+        <section class="menu-section" id="w-rose">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 03 · A Lighter Hand</div>
+              <h3 class="menu-section__title">Rosé.</h3>
+            </div>
+            <div class="menu-section__hours">— 175ml / 250ml / 750ml</div>
+          </div>
+          <div class="menu-list wine-table">
+            <div class="menu-item"><span class="menu-item__name">Borsari Merlot Rosé <span class="wine-sizes">175 £6.75 · 250 £8.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£25.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Rugged Ridge Zinfandel</span><span class="menu-item__leader"></span><span class="menu-item__price">£27.00</span></div>
+          </div>
+        </section>
+
+        <!-- RED -->
+        <section class="menu-section" id="w-red">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 04 · The Reds</div>
+              <h3 class="menu-section__title">Red Wine.</h3>
+            </div>
+            <div class="menu-section__hours">— 175ml / 250ml / 750ml</div>
+          </div>
+          <div class="menu-list wine-table">
+            <div class="menu-item"><span class="menu-item__name">Borsari Cabernet Sauvignon <span class="wine-sizes">175 £6.75 · 250 £8.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£25.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Granfort Cabernet Sauvignon <span class="wine-sizes">175 £7.50 · 250 £9.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£27.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Berri Estates Merlot <span class="wine-sizes">175 £8.25 · 250 £10.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£30.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Marques de Morano Rioja Joven <span class="wine-sizes">175 £8.25 · 250 £10.50</span></span><span class="menu-item__leader"></span><span class="menu-item__price">£30.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Rare Vineyards Pinot Noir</span><span class="menu-item__leader"></span><span class="menu-item__price">£32.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Portillo Malbec</span><span class="menu-item__leader"></span><span class="menu-item__price">£35.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Red Knot Shiraz</span><span class="menu-item__leader"></span><span class="menu-item__price">£37.50</span></div>
+          </div>
+        </section>
+
+        <!-- DRAUGHT -->
+        <section class="menu-section" id="w-draught">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 05 · From the Tap</div>
+              <h3 class="menu-section__title">Draught Beer &amp; Cider.</h3>
+            </div>
+            <div class="menu-section__hours">— Pint / Half</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Heineken Extra Cold</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.50<span class="wine-sizes">/ £3.50</span></span></div>
+            <div class="menu-item"><span class="menu-item__name">Moretti</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.50<span class="wine-sizes">/ £4.10</span></span></div>
+            <div class="menu-item"><span class="menu-item__name">Neck Oil</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.50<span class="wine-sizes">/ £4.10</span></span></div>
+            <div class="menu-item"><span class="menu-item__name">Fosters</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.60<span class="wine-sizes">/ £3.00</span></span></div>
+            <div class="menu-item"><span class="menu-item__name">John Smiths</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.60<span class="wine-sizes">/ £3.00</span></span></div>
+            <div class="menu-item"><span class="menu-item__name">Strongbow</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.90</span></div>
+            <div class="menu-item"><span class="menu-item__name">Strongbow Dark Fruit</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.50<span class="wine-sizes">/ £3.50</span></span></div>
+          </div>
+        </section>
+
+        <!-- BOTTLES & CANS -->
+        <section class="menu-section" id="w-bottle">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 06 · By The Bottle</div>
+              <h3 class="menu-section__title">Bottles &amp; Cans.</h3>
+            </div>
+            <div class="menu-section__hours">— Cold Cabinet</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Peroni</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.35</span></div>
+            <div class="menu-item"><span class="menu-item__name">Moretti</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.70</span></div>
+            <div class="menu-item"><span class="menu-item__name">Mary Jane</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Ilkley Blonde</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Bulmer's Original</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.30</span></div>
+            <div class="menu-item"><span class="menu-item__name">Guinness Surger Cans</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.40</span></div>
+            <div class="menu-item"><span class="menu-item__name">Becks Blue (0%)</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.10</span></div>
+          </div>
+        </section>
+
+        <!-- SPIRITS -->
+        <section class="menu-section" id="w-spirit">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 07 · The Back Bar</div>
+              <h3 class="menu-section__title">Spirits &amp; Liqueurs.</h3>
+              <p class="menu-section__lede">Single measures · mixers from £2.20</p>
+            </div>
+            <div class="menu-section__hours">— Antler Bar</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Tanqueray</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Bombay</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+            <div class="menu-item"><span class="menu-item__name">Gordon's Gin</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.65</span></div>
+            <div class="menu-item"><span class="menu-item__name">Gordon's Pink</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.90</span></div>
+            <div class="menu-item"><span class="menu-item__name">Gordon's Orange</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.90</span></div>
+            <div class="menu-item"><span class="menu-item__name">Gordon's Passionfruit</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Lamb's Navy</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.55</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sailor Jerry</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Malibu</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.55</span></div>
+            <div class="menu-item"><span class="menu-item__name">Bacardi</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.65</span></div>
+            <div class="menu-item"><span class="menu-item__name">Jack Daniels</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Southern Comfort</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+            <div class="menu-item"><span class="menu-item__name">Jameson's</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Famous Grouse</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.50</span></div>
+            <div class="menu-item"><span class="menu-item__name">Glenfiddich</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Monkey Shoulder</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.90</span></div>
+            <div class="menu-item"><span class="menu-item__name">Macallan</span><span class="menu-item__leader"></span><span class="menu-item__price">£7.10</span></div>
+            <div class="menu-item"><span class="menu-item__name">Absolut Vodka</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+            <div class="menu-item"><span class="menu-item__name">Smirnoff Red</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.55</span></div>
+            <div class="menu-item"><span class="menu-item__name">Courvoisier VS</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.60</span></div>
+            <div class="menu-item"><span class="menu-item__name">Hennessy VS</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.60</span></div>
+            <div class="menu-item"><span class="menu-item__name">Amaretto</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.80</span></div>
+            <div class="menu-item"><span class="menu-item__name">Baileys</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.80</span></div>
+            <div class="menu-item"><span class="menu-item__name">Tia Maria</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.60</span></div>
+            <div class="menu-item"><span class="menu-item__name">Jägermeister</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+            <div class="menu-item"><span class="menu-item__name">Pernod</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+            <div class="menu-item"><span class="menu-item__name">Cointreau</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.10</span></div>
+            <div class="menu-item"><span class="menu-item__name">Grand Marnier</span><span class="menu-item__leader"></span><span class="menu-item__price">£6.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Drambuie</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.30</span></div>
+            <div class="menu-item"><span class="menu-item__name">Tequila</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.05</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sambuca</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.45</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sours</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.00</span></div>
+            <div class="menu-item"><span class="menu-item__name">Campari</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.85</span></div>
+            <div class="menu-item"><span class="menu-item__name">Martini</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.55</span></div>
+            <div class="menu-item"><span class="menu-item__name">Cockburn's Port</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.55</span></div>
+            <div class="menu-item"><span class="menu-item__name">Sherry</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.55</span></div>
+            <div class="menu-item"><span class="menu-item__name">Pimm's No.1</span><span class="menu-item__leader"></span><span class="menu-item__price">£4.75</span></div>
+          </div>
+        </section>
+
+        <!-- COCKTAILS -->
+        <section class="menu-section" id="w-cocktail">
+          <div class="menu-section__head">
+            <div>
+              <div class="menu-section__num">— No. 08 · The Mixed</div>
+              <h3 class="menu-section__title">Cocktails.</h3>
+            </div>
+            <div class="menu-section__hours">— Each £5.95</div>
+          </div>
+          <div class="menu-list">
+            <div class="menu-item"><span class="menu-item__name">Espresso Martini</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Passion Fruit Martini</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Pink Martini</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+            <div class="menu-item"><span class="menu-item__name">Strawberry Daiquiri</span><span class="menu-item__leader"></span><span class="menu-item__price">£5.95</span></div>
+          </div>
+          <div class="menu-callout">
+            <div class="menu-callout__l">Any Three Cocktails</div>
+            <div class="menu-callout__r">£15.00</div>
+          </div>
+        </section>
+
+        <!-- HAPPY HOUR -->
+        <div id="w-happy" class="happy-hour">
+          <h3>The Happy Hour.</h3>
+          <div class="happy-hour__when">Monday — Thursday · 17:00 to 19:00</div>
+          <div class="happy-hour__grid">
+            <div class="happy-hour__col">
+              <h4>Beers · £4.99</h4>
+              <p>Fosters<br>Old Mout<br>John Smith</p>
+            </div>
+            <div class="happy-hour__col">
+              <h4>Cocktails</h4>
+              <p>Two for £10<br><em>across the cocktail list</em></p>
+            </div>
+            <div class="happy-hour__col">
+              <h4>Wines · £15</h4>
+              <p>Panuelo Red<br>Panuelo White<br>Panuelo Rosé<br><em>per bottle</em></p>
+            </div>
+            <div class="happy-hour__col">
+              <h4>Spirits · Double for £2</h4>
+              <p>Smirnoff<br>Famous Grouse<br>Gordon's<br>Bacardi</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="menu-note">All prices in pounds sterling, inclusive of VAT. Please drink responsibly. Vintages may vary by availability; we'll always offer a comparable substitute.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- PRIVATE DINING PANEL -->
+  <div class="dining-panel" data-panel="private">
+    <section class="private-dining reveal">
+      <div class="section-label" style="color:var(--brass); border-color:var(--brass);">— No. 04 / Private Dining</div>
+      <h2>A Table of One's Own.</h2>
+      <p>Three private rooms — the Library (eight), the Conservatory (eighteen), the Long Hall (forty) — with their own service, their own menu, and a door that closes properly. For birthdays of a particular vintage, mostly.</p>
+      <a href="#offers" class="btn-brass" style="background:var(--brass); color:var(--forest);">Enquire</a>
+    </section>
+  </div>
 </main>
 
 <!-- ═══════════════════ WEDDINGS ═══════════════════ -->
@@ -1464,28 +2226,29 @@
     requestAnimationFrame(step);
   }
 
+  // ── Dining tabs
+  function setDiningTab(name) {
+    document.querySelectorAll(".dining-tab").forEach(b=>{
+      b.classList.toggle("active", b.dataset.tab === name);
+    });
+    document.querySelectorAll(".dining-panel").forEach(p=>{
+      p.classList.toggle("active", p.dataset.panel === name);
+    });
+    const tabsEl = document.getElementById("diningTabs");
+    if (tabsEl) {
+      const top = tabsEl.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top: top, behavior: "smooth" });
+    }
+  }
+  window.__diningTab = setDiningTab;
+  document.querySelectorAll(".dining-tab").forEach(btn=>{
+    btn.addEventListener("click", ()=> setDiningTab(btn.dataset.tab));
+  });
+
   // ── Init
   route();
 })();
 </script>
 
 
-<div id="claude-static-indicator-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 6px 6px 16px; background: rgb(250, 249, 245); border: 0.5px solid rgba(31, 30, 29, 0.3); border-radius: 14px; box-shadow: rgba(0, 0, 0, 0.15) 0px 40px 80px 0px; z-index: 2147483647; pointer-events: none; white-space: nowrap; user-select: none; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif;">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; flex-shrink: 0; margin-right: 8px;">
-        <path d="M3.13946 10.6399L6.28757 8.87462L6.37405 8.73821L6.28757 8.6339H6.13189L5.60432 8.6018L3.80541 8.55366L2.24865 8.48947L0.735135 8.40923H0.492973L0.354595 8.32899L0.181622 8.1685L0.0345946 8.01605L0 7.85557L0.0345946 7.62287L0.138378 7.44634L0.224865 7.40622H0.354595L0.812973 7.44634L1.82486 7.51856L3.34703 7.62287L4.44541 7.68706L6.08 7.85557H6.33946L6.37405 7.75125L6.28757 7.68706L6.21838 7.62287L4.64432 6.55567L2.94054 5.4323L2.04973 4.78235L1.57405 4.45336L1.33189 4.14845L1.22811 3.92377L1.17622 3.69107L1.22811 3.47442L1.33189 3.28185L1.46162 3.13741L1.66054 2.99298H1.87676L2.24865 3.0331L2.39568 3.07322L2.99243 3.53059L4.26378 4.51755L5.92432 5.73721L6.16649 5.93781H6.27892V5.82548L6.16649 5.64092L5.26703 4.01204L4.30703 2.35105L3.87459 1.66098L3.76216 1.25176C3.7391 1.16082 3.69297 0.977332 3.69297 0.970913V0.762287L3.77946 0.505517L3.93513 0.240722L4.18595 0.0882648L4.4627 0H4.67892L4.83459 0.0240722L5.12865 0.0882648L5.4054 0.328987L5.82054 1.27583L6.48649 2.76028L7.52432 4.78235L7.82703 5.38415L7.99135 5.93781L8.05189 6.10632H8.15567V6.01003L8.24216 4.87061L8.39784 3.47442L8.55351 1.67703L8.6054 1.17151L8.85622 0.561685L8.9773 0.417252L9.21946 0.232698H9.35784L9.74703 0.417252L9.97189 0.665998L10.067 0.874624L10.0238 1.17151L9.83351 2.40722L9.46162 4.34102L9.21946 5.64092H9.35784L9.52216 5.47242L10.1795 4.60582L11.2778 3.22568L11.7622 2.68004L12.333 2.07823L12.6962 1.78937L13.0162 1.67703L13.3881 1.78937L13.7168 2.06219L13.8897 2.54363V2.76028L13.6649 3.32197L12.9557 4.22066L12.3676 4.98295L12.0043 5.56871L11.0011 7.02106V7.08526H11.1741L13.0768 6.67603L14.1059 6.49147L15.3341 6.28285L15.5762 6.34704L15.8876 6.53962L15.9481 6.80441L15.8876 7.12538L15.7319 7.34203L14.4173 7.66299L12.8778 7.97593L10.5854 8.51559C10.5705 8.51909 10.56 8.53236 10.56 8.54764C10.56 8.56468 10.573 8.57891 10.59 8.58044L11.6238 8.67402L12.0649 8.69809H13.1459L15.1611 8.85055L15.6886 9.19559L15.9481 9.39619L16 9.62086L15.9481 9.94985L15.8443 10.1023L15.4119 10.3029L15.1351 10.3591L14.0454 10.1023L11.4941 9.49248L10.6205 9.27583H10.4995V9.34804L11.2259 10.0622L12.5665 11.2658L14.2357 12.8225L14.3222 13.0953V13.2076L14.1059 13.5125L13.9243 13.5206L13.8811 13.4804L12.4108 12.3731L12.2984 12.325L11.84 11.8756L10.56 10.7924H10.4735V10.9047L10.7676 11.338L12.333 13.6891L12.4108 14.4112L12.2984 14.6439L11.8919 14.7884L11.667 14.7563L11.4508 14.7081L11.2605 14.5396L10.5254 13.4162L9.5827 11.9719L8.82162 10.672H8.79342C8.76039 10.672 8.73278 10.6972 8.7297 10.73L8.27676 15.5667L8.06919 15.8154L7.6454 16H7.58486L7.17838 15.6951L6.96216 15.1976L7.17838 14.2106L7.43784 12.9268L7.6454 11.9077L7.83567 10.6399L7.95187 10.2164C7.9548 10.2057 7.95069 10.1944 7.94161 10.1881C7.91157 10.1672 7.87034 10.1741 7.84878 10.2037L6.89297 11.5145L5.44 13.4804L4.28973 14.7081L4.01297 14.8205H3.80541L3.5373 14.5717V14.4514L3.58054 14.1304L3.84865 13.7372L5.44 11.7151L6.4 10.4554L7.01872 9.73222C7.04511 9.70139 7.04245 9.65523 7.0127 9.62763C7.00333 9.61894 6.98925 9.61773 6.97854 9.62471L2.75027 12.3811L1.99784 12.4774L1.66919 12.1725L1.71243 11.675L1.86811 11.5145L3.13946 10.6399Z" fill="#D97757"></path>
-      </svg>
-      <span style="vertical-align: middle; color: #141413; font-size: 14px; display: inline-block;">Claude is active in this tab group</span>
-      <div style="display: inline-block; width: 0.5px; height: 32px; background: rgba(31, 30, 29, 0.15); margin: 0 8px; vertical-align: middle;"></div>
-      <button id="claude-static-chat-button" style="position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px; background: transparent; border: none; cursor: pointer; pointer-events: auto; vertical-align: middle; width: 32px; height: 32px; border-radius: 8px; transition: background 0.2s;">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="#141413" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; display: block;">
-          <path d="M10 2.5C14.1421 2.5 17.5 5.85786 17.5 10C17.5 14.1421 14.1421 17.5 10 17.5H3C2.79779 17.5 2.61549 17.3782 2.53809 17.1914C2.4607 17.0046 2.50349 16.7895 2.64648 16.6465L4.35547 14.9365C3.20124 13.6175 2.5 11.8906 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5ZM10 3.5C6.41015 3.5 3.5 6.41015 3.5 10C3.5 11.7952 4.22659 13.4199 5.40332 14.5967L5.46582 14.6729C5.52017 14.7544 5.5498 14.8508 5.5498 14.9502C5.5498 15.0828 5.49709 15.2099 5.40332 15.3037L4.20703 16.5H10C13.5899 16.5 16.5 13.5899 16.5 10C16.5 6.41015 13.5899 3.5 10 3.5ZM13.29 9.30371C13.3986 9.05001 13.6925 8.93174 13.9463 9.04004C14.2 9.14863 14.3183 9.44253 14.21 9.69629C13.8506 10.536 13.1645 11.25 12.25 11.25C11.6372 11.25 11.128 10.9289 10.75 10.4648C10.372 10.9289 9.86276 11.25 9.25 11.25C8.63724 11.25 8.12801 10.9289 7.75 10.4648C7.37198 10.9289 6.86276 11.25 6.25 11.25C5.97386 11.25 5.75 11.0261 5.75 10.75C5.75 10.4739 5.97386 10.25 6.25 10.25C6.58764 10.25 7.00448 9.97056 7.29004 9.30371L7.32422 9.2373C7.41431 9.09121 7.5749 9 7.75 9C7.9501 9 8.13123 9.11975 8.20996 9.30371L8.32227 9.53516C8.59804 10.0359 8.95442 10.25 9.25 10.25C9.58764 10.25 10.0045 9.97056 10.29 9.30371L10.3242 9.2373C10.4143 9.09121 10.5749 9 10.75 9C10.9501 9 11.1312 9.11975 11.21 9.30371L11.3223 9.53516C11.598 10.0359 11.9544 10.25 12.25 10.25C12.5876 10.25 13.0045 9.97056 13.29 9.30371Z"></path>
-        </svg>
-        <span id="claude-static-chat-tooltip" style="position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 6px 12px; background: #30302E; color: #FAF9F5; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">Open chat</span>
-      </button>
-      <button id="claude-static-close-button" style="position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 6px; background: transparent; border: none; cursor: pointer; pointer-events: auto; vertical-align: middle; width: 32px; height: 32px; margin-left: 4px; border-radius: 8px; transition: background 0.2s;">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; display: block;">
-          <path d="M15.1464 4.14642C15.3417 3.95121 15.6582 3.95118 15.8534 4.14642C16.0486 4.34168 16.0486 4.65822 15.8534 4.85346L10.7069 9.99997L15.8534 15.1465C16.0486 15.3417 16.0486 15.6583 15.8534 15.8535C15.6826 16.0244 15.4186 16.0461 15.2245 15.918L15.1464 15.8535L9.99989 10.707L4.85338 15.8535C4.65813 16.0486 4.34155 16.0486 4.14634 15.8535C3.95115 15.6583 3.95129 15.3418 4.14634 15.1465L9.29286 9.99997L4.14634 4.85346C3.95129 4.65818 3.95115 4.34162 4.14634 4.14642C4.34154 3.95128 4.65812 3.95138 4.85338 4.14642L9.99989 9.29294L15.1464 4.14642Z" fill="#141413"></path>
-        </svg>
-        <span id="claude-static-close-tooltip" style="position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%); padding: 6px 12px; background: #30302E; color: #FAF9F5; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">Dismiss</span>
-      </button>
-    </div></body></html>
+</body></html>

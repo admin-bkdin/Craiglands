@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Craiglands Hotel — Redesign Concepts</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #f7f3ed; font-family: 'Georgia', serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+  .logo { font-size: 2.5rem; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .sub { color: #b8965a; font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 60px; }
+  h2 { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: #b8965a; margin-bottom: 30px; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; max-width: 900px; }
+  .card { background: #161616; border: 1px solid #2a2a2a; padding: 40px 32px; width: 260px; text-decoration: none; color: inherit; transition: border-color 0.3s, transform 0.3s; }
+  .card:hover { border-color: #b8965a; transform: translateY(-4px); }
+  .card-num { font-size: 0.7rem; letter-spacing: 0.2em; color: #b8965a; margin-bottom: 16px; }
+  .card-title { font-size: 1.4rem; margin-bottom: 12px; }
+  .card-desc { font-size: 0.82rem; color: #999; line-height: 1.6; margin-bottom: 24px; font-family: sans-serif; }
+  .card-link { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #b8965a; border-bottom: 1px solid #b8965a; padding-bottom: 2px; }
+  footer { margin-top: 60px; font-size: 0.75rem; color: #444; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+  <div class="logo">Craiglands</div>
+  <div class="sub">Hotel &middot; Ilkley &middot; Est. 1859 &middot; Redesign Concepts</div>
+  <h2>Choose a design</h2>
+  <div class="cards">
+    <a class="card" href="v1/">
+      <div class="card-num">01 &mdash; Original</div>
+      <div class="card-title">Classic Redesign</div>
+      <div class="card-desc">Gold & slate palette. Clean, modern layout with real photography and all five pages.</div>
+      <span class="card-link">View Design &rarr;</span>
+    </a>
+    <a class="card" href="v2/">
+      <div class="card-num">02 &mdash; Dark Editorial</div>
+      <div class="card-title">Where the Moors Meet Grandeur</div>
+      <div class="card-desc">Bold dark luxury aesthetic with Ken Burns hero and editorial typography.</div>
+      <span class="card-link">View Design &rarr;</span>
+    </a>
+    <a class="card" href="v3/">
+      <div class="card-num">03 &mdash; Ultra Luxury</div>
+      <div class="card-title">Quiet Luxury</div>
+      <div class="card-desc">Aman / Gleneagles aesthetic. Near-black, warm ivory, Cormorant Garamond. The most refined version.</div>
+      <span class="card-link">View Design &rarr;</span>
+    </a>
+  </div>
+  <footer>&copy; 2026 Craiglands Hotel &middot; Ilkley, West Yorkshire</footer>
+</body>
+</html>

@@ -10,13 +10,15 @@
   .logo { font-size: 2.5rem; letter-spacing: 0.05em; margin-bottom: 8px; }
   .sub { color: #b8965a; font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 60px; }
   h2 { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: #b8965a; margin-bottom: 30px; }
-  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; max-width: 900px; }
-  .card { background: #161616; border: 1px solid #2a2a2a; padding: 40px 32px; width: 260px; text-decoration: none; color: inherit; transition: border-color 0.3s, transform 0.3s; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; max-width: 1200px; }
+  .card { background: #161616; border: 1px solid #2a2a2a; padding: 40px 32px; width: 240px; text-decoration: none; color: inherit; transition: border-color 0.3s, transform 0.3s; }
   .card:hover { border-color: #b8965a; transform: translateY(-4px); }
   .card-num { font-size: 0.7rem; letter-spacing: 0.2em; color: #b8965a; margin-bottom: 16px; }
-  .card-title { font-size: 1.4rem; margin-bottom: 12px; }
+  .card-title { font-size: 1.3rem; margin-bottom: 12px; }
   .card-desc { font-size: 0.82rem; color: #999; line-height: 1.6; margin-bottom: 24px; font-family: sans-serif; }
   .card-link { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #b8965a; border-bottom: 1px solid #b8965a; padding-bottom: 2px; }
+  .card.featured { border-color: #b8965a; }
+  .badge { display: inline-block; background: #b8965a; color: #0a0a0a; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 8px; margin-bottom: 12px; font-family: sans-serif; }
   footer { margin-top: 60px; font-size: 0.75rem; color: #444; letter-spacing: 0.1em; }
 </style>
 </head>
@@ -40,7 +42,14 @@
     <a class="card" href="v3/">
       <div class="card-num">03 &mdash; Ultra Luxury</div>
       <div class="card-title">Quiet Luxury</div>
-      <div class="card-desc">Aman / Gleneagles aesthetic. Near-black, warm ivory, Cormorant Garamond. The most refined version.</div>
+      <div class="card-desc">Aman / Gleneagles aesthetic. Near-black, warm ivory, Cormorant Garamond. Highly refined.</div>
+      <span class="card-link">View Design &rarr;</span>
+    </a>
+    <a class="card featured" href="v4/">
+      <div class="badge">Latest</div>
+      <div class="card-num">04 &mdash; The Magazine</div>
+      <div class="card-title">A Grand Old Soul</div>
+      <div class="card-desc">Cond&eacute; Nast editorial style. Parchment &amp; forest green. Drop caps, pull quotes, letterbox heroes.</div>
       <span class="card-link">View Design &rarr;</span>
     </a>
   </div>

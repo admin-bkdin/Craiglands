@@ -44,7 +44,7 @@
   nav.site-nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 200;
     padding: 22px 48px;
     display: flex;
     align-items: center;
@@ -201,21 +201,21 @@
   .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   .nav-backdrop {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(10, 18, 12, 0.55);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(10, 18, 12, 0.7);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     border: 0;
     cursor: pointer;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.3s ease;
-    z-index: 99;
+    z-index: 150;
   }
   .nav-backdrop.show {
-    display: block;
     opacity: 1;
+    pointer-events: auto;
   }
   body.nav-open { overflow: hidden; }
 
@@ -1323,6 +1323,48 @@
     font-size: 0.92rem;
     margin-bottom: 26px;
   }
+  .menu-card {
+    background: #fff;
+    border-radius: 8px;
+    border-top: 3px solid var(--aged-brass);
+    padding: 30px 26px 26px;
+    box-shadow: 0 2px 8px rgba(26, 43, 26, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(26, 43, 26, 0.1);
+  }
+  .menu-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--forest-ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .menu-card .menu-sub {
+    font-style: italic;
+    color: var(--charcoal);
+    opacity: 0.7;
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+  }
+  .menu-card .menu-list {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+  }
+  .menu-card .menu-list li {
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(26, 43, 26, 0.08);
+  }
+  .menu-card .menu-list li:last-child { border-bottom: none; }
+  .menu-card .menu-name { font-size: 0.96rem; }
   .menu-list {
     list-style: none;
     padding: 0;
@@ -1415,21 +1457,21 @@
 
   /* ===== STORY STRIP ===== */
   .story {
-    background: var(--forest-ink);
-    color: var(--cream);
-    padding: 140px 24px;
+    background: var(--parchment-deep);
+    color: var(--forest-ink);
+    padding: 90px 24px 30px;
     text-align: center;
   }
   .story-quote {
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(28px, 4vw, 52px);
-    line-height: 1.25;
-    max-width: 1000px;
-    margin: 0 auto 64px;
-    color: var(--cream);
-    letter-spacing: -0.01em;
+    font-size: clamp(22px, 2.6vw, 32px);
+    line-height: 1.45;
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--forest-ink);
+    letter-spacing: -0.005em;
   }
   .story-quote::before, .story-quote::after {
     color: var(--aged-brass);
@@ -1892,7 +1934,7 @@
   /* ===== HERITAGE / HISTORY ===== */
   .heritage-section {
     background: var(--parchment-deep);
-    padding: 90px 48px 110px;
+    padding: 30px 48px 110px;
   }
   .heritage-inner { max-width: 1320px; margin: 0 auto; }
   .heritage-title {
@@ -2204,6 +2246,16 @@
     line-height: 1.7;
     max-width: 280px;
   }
+  details.footer-col {
+    /* details element doesn't break the grid layout */
+  }
+  details.footer-col > summary {
+    list-style: none;
+    cursor: default;
+    margin-bottom: 22px;
+  }
+  details.footer-col > summary::-webkit-details-marker { display: none; }
+  details.footer-col > summary::marker { content: ''; }
   .footer-col h4 {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.72rem;
@@ -2211,10 +2263,11 @@
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--aged-brass);
-    margin-bottom: 22px;
+    margin: 0;
+    display: inline-block;
   }
-  .footer-col ul { list-style: none; }
-  .footer-col li { margin-bottom: 12px; }
+  .footer-col ul { list-style: none; padding: 0; }
+  .footer-col li { margin-bottom: 12px; line-height: 1.45; }
   .footer-col a {
     color: rgba(248, 243, 231, 0.75);
     text-decoration: none;
@@ -2222,6 +2275,13 @@
     transition: color 0.2s;
   }
   .footer-col a:hover { color: var(--aged-brass); }
+  .footer-note {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(248, 243, 231, 0.45);
+    margin-top: 2px;
+    font-style: italic;
+  }
   .footer-bottom {
     max-width: 1320px;
     margin: 32px auto 0;
@@ -2287,14 +2347,13 @@
       align-items: stretch;
       gap: 0;
       padding: 96px 28px 32px;
-      background: rgba(18, 28, 18, 0.97);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: #11201A;
       border-left: 1px solid rgba(201, 168, 76, 0.3);
+      box-shadow: -16px 0 48px rgba(0, 0, 0, 0.5);
       transform: translateX(100%);
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
-      z-index: 100;
+      z-index: 200;
     }
     .nav-links.open { transform: translateX(0); }
     .nav-links a:not(.nav-reserve) { display: block; }
@@ -2367,9 +2426,45 @@
     .cinematic-toggle { left: 24px; bottom: 100px; padding: 8px 14px; font-size: 0.6rem; }
     .dining-content { padding: 64px 24px; }
     .dining-subnav ul { gap: 22px; padding: 22px 16px; }
-    .footer-top { grid-template-columns: 1fr 1fr; }
     .scroll-indicator { display: none; }
-    .stat-pill { font-size: 0.78rem; padding: 12px 20px; }
+
+    /* Compact accordion footer on mobile */
+    footer.site-footer { padding: 50px 22px 24px; }
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding-bottom: 24px;
+    }
+    .footer-brand { margin-bottom: 24px; }
+    .footer-brand .logo { font-size: 1.7rem; margin-bottom: 8px; }
+    .footer-brand p { font-size: 0.82rem; max-width: 100%; }
+    details.footer-col {
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+    details.footer-col:last-of-type { border-bottom: none; }
+    details.footer-col > summary {
+      cursor: pointer;
+      padding: 14px 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    details.footer-col > summary::after {
+      content: '+';
+      color: var(--aged-brass);
+      font-size: 1.2rem;
+      font-weight: 300;
+      transition: transform 0.2s;
+      margin-left: 12px;
+    }
+    details.footer-col[open] > summary::after { content: '−'; }
+    details.footer-col > ul {
+      padding: 0 0 16px;
+      margin: 0;
+    }
+    details.footer-col li { margin-bottom: 8px; font-size: 0.88rem; }
+    .footer-bottom { font-size: 0.78rem; padding-top: 16px; }
   }
 </style>
 </head>
@@ -2393,8 +2488,8 @@
     <li><a href="#" class="enquiry-trigger" data-enquiry-type="General Enquiry">Enquire</a></li>
     <li><a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="nav-reserve">Reserve</a></li>
   </ul>
-  <button class="nav-backdrop" id="navBackdrop" aria-hidden="true" tabindex="-1"></button>
 </nav>
+<button class="nav-backdrop" id="navBackdrop" aria-hidden="true" tabindex="-1"></button>
 
 <!-- ============= HERO ============= -->
 <header class="hero" id="top" data-screen-label="01 Hero">
@@ -2447,13 +2542,6 @@
 <!-- ============= STORY STRIP ============= -->
 <section class="story reveal" data-screen-label="02 Story">
   <p class="story-quote">A grand Victorian manor above the valley — every window frames a different view of the moors.</p>
-  <div class="stat-pills">
-    <div class="stat-pill">Est. 1859</div>
-    <div class="stat-pill">6 Acres of Grounds</div>
-    <div class="stat-pill">90+ Bedrooms</div>
-    <div class="stat-pill">10 Function Rooms</div>
-    <div class="stat-pill">2 AA Rosette Dining</div>
-  </div>
 </section>
 
 <!-- ============= HERITAGE / HISTORY ============= -->
@@ -2466,29 +2554,44 @@
       <button type="button" class="scroller-arrow prev" aria-label="Previous">‹</button>
       <div class="scroller-track">
         <article class="heritage-card">
+          <div class="heritage-year">1857</div>
+          <h4>The Yorkshire Cure</h4>
+          <p>Hydrotherapy at its peak. The waters of the Ilkley hills were praised as "exhilarating and wholesome" — the town a Victorian spa destination.</p>
+        </article>
+        <article class="heritage-card">
           <div class="heritage-year">1859</div>
           <h4>Built by the Dobson Brothers</h4>
-          <p>Founded by Dr. Henry Dobson and his brothers as a major purpose-built hydropathic spa for the Victorian elite.</p>
+          <p>Founded by Dr. Henry Dobson and his brothers as one of the country's largest purpose-built hydropathic establishments for the Victorian elite.</p>
         </article>
         <article class="heritage-card">
           <div class="heritage-year">Hydro Era</div>
           <h4>Turkish &amp; Russian Baths</h4>
-          <p>Mustard pads, massage, and Turkish, Russian and electro-chemical baths under Dr. Dobson's direct supervision.</p>
+          <p>Mustard pads, massage, and Turkish, Russian and electro-chemical baths — all administered under Dr. Dobson's direct supervision.</p>
         </article>
         <article class="heritage-card">
           <div class="heritage-year">6 Acres</div>
           <h4>Lawns &amp; Recreation</h4>
-          <p>Six acres of grounds with croquet, lawn tennis, a bowling alley and a recreational hall.</p>
+          <p>Six acres of grounds with croquet, lawn tennis, a bowling alley and a recreational hall — entertainment beyond the treatment rooms.</p>
+        </article>
+        <article class="heritage-card">
+          <div class="heritage-year">Late 19th C.</div>
+          <h4>The Tide Turns</h4>
+          <p>Hydropathy slowly fell out of fashion. The Craiglands began to reposition itself, looking ahead to a different kind of guest.</p>
         </article>
         <article class="heritage-card">
           <div class="heritage-year">Post-WWI</div>
           <h4>From Spa to Resort</h4>
-          <p>As hydrotherapy declined, Craiglands transitioned to a holiday hotel — Ilkley emerging as a Yorkshire destination.</p>
+          <p>The hotel transitioned to a holiday destination as Ilkley emerged as one of Yorkshire's favourite weekend escapes.</p>
         </article>
         <article class="heritage-card">
           <div class="heritage-year">Wartime</div>
           <h4>The Turkish Bath Held On</h4>
-          <p>Through the 1940s the hotel kept operating, the original Turkish Bath still in service for guests.</p>
+          <p>Through the 1940s the hotel kept operating, the original Turkish Bath still in service for guests through wartime.</p>
+        </article>
+        <article class="heritage-card">
+          <div class="heritage-year">Modern Era</div>
+          <h4>Reinventions &amp; Refurbishments</h4>
+          <p>Bedrooms updated, function rooms restored, the Conservatory glazed and re-opened — modern hospitality on Victorian foundations.</p>
         </article>
         <article class="heritage-card">
           <div class="heritage-year">Today</div>
@@ -2498,17 +2601,16 @@
       </div>
       <button type="button" class="scroller-arrow next" aria-label="Next">›</button>
     </div>
-    <div class="heritage-footer">
-      <a href="https://www.craiglands.co.uk/history/" target="_blank" rel="noopener" class="brass-link">Read the full history →</a>
-    </div>
   </div>
 </section>
 
 <!-- ============= STAY / ACCOMMODATION ============= -->
-<section class="stay-banner" data-screen-label="03 Stay Banner">
-  <h2>Rooms <em>at Craiglands</em></h2>
-</section>
 <section class="stay-section" id="rooms" data-screen-label="03 Rooms">
+  <div class="offers-header reveal">
+    <span class="eyebrow" style="color: var(--aged-brass-deep);">Stay · Rest · Wake Slowly</span>
+    <h2>Rooms at <em>Craiglands.</em></h2>
+    <p>Four room types across 90+ bedrooms — period character, modern comfort, every window framing the moor.</p>
+  </div>
   <div class="scroller reveal" style="--card-width: 300px;">
     <button type="button" class="scroller-arrow prev" aria-label="Previous rooms">‹</button>
     <div class="scroller-track">
@@ -2640,13 +2742,11 @@
 </section>
 
 <!-- ============= EVENTS / FUNCTION ROOMS ============= -->
-<section class="events-banner" data-screen-label="04 Events Banner">
-  <h2>Events &amp; <em>Banqueting</em></h2>
-</section>
 <section class="rooms-section" id="events" data-screen-label="04 Events">
-  <div class="section reveal">
-    <span class="section-label">Events</span>
-    <h2 class="section-title">Our <em>Function Rooms</em></h2>
+  <div class="section reveal" style="text-align:center;">
+    <span class="eyebrow" style="color: var(--aged-brass-deep);">Events · Banqueting · Celebrations</span>
+    <h2 class="section-title" style="margin-top:8px;">Events &amp; <em>Banqueting.</em></h2>
+    <p style="max-width:640px;margin:14px auto 36px;color:var(--charcoal);opacity:0.85;line-height:1.7;">Four flexible function rooms — from intimate boardroom dinners in the Dales Room to 280-guest celebrations in the Moorside.</p>
     <div class="rooms-grid rooms-grid-2x2">
       <article class="room-card">
         <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/moorside-10-01.jpg" alt="The Moorside function suite" />
@@ -2740,168 +2840,161 @@
       </div>
     </div>
 
-    <div class="menu-tabs" role="tablist">
-      <button type="button" class="menu-tab active" data-menu-tab="sandwiches">Sandwiches</button>
-      <button type="button" class="menu-tab" data-menu-tab="starters">To Start</button>
-      <button type="button" class="menu-tab" data-menu-tab="mains">Mains</button>
-      <button type="button" class="menu-tab" data-menu-tab="burgers">Burgers</button>
-      <button type="button" class="menu-tab" data-menu-tab="boards">Boards &amp; Sides</button>
-      <button type="button" class="menu-tab" data-menu-tab="desserts">Desserts</button>
-      <button type="button" class="menu-tab" data-menu-tab="afternoon">Afternoon Tea</button>
-      <button type="button" class="menu-tab" data-menu-tab="kids">Kids</button>
-      <button type="button" class="menu-tab" data-menu-tab="hot">Hot Drinks</button>
-      <button type="button" class="menu-tab" data-menu-tab="soft">Soft Drinks</button>
-    </div>
+    <div class="scroller" style="--card-width: 340px;">
+      <button type="button" class="scroller-arrow prev" aria-label="Previous menu">‹</button>
+      <div class="scroller-track">
+        <article class="menu-card">
+          <div class="menu-cat-label">Sandwiches</div>
+          <h4>Light Bites</h4>
+          <p class="menu-sub">Served 12:00–15:00</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Cheese Savoury</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
+            <li><span class="menu-name">Yorkshire Ham</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
+            <li><span class="menu-name">Tuna &amp; Red Onion</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
+            <li><span class="menu-name">Egg Mayonnaise &amp; Watercress</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
+            <li><span class="menu-name">Vegan Coronation</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
+            <li><span class="menu-name">Soup &amp; Sandwich Combo</span><span class="menu-dots"></span><span class="menu-price">£9.95</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel active" data-menu-panel="sandwiches">
-      <div class="menu-cat-label">Sandwiches</div>
-      <h4>Light Bites</h4>
-      <p class="menu-sub">Served 12:00–15:00</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Cheese Savoury</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
-        <li><span class="menu-name">Yorkshire Ham</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
-        <li><span class="menu-name">Tuna &amp; Red Onion</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
-        <li><span class="menu-name">Egg Mayonnaise &amp; Watercress</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
-        <li><span class="menu-name">Vegan Coronation</span><span class="menu-dots"></span><span class="menu-price">£6.99</span></li>
-        <li><span class="menu-name">Soup &amp; Sandwich Combo</span><span class="menu-dots"></span><span class="menu-price">£9.95</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">To Start</div>
+          <h4>Starters</h4>
+          <p class="menu-sub">Served 15:00–20:00</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Ham Hock &amp; Pea Terrine</span><span class="menu-dots"></span><span class="menu-price">£8.95</span></li>
+            <li><span class="menu-name">Soup of the Moment</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
+            <li><span class="menu-name">Creamy Garlic Mushrooms</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
+            <li><span class="menu-name">Crispy Southern Fried Chicken Strips</span><span class="menu-dots"></span><span class="menu-price">£8.95</span></li>
+            <li><span class="menu-name">Hot Honey Halloumi</span><span class="menu-dots"></span><span class="menu-price">£8.95</span></li>
+            <li><span class="menu-name">Pitta, Olives, Tzatziki &amp; Feta</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="starters">
-      <div class="menu-cat-label">To Start</div>
-      <h4>Starters</h4>
-      <p class="menu-sub">Served 15:00–20:00</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Ham Hock &amp; Pea Terrine</span><span class="menu-dots"></span><span class="menu-price">£8.95</span></li>
-        <li><span class="menu-name">Soup of the Moment</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-        <li><span class="menu-name">Creamy Garlic Mushrooms</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-        <li><span class="menu-name">Crispy Southern Fried Chicken Strips</span><span class="menu-dots"></span><span class="menu-price">£8.95</span></li>
-        <li><span class="menu-name">Hot Honey Halloumi</span><span class="menu-dots"></span><span class="menu-price">£8.95</span></li>
-        <li><span class="menu-name">Pitta, Olives, Tzatziki &amp; Feta</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">Mains</div>
+          <h4>From the Kitchen</h4>
+          <p class="menu-sub">Served 15:00–20:00</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Cajun Rump Steak</span><span class="menu-dots"></span><span class="menu-price">£22.95</span></li>
+            <li><span class="menu-name">Battered Haddock</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
+            <li><span class="menu-name">Chargrilled Salmon Fillet</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
+            <li><span class="menu-name">Steak Pie</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
+            <li><span class="menu-name">Pan-Fried Chicken Supreme</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
+            <li><span class="menu-name">Chicken or Salmon Caesar Salad</span><span class="menu-dots"></span><span class="menu-price">£16.95</span></li>
+            <li><span class="menu-name">Greek Chicken &amp; Feta Salad</span><span class="menu-dots"></span><span class="menu-price">£16.95</span></li>
+            <li><span class="menu-name">Homemade Chicken Curry</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
+            <li><span class="menu-name">Sweet Potato &amp; Butternut Wellington</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="mains">
-      <div class="menu-cat-label">Mains</div>
-      <h4>From the Kitchen</h4>
-      <p class="menu-sub">Served 15:00–20:00</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Cajun Rump Steak</span><span class="menu-dots"></span><span class="menu-price">£22.95</span></li>
-        <li><span class="menu-name">Battered Haddock</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
-        <li><span class="menu-name">Chargrilled Salmon Fillet</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
-        <li><span class="menu-name">Steak Pie</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
-        <li><span class="menu-name">Pan-Fried Chicken Supreme</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
-        <li><span class="menu-name">Chicken or Salmon Caesar Salad</span><span class="menu-dots"></span><span class="menu-price">£16.95</span></li>
-        <li><span class="menu-name">Greek-Style Chicken &amp; Feta Salad</span><span class="menu-dots"></span><span class="menu-price">£16.95</span></li>
-        <li><span class="menu-name">Homemade Chicken Curry</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
-        <li><span class="menu-name">Sweet Potato &amp; Butternut Squash Wellington</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">Burgers</div>
+          <h4>Stacked &amp; Served</h4>
+          <p class="menu-sub">All served with fries</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Craiglands Double Burger</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
+            <li><span class="menu-name">Double Burger, Cheese &amp; Bacon</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
+            <li><span class="menu-name">Hawaiian Burger</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
+            <li><span class="menu-name">Crispy Vegetable Burger</span><span class="menu-dots"></span><span class="menu-price">£16.95</span></li>
+            <li><span class="menu-name">Southern Fried Chicken Burger</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="burgers">
-      <div class="menu-cat-label">Burgers</div>
-      <h4>Stacked &amp; Served</h4>
-      <p class="menu-sub">All served with fries</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Craiglands Double Burger</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
-        <li><span class="menu-name">Double Burger with Cheese &amp; Bacon</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
-        <li><span class="menu-name">Hawaiian Burger</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
-        <li><span class="menu-name">Crispy Vegetable Burger</span><span class="menu-dots"></span><span class="menu-price">£16.95</span></li>
-        <li><span class="menu-name">Southern Fried Chicken Burger</span><span class="menu-dots"></span><span class="menu-price">£17.95</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">Sharing</div>
+          <h4>Boards &amp; Sides</h4>
+          <p class="menu-sub">For the table</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Charcuterie &amp; Cheese Board (for two)</span><span class="menu-dots"></span><span class="menu-price">£22.50</span></li>
+            <li><span class="menu-name">Mediterranean Board (for two)</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
+          </ul>
+          <p class="menu-cat-label" style="margin-top: 22px;">Sides</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Beer-Battered Onion Rings</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
+            <li><span class="menu-name">Chips</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
+            <li><span class="menu-name">Fries</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
+            <li><span class="menu-name">Mixed Salad</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
+            <li><span class="menu-name">Broccoli &amp; Carrots</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
+            <li><span class="menu-name">Creamy Mash</span><span class="menu-dots"></span><span class="menu-price">£4.95</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="boards">
-      <div class="menu-cat-label">Sharing</div>
-      <h4>Boards &amp; Sides</h4>
-      <p class="menu-sub">For the table</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Charcuterie &amp; Cheese Board (for two)</span><span class="menu-dots"></span><span class="menu-price">£22.50</span></li>
-        <li><span class="menu-name">Mediterranean Board (for two)</span><span class="menu-dots"></span><span class="menu-price">£18.95</span></li>
-      </ul>
-      <p class="menu-cat-label" style="margin-top: 24px;">Sides</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Beer-Battered Onion Rings</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
-        <li><span class="menu-name">Chips</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
-        <li><span class="menu-name">Fries</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
-        <li><span class="menu-name">Mixed Salad</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
-        <li><span class="menu-name">Broccoli &amp; Carrots</span><span class="menu-dots"></span><span class="menu-price">£5.95</span></li>
-        <li><span class="menu-name">Creamy Mash</span><span class="menu-dots"></span><span class="menu-price">£4.95</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">Desserts</div>
+          <h4>Sweet Endings</h4>
+          <p class="menu-sub">Each £7.95</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Warm Chocolate Brownie</span></li>
+            <li><span class="menu-name">Strawberry Jam Pudding</span></li>
+            <li><span class="menu-name">Lemon Tart</span></li>
+            <li><span class="menu-name">Ice Cream Selection</span></li>
+            <li><span class="menu-name">Sticky Toffee Pudding</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="desserts">
-      <div class="menu-cat-label">Desserts</div>
-      <h4>Sweet Endings</h4>
-      <p class="menu-sub">Each £7.95</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Warm Chocolate Brownie</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-        <li><span class="menu-name">Strawberry Jam Pudding</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-        <li><span class="menu-name">Lemon Tart</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-        <li><span class="menu-name">Ice Cream Selection</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-        <li><span class="menu-name">Sticky Toffee Pudding</span><span class="menu-dots"></span><span class="menu-price">£7.95</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">Afternoon Tea</div>
+          <h4>The Yorkshire Ritual</h4>
+          <p class="menu-sub">Served 14:30–17:00</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Traditional Afternoon Tea — sandwiches, scones with clotted cream &amp; jam, patisserie, leaf tea</span><span class="menu-dots"></span><span class="menu-price">£24.95 pp</span></li>
+            <li><span class="menu-name">Cream Tea — pot of tea, two scones, cream &amp; jam</span><span class="menu-dots"></span><span class="menu-price">£7.95 pp</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="afternoon">
-      <div class="menu-cat-label">Afternoon Tea</div>
-      <h4>The Yorkshire Ritual</h4>
-      <p class="menu-sub">Served 14:30–17:00</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Traditional Afternoon Tea — Sandwiches, scones with clotted cream and jam, a tier of patisserie, leaf tea</span><span class="menu-dots"></span><span class="menu-price">£24.95 pp</span></li>
-        <li><span class="menu-name">Cream Tea — A pot of tea, two scones, cream and jam</span><span class="menu-dots"></span><span class="menu-price">£7.95 pp</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">Kids</div>
+          <h4>For Younger Guests</h4>
+          <p class="menu-sub">Main + side £9.95 · Two courses £12.95</p>
+          <p class="menu-cat-label" style="margin-top: 4px;">Mains</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Fish Fingers</span></li>
+            <li><span class="menu-name">Chicken Nuggets</span></li>
+            <li><span class="menu-name">Mini Burger</span></li>
+            <li><span class="menu-name">Sausage &amp; Chips</span></li>
+            <li><span class="menu-name">Pasta in Tomato Sauce</span></li>
+          </ul>
+          <p class="menu-cat-label" style="margin-top: 22px;">Desserts</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Ice Cream (two scoops)</span></li>
+            <li><span class="menu-name">Warm Chocolate Brownie</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="kids">
-      <div class="menu-cat-label">Kids</div>
-      <h4>For Younger Guests</h4>
-      <p class="menu-sub">Main + side £9.95 · Two courses £12.95</p>
-      <p class="menu-cat-label" style="margin-top: 4px;">Mains</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Fish Fingers</span></li>
-        <li><span class="menu-name">Chicken Nuggets</span></li>
-        <li><span class="menu-name">Mini Burger</span></li>
-        <li><span class="menu-name">Sausage &amp; Chips</span></li>
-        <li><span class="menu-name">Pasta in Tomato Sauce</span></li>
-      </ul>
-      <p class="menu-cat-label" style="margin-top: 24px;">Desserts</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Ice Cream (two scoops)</span></li>
-        <li><span class="menu-name">Warm Chocolate Brownie</span></li>
-      </ul>
-    </div>
+        <article class="menu-card">
+          <div class="menu-cat-label">Hot Drinks</div>
+          <h4>The Coffee Bar</h4>
+          <p class="menu-sub">Roasted &amp; brewed</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Tea</span><span class="menu-dots"></span><span class="menu-price">£4.20</span></li>
+            <li><span class="menu-name">Americano</span><span class="menu-dots"></span><span class="menu-price">£4.20</span></li>
+            <li><span class="menu-name">Espresso</span><span class="menu-dots"></span><span class="menu-price">£4.20</span></li>
+            <li><span class="menu-name">Double Espresso</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
+            <li><span class="menu-name">Cappuccino</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
+            <li><span class="menu-name">Latte</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
+            <li><span class="menu-name">Hot Chocolate</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
+            <li><span class="menu-name">Herbal &amp; Fruit Tea</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
+          </ul>
+        </article>
 
-    <div class="menu-panel" data-menu-panel="hot">
-      <div class="menu-cat-label">Hot Drinks</div>
-      <h4>The Coffee Bar</h4>
-      <p class="menu-sub">Roasted &amp; brewed</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Tea</span><span class="menu-dots"></span><span class="menu-price">£4.20</span></li>
-        <li><span class="menu-name">Americano</span><span class="menu-dots"></span><span class="menu-price">£4.20</span></li>
-        <li><span class="menu-name">Espresso</span><span class="menu-dots"></span><span class="menu-price">£4.20</span></li>
-        <li><span class="menu-name">Double Espresso</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
-        <li><span class="menu-name">Cappuccino</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
-        <li><span class="menu-name">Latte</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
-        <li><span class="menu-name">Hot Chocolate</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
-        <li><span class="menu-name">Herbal &amp; Fruit Tea</span><span class="menu-dots"></span><span class="menu-price">£4.50</span></li>
-      </ul>
-    </div>
-
-    <div class="menu-panel" data-menu-panel="soft">
-      <div class="menu-cat-label">Soft Drinks</div>
-      <h4>Cold &amp; Refreshing</h4>
-      <p class="menu-sub">Bottle &amp; glass</p>
-      <ul class="menu-list">
-        <li><span class="menu-name">Appetiser</span><span class="menu-dots"></span><span class="menu-price">£3.10</span></li>
-        <li><span class="menu-name">Fruit Juice</span><span class="menu-dots"></span><span class="menu-price">£2.50</span></li>
-        <li><span class="menu-name">J2O</span><span class="menu-dots"></span><span class="menu-price">£3.25</span></li>
-        <li><span class="menu-name">Still Water 330ml</span><span class="menu-dots"></span><span class="menu-price">£2.10</span></li>
-        <li><span class="menu-name">Sparkling Water 330ml</span><span class="menu-dots"></span><span class="menu-price">£2.10</span></li>
-        <li><span class="menu-name">Still Water 750ml</span><span class="menu-dots"></span><span class="menu-price">£4.75</span></li>
-        <li><span class="menu-name">Sparkling Water 750ml</span><span class="menu-dots"></span><span class="menu-price">£4.75</span></li>
-        <li><span class="menu-name">Pint Coke / Diet Coke / Lemonade</span><span class="menu-dots"></span><span class="menu-price">£4.25</span></li>
-      </ul>
+        <article class="menu-card">
+          <div class="menu-cat-label">Soft Drinks</div>
+          <h4>Cold &amp; Refreshing</h4>
+          <p class="menu-sub">Bottle &amp; glass</p>
+          <ul class="menu-list">
+            <li><span class="menu-name">Appetiser</span><span class="menu-dots"></span><span class="menu-price">£3.10</span></li>
+            <li><span class="menu-name">Fruit Juice</span><span class="menu-dots"></span><span class="menu-price">£2.50</span></li>
+            <li><span class="menu-name">J2O</span><span class="menu-dots"></span><span class="menu-price">£3.25</span></li>
+            <li><span class="menu-name">Still Water 330ml</span><span class="menu-dots"></span><span class="menu-price">£2.10</span></li>
+            <li><span class="menu-name">Sparkling Water 330ml</span><span class="menu-dots"></span><span class="menu-price">£2.10</span></li>
+            <li><span class="menu-name">Still Water 750ml</span><span class="menu-dots"></span><span class="menu-price">£4.75</span></li>
+            <li><span class="menu-name">Sparkling Water 750ml</span><span class="menu-dots"></span><span class="menu-price">£4.75</span></li>
+            <li><span class="menu-name">Pint Coke / Diet Coke / Lemonade</span><span class="menu-dots"></span><span class="menu-price">£4.25</span></li>
+          </ul>
+        </article>
+      </div>
+      <button type="button" class="scroller-arrow next" aria-label="Next menu">›</button>
     </div>
   </div>
 </section>
@@ -2982,7 +3075,7 @@
 
   <div class="conf-cta-wrap reveal">
     <div class="conf-cta-row">
-      <a href="https://www.craiglands.co.uk/wp-content/uploads/2021/10/BW-Craiglands-Hotel-Conference-A4-Fact-Sheet.pdf" target="_blank" rel="noopener" class="btn btn-ghost-dark">Download Brochure (PDF)</a>
+      <a href="conference-brochure.html" class="btn btn-ghost-dark">View Brochure</a>
       <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Conferences">Make an Enquiry →</button>
     </div>
     <div class="conf-contact">To find out more call us on 01943 430001</div>
@@ -3236,51 +3329,50 @@
       <a href="#top" class="logo">Craiglands</a>
       <p>Craiglands Hotel<br/>Cowpasture Road<br/>Ilkley, West Yorkshire<br/>LS29 8RQ</p>
     </div>
-    <div class="footer-col">
-      <h4>Rooms</h4>
+    <details class="footer-col">
+      <summary><h4>Rooms</h4></summary>
       <ul>
         <li><a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener">Book a Stay</a></li>
-        <li><a href="#events">Function Rooms</a></li>
+        <li><a href="#rooms">Room Types</a></li>
+        <li><a href="#offers">Offers &amp; Packages</a></li>
         <li><a href="#christmas">Festive Stays</a></li>
-        <li><a href="#">Offers</a></li>
       </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Dining &amp; Events</h4>
+    </details>
+    <details class="footer-col">
+      <summary><h4>Dining &amp; Events</h4></summary>
       <ul>
-        <li><a href="#dining">The Conservatory</a></li>
-        <li><a href="#dining">Afternoon Tea</a></li>
-        <li><a href="#events">Weddings</a></li>
-        <li><a href="#events">Private Dining</a></li>
+        <li><a href="#dining">Brasserie 1</a></li>
+        <li><a href="#menu">Afternoon Tea</a></li>
+        <li><a href="#events">Function Rooms</a></li>
+        <li><a href="#weddings">Weddings</a></li>
       </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Conferences</h4>
+    </details>
+    <details class="footer-col">
+      <summary><h4>Conferences</h4></summary>
       <ul>
         <li><a href="#conferences">Conference Suites</a></li>
-        <li><a href="https://www.craiglands.co.uk/conference/" target="_blank" rel="noopener">Conference Enquiry</a></li>
-        <li><a href="https://www.craiglands.co.uk/conference/" target="_blank" rel="noopener">Download Brochure</a></li>
-        <li><a href="#">Day Delegate Rates</a></li>
+        <li><a href="conference-brochure.html">View Brochure</a></li>
+        <li><a href="mailto:sales@craiglands.co.uk?subject=Conference%20Enquiry">Conference Enquiry</a></li>
+        <li><a href="#conferences">Day Delegate Packages</a></li>
       </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Christmas &amp; Gift Vouchers</h4>
+    </details>
+    <details class="footer-col">
+      <summary><h4>Christmas &amp; Gift Vouchers</h4></summary>
       <ul>
         <li><a href="#christmas">Christmas Packages</a></li>
         <li><a href="#newyear">New Year Packages</a></li>
         <li><a href="https://craiglands.giftvoucherbrilliance.co.uk/" target="_blank" rel="noopener">Gift Vouchers</a></li>
-        <li><a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener">Festive Brochure</a></li>
+        <li><a href="mailto:sales@craiglands.co.uk?subject=Festive%20Enquiry">Festive Enquiry</a></li>
       </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
+    </details>
+    <details class="footer-col footer-contact-col">
+      <summary><h4>Contact</h4></summary>
       <ul>
         <li><a href="tel:01943430001">+44 (0)1943 430001</a></li>
-        <li><a href="mailto:stay@craiglands.co.uk">stay@craiglands.co.uk</a></li>
-        <li><a href="#">Press &amp; Media</a></li>
-        <li><a href="#">Careers</a></li>
+        <li><a href="mailto:reservations@craiglands.co.uk">reservations@craiglands.co.uk</a><span class="footer-note">Rooms (under 10)</span></li>
+        <li><a href="mailto:sales@craiglands.co.uk">sales@craiglands.co.uk</a><span class="footer-note">Groups · Events · Conferences · Weddings · Festive</span></li>
       </ul>
-    </div>
+    </details>
   </div>
   <div class="footer-bottom">
     <div>© 2025 Craiglands Hotel</div>
@@ -3503,6 +3595,21 @@
     window.location.href = href;
   });
   });
+
+  // ===== Footer accordion: open on desktop, collapsible on mobile =====
+  (function () {
+    const footerDetails = document.querySelectorAll('details.footer-col');
+    const mq = window.matchMedia('(max-width: 768px)');
+    const sync = () => {
+      const isMobile = mq.matches;
+      footerDetails.forEach(d => {
+        if (!isMobile) d.setAttribute('open', '');
+        else d.removeAttribute('open');
+      });
+    };
+    sync();
+    mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync);
+  })();
 
   // ===== Reusable horizontal scroller arrows =====
   document.querySelectorAll('.scroller').forEach(scroller => {

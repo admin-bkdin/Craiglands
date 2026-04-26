@@ -73,6 +73,7 @@
     align-items: center;
     gap: 36px;
     list-style: none;
+    padding-left: 48px;
   }
   .nav-links a {
     font-family: 'DM Sans', sans-serif;
@@ -97,6 +98,78 @@
   .nav-reserve:hover {
     background: var(--aged-brass);
     color: var(--forest-ink) !important;
+  }
+
+  /* ===== Reusable horizontal scroller with arrows ===== */
+  .scroller { position: relative; padding: 0 12px; }
+  .scroller-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding: 0 24px;
+    padding: 6px 4px 22px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scroller-track::-webkit-scrollbar { display: none; }
+  .scroller-track > * {
+    flex: 0 0 var(--card-width, 320px);
+    scroll-snap-align: start;
+    width: var(--card-width, 320px);
+    min-width: 0;
+  }
+  .scroller-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--aged-brass);
+    color: var(--aged-brass-deep);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: background 0.2s, color 0.2s, transform 0.2s, opacity 0.2s;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0;
+  }
+  .scroller-arrow:hover {
+    background: var(--aged-brass);
+    color: var(--cream);
+  }
+  .scroller-arrow.prev { left: -8px; }
+  .scroller-arrow.next { right: -8px; }
+  .scroller-arrow[aria-disabled="true"] {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .scroller.dark .scroller-arrow {
+    background: rgba(18, 28, 18, 0.85);
+    color: var(--aged-brass);
+    border-color: rgba(201, 168, 76, 0.4);
+  }
+  .scroller.dark .scroller-arrow:hover {
+    background: var(--aged-brass);
+    color: var(--forest-ink);
+  }
+  @media (max-width: 768px) {
+    .scroller { padding: 0; }
+    .scroller-arrow { display: none; }
+    .scroller-track {
+      padding: 4px 22px 18px;
+      margin: 0 -22px;
+      scroll-padding: 0 22px;
+    }
+    .scroller-track > * { flex-basis: 82%; width: 82%; }
   }
 
   /* ===== Mobile menu toggle ===== */
@@ -195,12 +268,15 @@
   .hero h1 {
     font-family: 'Playfair Display', serif;
     font-weight: 400;
-    font-size: 96px;
-    line-height: 1.02;
+    font-size: clamp(34px, 5.6vw, 76px);
+    line-height: 1.05;
     color: var(--cream);
     text-shadow: 0 4px 32px rgba(0,0,0,0.5);
-    margin-bottom: 28px;
+    margin-bottom: 22px;
     letter-spacing: -0.01em;
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero h1 em {
     font-style: italic;
@@ -759,7 +835,7 @@
   .conf-banner {
     height: 420px;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://www.craiglands.co.uk/wp-content/uploads/2024/05/craiglands-hotel-021.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://www.craiglands.co.uk/wp-content/uploads/2024/10/conference-facilities-10-01.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -825,13 +901,12 @@
   }
   .xmas-banner h2 em { font-style: italic; color: var(--aged-brass); }
   .pricing-card .pricing-photo {
-    width: 100%;
-    height: 180px;
+    width: calc(100% + 60px);
+    height: 240px;
     object-fit: cover;
     display: block;
     border-radius: 8px 8px 0 0;
-    margin: -36px -30px 22px;
-    /* keep the brass top border above image */
+    margin: -36px -30px 24px;
   }
   .pricing-card { padding-top: 36px; overflow: hidden; }
   .xmas-feature-row {
@@ -1310,7 +1385,31 @@
     .offers-grid.row-two { grid-template-columns: 1fr; }
     .wed-banner { height: 340px; }
     .wed-cta { padding: 60px 22px; }
-    .menu-tabs { position: static; }
+    .menu-section { padding: 60px 0 60px; }
+    .menu-inner { padding: 0 22px; }
+    .menu-tabs {
+      position: sticky;
+      top: 0;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      justify-content: flex-start;
+      gap: 0;
+      padding: 8px 22px 0;
+      margin: 0 -22px 24px;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      border-bottom: 1px solid rgba(26,43,26,0.15);
+    }
+    .menu-tabs::-webkit-scrollbar { display: none; }
+    .menu-tab {
+      flex: 0 0 auto;
+      padding: 12px 14px;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      scroll-snap-align: start;
+    }
     .menu-list li { flex-wrap: wrap; padding: 14px 16px; }
   }
 
@@ -1723,20 +1822,159 @@
     font-size: 0.95rem;
     font-style: italic;
   }
-  .conf-image {
-    min-height: 480px;
+  .conf-image { position: relative; }
+  .conf-cards-wrap {
+    max-width: 1320px;
+    margin: -40px auto 0;
+    padding: 0 48px 60px;
+  }
+  .conf-card {
+    background: rgba(248, 243, 231, 0.04);
+    border: 1px solid rgba(201, 168, 76, 0.22);
     border-radius: 8px;
-    background: linear-gradient(135deg, #3B4F6B 0%, #4A6886 50%, #5A7FA0 100%);
-    position: relative;
+    padding: 28px 26px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
   }
-  .conf-image::after {
-    content: '';
-    position: absolute;
-    inset: 14px;
-    border: 1px solid rgba(248, 243, 231, 0.3);
-    border-radius: 4px;
-    pointer-events: none;
+  .conf-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--aged-brass);
+    background: rgba(248, 243, 231, 0.06);
   }
+  .conf-card-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--aged-brass);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .conf-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .conf-card p {
+    color: rgba(248, 243, 231, 0.72);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .conf-cta-wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+    text-align: center;
+  }
+  .conf-cta-wrap .conf-cta-row {
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .conf-cta-wrap .conf-contact {
+    color: rgba(248, 243, 231, 0.7);
+    font-size: 0.92rem;
+    font-style: italic;
+  }
+  @media (max-width: 1024px) {
+    .conf-cards-wrap { padding: 0 32px 60px; }
+    .conf-cta-wrap { padding: 0 32px 80px; }
+  }
+  @media (max-width: 768px) {
+    .conf-cards-wrap { padding: 0 22px 50px; margin-top: -20px; }
+    .conf-cta-wrap { padding: 0 22px 70px; }
+    .conf-cta-wrap .conf-cta-row { flex-direction: column; align-items: stretch; }
+  }
+
+  /* ===== HERITAGE / HISTORY ===== */
+  .heritage-section {
+    background: var(--parchment-deep);
+    padding: 90px 48px 110px;
+  }
+  .heritage-inner { max-width: 1320px; margin: 0 auto; }
+  .heritage-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(30px, 3.6vw, 48px);
+    line-height: 1.1;
+    color: var(--forest-ink);
+    text-align: center;
+    margin: 6px 0 14px;
+  }
+  .heritage-title em { font-style: italic; color: var(--aged-brass-deep); }
+  .heritage-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    color: var(--charcoal);
+    opacity: 0.85;
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+  .heritage-card {
+    background: #fff;
+    border-radius: 8px;
+    border-top: 3px solid var(--aged-brass);
+    padding: 28px 26px;
+    box-shadow: 0 2px 8px rgba(26, 43, 26, 0.06);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .heritage-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(26, 43, 26, 0.1);
+  }
+  .heritage-year {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--aged-brass-deep);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .heritage-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--forest-ink);
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+  .heritage-card p {
+    font-size: 0.92rem;
+    color: var(--charcoal);
+    opacity: 0.78;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .heritage-footer { text-align: center; margin-top: 22px; }
+  @media (max-width: 768px) {
+    .heritage-section { padding: 70px 22px 90px; }
+    .heritage-intro { margin-bottom: 28px; }
+  }
+
+  .festive-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 4px auto 36px;
+    color: rgba(248, 243, 231, 0.78);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+  .festive-pricing-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: clamp(26px, 3vw, 36px);
+    color: var(--forest-ink);
+    text-align: center;
+    margin: 4px 0 30px;
+  }
+  .festive-pricing-title em { font-style: italic; color: var(--aged-brass-deep); }
 
   /* ===== CHRISTMAS / FESTIVE ===== */
   .festive-section { padding: 140px 48px; }
@@ -2020,7 +2258,6 @@
     .nav-links { gap: 22px; }
     .nav-links a { font-size: 0.72rem; letter-spacing: 0.18em; }
     .section { padding: 100px 32px; }
-    .hero h1 { font-size: 72px; }
     .rooms-grid { grid-template-columns: repeat(2, 1fr); }
     .rooms-grid-2x2 { grid-template-columns: repeat(2, 1fr); }
     .experiences-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2083,7 +2320,6 @@
     }
 
     .logo { font-size: 1.4rem; }
-    .hero h1 { font-size: 52px; }
     .hero-eyebrow { font-size: 0.7rem; margin-bottom: 24px; }
     .hero-subline { font-size: 17px; margin-bottom: 32px; }
     .btn { padding: 14px 22px; font-size: 0.75rem; }
@@ -2210,11 +2446,61 @@
 
 <!-- ============= STORY STRIP ============= -->
 <section class="story reveal" data-screen-label="02 Story">
-  <p class="story-quote">A grand Victorian manor perched above the valley — every window frames a different view of the moors.</p>
+  <p class="story-quote">A grand Victorian manor above the valley — every window frames a different view of the moors.</p>
   <div class="stat-pills">
-    <div class="stat-pill">166 Years · Est. 1859</div>
-    <div class="stat-pill">30 Acres of Grounds</div>
+    <div class="stat-pill">Est. 1859</div>
+    <div class="stat-pill">6 Acres of Grounds</div>
+    <div class="stat-pill">90+ Bedrooms</div>
+    <div class="stat-pill">10 Function Rooms</div>
     <div class="stat-pill">2 AA Rosette Dining</div>
+  </div>
+</section>
+
+<!-- ============= HERITAGE / HISTORY ============= -->
+<section class="heritage-section reveal" data-screen-label="02 Heritage">
+  <div class="heritage-inner">
+    <span class="section-label center-label">A Yorkshire Heritage</span>
+    <h2 class="heritage-title">166 Years of <em>Craiglands</em></h2>
+    <p class="heritage-intro">Built in 1859 as one of the country's largest purpose-built hydropathic establishments — still standing above Ilkley Moor.</p>
+    <div class="scroller" style="--card-width: 280px;">
+      <button type="button" class="scroller-arrow prev" aria-label="Previous">‹</button>
+      <div class="scroller-track">
+        <article class="heritage-card">
+          <div class="heritage-year">1859</div>
+          <h4>Built by the Dobson Brothers</h4>
+          <p>Founded by Dr. Henry Dobson and his brothers as a major purpose-built hydropathic spa for the Victorian elite.</p>
+        </article>
+        <article class="heritage-card">
+          <div class="heritage-year">Hydro Era</div>
+          <h4>Turkish &amp; Russian Baths</h4>
+          <p>Mustard pads, massage, and Turkish, Russian and electro-chemical baths under Dr. Dobson's direct supervision.</p>
+        </article>
+        <article class="heritage-card">
+          <div class="heritage-year">6 Acres</div>
+          <h4>Lawns &amp; Recreation</h4>
+          <p>Six acres of grounds with croquet, lawn tennis, a bowling alley and a recreational hall.</p>
+        </article>
+        <article class="heritage-card">
+          <div class="heritage-year">Post-WWI</div>
+          <h4>From Spa to Resort</h4>
+          <p>As hydrotherapy declined, Craiglands transitioned to a holiday hotel — Ilkley emerging as a Yorkshire destination.</p>
+        </article>
+        <article class="heritage-card">
+          <div class="heritage-year">Wartime</div>
+          <h4>The Turkish Bath Held On</h4>
+          <p>Through the 1940s the hotel kept operating, the original Turkish Bath still in service for guests.</p>
+        </article>
+        <article class="heritage-card">
+          <div class="heritage-year">Today</div>
+          <h4>A Modern Stay</h4>
+          <p>Two AA Rosette dining, 90+ bedrooms, ten function rooms — and the same view of Ilkley Moor through every window.</p>
+        </article>
+      </div>
+      <button type="button" class="scroller-arrow next" aria-label="Next">›</button>
+    </div>
+    <div class="heritage-footer">
+      <a href="https://www.craiglands.co.uk/history/" target="_blank" rel="noopener" class="brass-link">Read the full history →</a>
+    </div>
   </div>
 </section>
 
@@ -2223,39 +2509,43 @@
   <h2>Rooms <em>at Craiglands</em></h2>
 </section>
 <section class="stay-section" id="rooms" data-screen-label="03 Rooms">
-  <div class="stay-grid reveal">
-    <article class="stay-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/05/craiglands-hotel-accommodation-022.jpg" alt="Superior Room at Craiglands Hotel" />
-      <div class="stay-card-body">
-        <h3>Superior Room</h3>
-        <p>Generously sized rooms with elevated finishes, period detailing, and the comforts of a modern stay.</p>
-        <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
-      </div>
-    </article>
-    <article class="stay-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-007.jpg" alt="Classic Room at Craiglands Hotel" />
-      <div class="stay-card-body">
-        <h3>Classic Room</h3>
-        <p>Comfortable, character-filled rooms with the warmth of a Yorkshire welcome — perfect for a restful stay.</p>
-        <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
-      </div>
-    </article>
-    <article class="stay-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-006.jpg" alt="Deluxe Room at Craiglands Hotel" />
-      <div class="stay-card-body">
-        <h3>Deluxe Room</h3>
-        <p>Refined interiors with extra space and views — a step above for special occasions and longer stays.</p>
-        <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
-      </div>
-    </article>
-    <article class="stay-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/05/craiglands-hotel-017.jpg" alt="Luxury Suite at Craiglands Hotel" />
-      <div class="stay-card-body">
-        <h3>Luxury Suite</h3>
-        <p>Our most spacious accommodation — distinctive layouts, statement furnishings, and signature views.</p>
-        <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
-      </div>
-    </article>
+  <div class="scroller reveal" style="--card-width: 300px;">
+    <button type="button" class="scroller-arrow prev" aria-label="Previous rooms">‹</button>
+    <div class="scroller-track">
+      <article class="stay-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/05/craiglands-hotel-accommodation-022.jpg" alt="Superior Room at Craiglands Hotel" />
+        <div class="stay-card-body">
+          <h3>Superior Room</h3>
+          <p>Generously sized rooms with elevated finishes, period detailing, and the comforts of a modern stay.</p>
+          <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-007.jpg" alt="Classic Room at Craiglands Hotel" />
+        <div class="stay-card-body">
+          <h3>Classic Room</h3>
+          <p>Comfortable, character-filled rooms with the warmth of a Yorkshire welcome — perfect for a restful stay.</p>
+          <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/craiglands-hotel-accommodation-006.jpg" alt="Deluxe Room at Craiglands Hotel" />
+        <div class="stay-card-body">
+          <h3>Deluxe Room</h3>
+          <p>Refined interiors with extra space and views — a step above for special occasions and longer stays.</p>
+          <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
+        </div>
+      </article>
+      <article class="stay-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/05/craiglands-hotel-017.jpg" alt="Luxury Suite at Craiglands Hotel" />
+        <div class="stay-card-body">
+          <h3>Luxury Suite</h3>
+          <p>Our most spacious accommodation — distinctive layouts, statement furnishings, and signature views.</p>
+          <a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="room-link">View Rooms →</a>
+        </div>
+      </article>
+    </div>
+    <button type="button" class="scroller-arrow next" aria-label="More rooms">›</button>
   </div>
 </section>
 
@@ -2267,85 +2557,85 @@
     <p>From family escapes to romantic getaways — there's always a reason to visit The Craiglands.</p>
   </div>
 
-  <div class="offers-grid reveal">
-    <article class="offer-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/Family-Staycation-Offer.jpg" alt="Family Staycation" />
-      <div class="offer-body">
-        <h3>Family Staycation</h3>
-        <div class="offer-price">From £139 per family</div>
-        <ul class="offer-includes">
-          <li>One night accommodation</li>
-          <li>Full English breakfast</li>
-          <li>Kids stay free</li>
-          <li>Additional children £20</li>
-        </ul>
-        <a href="https://www.craiglands.co.uk/family-staycation-offer/" target="_blank" rel="noopener" class="offer-link">Find Out More →</a>
-      </div>
-    </article>
-    <article class="offer-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/Couples-Get-Away.jpg" alt="Couples Getaway" />
-      <div class="offer-body">
-        <h3>Couples Getaway</h3>
-        <div class="offer-price">From £75 per person</div>
-        <ul class="offer-includes">
-          <li>One night accommodation</li>
-          <li>Glass of prosecco</li>
-          <li>2-course dinner</li>
-          <li>Full English breakfast</li>
-          <li>Late checkout</li>
-        </ul>
-        <a href="https://www.craiglands.co.uk/couples-getaway-offer/" target="_blank" rel="noopener" class="offer-link">Find Out More →</a>
-      </div>
-    </article>
-    <article class="offer-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2022/05/offers-007.jpg" alt="Almost All Inclusive" />
-      <div class="offer-body">
-        <h3>Almost All Inclusive</h3>
-        <div class="offer-price">From £75 per person per night</div>
-        <ul class="offer-includes">
-          <li>Two nights accommodation</li>
-          <li>Cream tea on arrival</li>
-          <li>2-course dinner both evenings</li>
-          <li>Bottle of wine first night</li>
-          <li>Packed lunch second day</li>
-        </ul>
-        <a href="https://www.craiglands.co.uk/almost-all-inclusive-offer/" target="_blank" rel="noopener" class="offer-link">Find Out More →</a>
-      </div>
-    </article>
-  </div>
-
-  <div class="offers-grid row-two reveal">
-    <article class="offer-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-008.jpg" alt="Stay for £99" />
-      <div class="offer-body">
-        <h3>Stay for £99</h3>
-        <div class="offer-price">£99 per room</div>
-        <ul class="offer-includes">
-          <li>One night accommodation</li>
-          <li>Full English breakfast</li>
-          <li>Bottle of house wine</li>
-        </ul>
-        <a href="https://www.craiglands.co.uk/stay-for-99-offer/" target="_blank" rel="noopener" class="offer-link">Find Out More →</a>
-      </div>
-    </article>
-    <article class="offer-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-009.jpg" alt="Baby Shower & Christening" />
-      <div class="offer-body">
-        <h3>Baby Shower &amp; Christening</h3>
-        <div class="offer-price">Bespoke packages</div>
-        <ul class="offer-includes">
-          <li>Tailored packages for your special celebration</li>
-          <li>Private dining options available</li>
-          <li>Contact us to discuss your requirements</li>
-        </ul>
-        <a href="tel:01943430001" class="offer-link">Find Out More →</a>
-      </div>
-    </article>
+  <div class="scroller reveal" style="--card-width: 320px;">
+    <button type="button" class="scroller-arrow prev" aria-label="Previous offers">‹</button>
+    <div class="scroller-track">
+      <article class="offer-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/Family-Staycation-Offer.jpg" alt="Family Staycation" />
+        <div class="offer-body">
+          <h3>Family Staycation</h3>
+          <div class="offer-price">From £139 per family</div>
+          <ul class="offer-includes">
+            <li>One night accommodation</li>
+            <li>Full English breakfast</li>
+            <li>Kids stay free</li>
+            <li>Additional children £20</li>
+          </ul>
+          <button type="button" class="offer-link enquiry-trigger" data-enquiry-type="Offers" data-enquiry-subtype="Family Staycation">Enquire →</button>
+        </div>
+      </article>
+      <article class="offer-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/Couples-Get-Away.jpg" alt="Couples Getaway" />
+        <div class="offer-body">
+          <h3>Couples Getaway</h3>
+          <div class="offer-price">From £75 per person</div>
+          <ul class="offer-includes">
+            <li>One night accommodation</li>
+            <li>Glass of prosecco</li>
+            <li>2-course dinner</li>
+            <li>Full English breakfast</li>
+            <li>Late checkout</li>
+          </ul>
+          <button type="button" class="offer-link enquiry-trigger" data-enquiry-type="Offers" data-enquiry-subtype="Couples Getaway">Enquire →</button>
+        </div>
+      </article>
+      <article class="offer-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2022/05/offers-007.jpg" alt="Almost All Inclusive" />
+        <div class="offer-body">
+          <h3>Almost All Inclusive</h3>
+          <div class="offer-price">From £75 per person per night</div>
+          <ul class="offer-includes">
+            <li>Two nights accommodation</li>
+            <li>Cream tea on arrival</li>
+            <li>2-course dinner both evenings</li>
+            <li>Bottle of wine first night</li>
+            <li>Packed lunch second day</li>
+          </ul>
+          <button type="button" class="offer-link enquiry-trigger" data-enquiry-type="Offers" data-enquiry-subtype="Almost All Inclusive">Enquire →</button>
+        </div>
+      </article>
+      <article class="offer-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-008.jpg" alt="Stay for £99" />
+        <div class="offer-body">
+          <h3>Stay for £99</h3>
+          <div class="offer-price">£99 per room</div>
+          <ul class="offer-includes">
+            <li>One night accommodation</li>
+            <li>Full English breakfast</li>
+            <li>Bottle of house wine</li>
+          </ul>
+          <button type="button" class="offer-link enquiry-trigger" data-enquiry-type="Offers" data-enquiry-subtype="Stay for £99">Enquire →</button>
+        </div>
+      </article>
+      <article class="offer-card">
+        <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/offers-009.jpg" alt="Baby Shower & Christening" />
+        <div class="offer-body">
+          <h3>Baby Shower &amp; Christening</h3>
+          <div class="offer-price">Bespoke packages</div>
+          <ul class="offer-includes">
+            <li>Tailored packages for your special celebration</li>
+            <li>Private dining options available</li>
+            <li>Contact us to discuss your requirements</li>
+          </ul>
+          <button type="button" class="offer-link enquiry-trigger" data-enquiry-type="Offers" data-enquiry-subtype="Baby Shower &amp; Christening">Enquire →</button>
+        </div>
+      </article>
+    </div>
+    <button type="button" class="scroller-arrow next" aria-label="More offers">›</button>
   </div>
 
   <div class="offers-strip reveal">
     <p>All offers subject to availability. Call <a href="tel:01943430001" style="color: var(--aged-brass); text-decoration: none; border-bottom: 1px solid var(--aged-brass);">01943 430001</a> to book.</p>
-    <a href="https://www.craiglands.co.uk/offers/" target="_blank" rel="noopener" class="btn btn-primary">View All Offers</a>
   </div>
 </section>
 
@@ -2628,29 +2918,6 @@
       <div class="conf-subhead">Conference · Meetings · Success</div>
       <p>Modern, versatile spaces for 2 to 500 delegates. Ten function rooms, each laid out to suit your event — theatre, boardroom, cabaret, banquet, or anything in between.</p>
       <p>Ilkley is easy to reach via the A65, with motorway links to the M62 and A1(M), rail connections, and Leeds Bradford Airport nearby.</p>
-      <h4 class="conf-list-heading">Every package includes</h4>
-      <ul class="conf-list">
-        <li>Dedicated conference support</li>
-        <li>Complimentary Wi-Fi</li>
-        <li>LCD projector &amp; screen</li>
-        <li>Flip chart &amp; delegate stationery</li>
-        <li>Unlimited tea, coffee &amp; mineral water</li>
-        <li>2-course buffet lunch or working finger buffet</li>
-        <li>Free on-site car parking</li>
-        <li>Air-conditioned function rooms</li>
-      </ul>
-      <h4 class="conf-list-heading">Beyond the meeting</h4>
-      <ul class="conf-list">
-        <li>Day delegate &amp; 24-hour delegate packages</li>
-        <li>Overnight accommodation across 90+ bedrooms</li>
-        <li>Training seminars, product launches, themed events</li>
-        <li>Christmas parties &amp; private celebrations</li>
-      </ul>
-      <div class="conf-cta-row">
-        <a href="https://www.craiglands.co.uk/conference/" target="_blank" rel="noopener" class="btn btn-ghost-dark">Download Brochure</a>
-        <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Conferences">Make an Enquiry →</button>
-      </div>
-      <div class="conf-contact">To find out more call us on 01943 430001</div>
     </div>
     <div class="conf-image">
       <div class="conf-image-grid">
@@ -2672,6 +2939,53 @@
         </figure>
       </div>
     </div>
+  </div>
+
+  <div class="conf-cards-wrap reveal">
+    <div class="scroller dark" style="--card-width: 280px;">
+      <button type="button" class="scroller-arrow prev" aria-label="Previous">‹</button>
+      <div class="scroller-track">
+        <article class="conf-card">
+          <div class="conf-card-num">10</div>
+          <h4>Function rooms</h4>
+          <p>From 2 to 500 delegates — laid out theatre, boardroom, cabaret or banquet.</p>
+        </article>
+        <article class="conf-card">
+          <div class="conf-card-num">Wi-Fi</div>
+          <h4>Tech included</h4>
+          <p>Complimentary Wi-Fi, LCD projector &amp; screen, flip chart and delegate stationery.</p>
+        </article>
+        <article class="conf-card">
+          <div class="conf-card-num">∞</div>
+          <h4>Catering</h4>
+          <p>Unlimited tea, coffee &amp; mineral water. 2-course buffet lunch or working finger buffet.</p>
+        </article>
+        <article class="conf-card">
+          <div class="conf-card-num">Free</div>
+          <h4>On-site comfort</h4>
+          <p>Free on-site car parking, air-conditioned rooms, and dedicated conference support throughout.</p>
+        </article>
+        <article class="conf-card">
+          <div class="conf-card-num">24h</div>
+          <h4>Day &amp; residential</h4>
+          <p>Day delegate and 24-hour packages with overnight accommodation across 90+ bedrooms.</p>
+        </article>
+        <article class="conf-card">
+          <div class="conf-card-num">+</div>
+          <h4>Beyond meetings</h4>
+          <p>Training seminars, product launches, themed events, Christmas parties &amp; private celebrations.</p>
+        </article>
+      </div>
+      <button type="button" class="scroller-arrow next" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <div class="conf-cta-wrap reveal">
+    <div class="conf-cta-row">
+      <a href="https://www.craiglands.co.uk/wp-content/uploads/2021/10/BW-Craiglands-Hotel-Conference-A4-Fact-Sheet.pdf" target="_blank" rel="noopener" class="btn btn-ghost-dark">Download Brochure (PDF)</a>
+      <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Conferences">Make an Enquiry →</button>
+    </div>
+    <div class="conf-contact">To find out more call us on 01943 430001</div>
   </div>
 </section>
 
@@ -2716,7 +3030,7 @@
           <path d="M2 12h28"/>
         </svg>
         <h3>Events &amp; Weddings</h3>
-        <p>Two ceremony spaces, the Conservatory for wedding breakfasts, and 30 acres of grounds.</p>
+        <p>Two ceremony spaces, the Conservatory for wedding breakfasts, and six acres of grounds.</p>
         <a href="#" class="exp-arrow">Enquire →</a>
       </div>
     </div>
@@ -2787,115 +3101,115 @@
   </div>
 </section>
 
-<!-- ============= CHRISTMAS — DARK ============= -->
-<section class="xmas-banner" data-screen-label="07 Christmas Banner">
-  <h2>Christmas <em>at The Craiglands</em></h2>
+<!-- ============= FESTIVE SEASON (Xmas + Packages + NY consolidated) ============= -->
+<section class="xmas-banner" data-screen-label="07 Festive Banner">
+  <h2>The Festive Season <em>at The Craiglands</em></h2>
 </section>
-<section class="festive-section dark" id="christmas" data-screen-label="07 Christmas">
+<section class="festive-section dark" id="christmas" data-screen-label="07 Festive Days">
   <div class="festive-inner reveal">
-    <span class="section-label">Festive Season</span>
-    <h2 class="section-title">Christmas at <em>The Craiglands</em></h2>
-    <div class="festive-grid">
-      <article class="festive-card">
-        <div class="festive-image xmas-eve"><span class="date-badge">24 Dec</span></div>
-        <div class="festive-card-body">
-          <h3>Christmas Eve</h3>
-          <p>Arrive from 2pm · Festive Afternoon Tea 2pm–5pm · 4-course choice dinner · Toast the season.</p>
-          <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="exp-arrow">Enquire →</a>
-        </div>
-      </article>
-      <article class="festive-card">
-        <div class="festive-image xmas-day"><span class="date-badge">25 Dec</span></div>
-        <div class="festive-card-body">
-          <h3>Christmas Day</h3>
-          <p>Full English Breakfast · Exquisite 5-course Christmas Lunch · Light evening supper.</p>
-          <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="exp-arrow">Enquire →</a>
-        </div>
-      </article>
-      <article class="festive-card">
-        <div class="festive-image boxing"><span class="date-badge">26 Dec</span></div>
-        <div class="festive-card-body">
-          <h3>Boxing Day</h3>
-          <p>Traditional English Breakfast · Seasonal 4-course late lunch · Recover in comfort.</p>
-          <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="exp-arrow">Enquire →</a>
-        </div>
-      </article>
-      <article class="festive-card">
-        <div class="festive-image dec-27"><span class="date-badge">27 Dec</span></div>
-        <div class="festive-card-body">
-          <h3>27th December</h3>
-          <p>Full English Breakfast · Complimentary late check-out · Depart refreshed.</p>
-          <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="exp-arrow">Enquire →</a>
-        </div>
-      </article>
+    <span class="section-label">Day by Day</span>
+    <h2 class="section-title">From Christmas Eve <em>to New Year's Day</em></h2>
+    <p class="festive-intro">Seven days of festive feasts, gala dinners and quiet recovery — pick a single night or stay the season.</p>
+    <div class="scroller dark" style="--card-width: 290px;">
+      <button type="button" class="scroller-arrow prev" aria-label="Previous">‹</button>
+      <div class="scroller-track">
+        <article class="festive-card">
+          <div class="festive-image xmas-eve"><span class="date-badge">24 Dec</span></div>
+          <div class="festive-card-body">
+            <h3>Christmas Eve</h3>
+            <p>Arrive from 2pm · Festive Afternoon Tea 2pm–5pm · 4-course choice dinner · Toast the season.</p>
+            <button type="button" class="exp-arrow enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="Christmas Eve">Enquire →</button>
+          </div>
+        </article>
+        <article class="festive-card">
+          <div class="festive-image xmas-day"><span class="date-badge">25 Dec</span></div>
+          <div class="festive-card-body">
+            <h3>Christmas Day</h3>
+            <p>Full English Breakfast · Exquisite 5-course Christmas Lunch · Light evening supper.</p>
+            <button type="button" class="exp-arrow enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="Christmas Day">Enquire →</button>
+          </div>
+        </article>
+        <article class="festive-card">
+          <div class="festive-image boxing"><span class="date-badge">26 Dec</span></div>
+          <div class="festive-card-body">
+            <h3>Boxing Day</h3>
+            <p>Traditional English Breakfast · Seasonal 4-course late lunch · Recover in comfort.</p>
+            <button type="button" class="exp-arrow enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="Boxing Day">Enquire →</button>
+          </div>
+        </article>
+        <article class="festive-card">
+          <div class="festive-image dec-27"><span class="date-badge">27 Dec</span></div>
+          <div class="festive-card-body">
+            <h3>27th December</h3>
+            <p>Full English Breakfast · Complimentary late check-out · Depart refreshed.</p>
+            <button type="button" class="exp-arrow enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="27th December">Enquire →</button>
+          </div>
+        </article>
+        <article class="festive-card" id="newyear">
+          <div class="festive-image dec-30"><span class="date-badge">30 Dec</span></div>
+          <div class="festive-card-body">
+            <h3>30th December</h3>
+            <p>Arrive from 2pm · Champagne Afternoon Tea 3–4pm · 3-course dinner.</p>
+            <button type="button" class="exp-arrow enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="30th December">Enquire →</button>
+          </div>
+        </article>
+        <article class="festive-card">
+          <div class="festive-image nye"><span class="date-badge">31 Dec · Black Tie</span></div>
+          <div class="festive-card-body">
+            <h3>New Year's Eve</h3>
+            <p>Black Tie Event · Champagne arrival · Magnificent 5-course Gala Dinner · An evening of elegance and glamour.</p>
+            <button type="button" class="exp-arrow enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="New Year's Eve">Enquire →</button>
+          </div>
+        </article>
+        <article class="festive-card">
+          <div class="festive-image nyd"><span class="date-badge">01 Jan</span></div>
+          <div class="festive-card-body">
+            <h3>New Year's Day</h3>
+            <p>Happy New Year! · New Year's Day brunch · Complimentary late check-out.</p>
+            <button type="button" class="exp-arrow enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="New Year's Day">Enquire →</button>
+          </div>
+        </article>
+      </div>
+      <button type="button" class="scroller-arrow next" aria-label="Next">›</button>
     </div>
   </div>
 </section>
 
-<!-- ============= FESTIVE PACKAGES PRICING ============= -->
+<!-- ============= FESTIVE PACKAGES (single scroll line) ============= -->
 <section class="festive-pricing" data-screen-label="08 Festive Packages">
   <div class="festive-pricing-inner reveal">
     <span class="section-label center-label">Festive Packages</span>
-    <div class="pricing-grid">
-      <article class="pricing-card">
-        <img class="pricing-photo" src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=800&q=80&fit=crop" alt="Festive Christmas dining" />
-        <div class="pricing-badge">Most Popular</div>
-        <h3>3 Night Christmas Package</h3>
-        <div class="pricing-dates">Christmas Eve · Christmas Day · Boxing Day</div>
-        <div class="pricing-price"><span class="amount">£375</span><span class="per">/pp</span></div>
-        <div class="pricing-sub">Based on 2 sharing · £40 single supplement per night</div>
-        <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="pricing-link">Enquire →</a>
-      </article>
-      <article class="pricing-card">
-        <img class="pricing-photo" src="https://images.unsplash.com/photo-1576919228236-a097c32a5cd4?w=800&q=80&fit=crop" alt="Christmas table setting" />
-        <h3>2 Night Christmas Package</h3>
-        <div class="pricing-dates">Christmas Eve &amp; Christmas Day</div>
-        <div class="pricing-price"><span class="amount">£250</span><span class="per">/pp</span></div>
-        <div class="pricing-sub">Based on 2 sharing · £40 single supplement per night</div>
-        <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="pricing-link">Enquire →</a>
-      </article>
-      <article class="pricing-card">
-        <img class="pricing-photo" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80&fit=crop" alt="New Year celebration" />
-        <h3>2 Night New Year Package</h3>
-        <div class="pricing-dates">30th December &amp; New Year's Eve</div>
-        <div class="pricing-price"><span class="amount">£325</span><span class="per">/pp</span></div>
-        <div class="pricing-sub">Based on 2 sharing · £40 single supplement per night</div>
-        <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="pricing-link">Enquire →</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============= NEW YEAR — LIGHT ============= -->
-<section class="festive-section light" id="newyear" data-screen-label="09 New Year">
-  <div class="festive-inner reveal">
-    <span class="section-label">Festive Season</span>
-    <h2 class="section-title">New Year at <em>The Craiglands</em></h2>
-    <div class="festive-grid">
-      <article class="festive-card">
-        <div class="festive-image dec-30"><span class="date-badge">30 Dec</span></div>
-        <div class="festive-card-body">
-          <h3>30th December</h3>
-          <p>Arrive from 2pm · Champagne Afternoon Tea 3–4pm · 3-course dinner.</p>
-          <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="exp-arrow">Enquire →</a>
-        </div>
-      </article>
-      <article class="festive-card">
-        <div class="festive-image nye"><span class="date-badge">31 Dec · Black Tie</span></div>
-        <div class="festive-card-body">
-          <h3>New Year's Eve</h3>
-          <p>Black Tie Event · Champagne arrival · Magnificent 5-course Gala Dinner · An evening of elegance and glamour.</p>
-          <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="exp-arrow">Enquire →</a>
-        </div>
-      </article>
-      <article class="festive-card">
-        <div class="festive-image nyd"><span class="date-badge">01 Jan</span></div>
-        <div class="festive-card-body">
-          <h3>New Year's Day</h3>
-          <p>Happy New Year! · New Year's Day brunch · Complimentary late check-out.</p>
-          <a href="https://www.craiglands.co.uk/christmas/" target="_blank" rel="noopener" class="exp-arrow">Enquire →</a>
-        </div>
-      </article>
+    <h3 class="festive-pricing-title">Stay the <em>full season</em></h3>
+    <div class="scroller" style="--card-width: 340px;">
+      <button type="button" class="scroller-arrow prev" aria-label="Previous">‹</button>
+      <div class="scroller-track">
+        <article class="pricing-card">
+          <img class="pricing-photo" src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=800&q=80&fit=crop" alt="Festive Christmas dining" />
+          <div class="pricing-badge">Most Popular</div>
+          <h3>3 Night Christmas Package</h3>
+          <div class="pricing-dates">Christmas Eve · Christmas Day · Boxing Day</div>
+          <div class="pricing-price"><span class="amount">£375</span><span class="per">/pp</span></div>
+          <div class="pricing-sub">Based on 2 sharing · £40 single supplement per night</div>
+          <button type="button" class="pricing-link enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="3 Night Christmas Package">Enquire →</button>
+        </article>
+        <article class="pricing-card">
+          <img class="pricing-photo" src="https://images.unsplash.com/photo-1576919228236-a097c32a5cd4?w=800&q=80&fit=crop" alt="Christmas table setting" />
+          <h3>2 Night Christmas Package</h3>
+          <div class="pricing-dates">Christmas Eve &amp; Christmas Day</div>
+          <div class="pricing-price"><span class="amount">£250</span><span class="per">/pp</span></div>
+          <div class="pricing-sub">Based on 2 sharing · £40 single supplement per night</div>
+          <button type="button" class="pricing-link enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="2 Night Christmas Package">Enquire →</button>
+        </article>
+        <article class="pricing-card">
+          <img class="pricing-photo" src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80&fit=crop" alt="New Year celebration" />
+          <h3>2 Night New Year Package</h3>
+          <div class="pricing-dates">30th December &amp; New Year's Eve</div>
+          <div class="pricing-price"><span class="amount">£325</span><span class="per">/pp</span></div>
+          <div class="pricing-sub">Based on 2 sharing · £40 single supplement per night</div>
+          <button type="button" class="pricing-link enquiry-trigger" data-enquiry-type="Christmas &amp; New Year" data-enquiry-subtype="2 Night New Year Package">Enquire →</button>
+        </article>
+      </div>
+      <button type="button" class="scroller-arrow next" aria-label="Next">›</button>
     </div>
     <div class="festive-cta-wrap">
       <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Christmas &amp; New Year">Enquire About Packages</button>
@@ -3190,6 +3504,31 @@
   });
   });
 
+  // ===== Reusable horizontal scroller arrows =====
+  document.querySelectorAll('.scroller').forEach(scroller => {
+    const track = scroller.querySelector('.scroller-track');
+    const prev = scroller.querySelector('.scroller-arrow.prev');
+    const next = scroller.querySelector('.scroller-arrow.next');
+    if (!track) return;
+    const stepWidth = () => {
+      const first = track.firstElementChild;
+      if (!first) return 320;
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || '24') || 24;
+      return first.getBoundingClientRect().width + gap;
+    };
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth - 1;
+      if (prev) prev.setAttribute('aria-disabled', String(track.scrollLeft <= 1));
+      if (next) next.setAttribute('aria-disabled', String(track.scrollLeft >= max));
+    };
+    if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -stepWidth(), behavior: 'smooth' }));
+    if (next) next.addEventListener('click', () => track.scrollBy({ left: stepWidth(), behavior: 'smooth' }));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    setTimeout(update, 80);
+  });
+
   // ===== Menu tabs =====
   document.querySelectorAll('.menu-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -3199,6 +3538,8 @@
       tab.classList.add('active');
       const panel = document.querySelector(`.menu-panel[data-menu-panel="${target}"]`);
       if (panel) panel.classList.add('active');
+      // keep the active tab in view inside the horizontally scrolling tab strip on mobile
+      tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     });
   });
 </script>

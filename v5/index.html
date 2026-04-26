@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{var A=[];var L=30000;var u=3000;document.addEventListener("DOMContentLoaded",()=>{const V=window.Babel;const $="om-src-id";if(V&&V.registerPlugin&&!(V.availablePlugins&&V.availablePlugins[$])){V.registerPlugin($,({types:Q})=>({visitor:{JSXOpeningElement(W,X){const K=W.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let J=0;J<K.attributes.length;J++){const w=K.attributes[J];if(w.type==="JSXAttribute"&&w.name&&w.name.name==="data-om-id")return}const z=X.file&&X.file.opts&&X.file.opts.filename||"?";const k=K.loc&&K.loc.start;const C=`jsx:${z}:${K.start??0}:${k?k.line:0}:${k?k.column+1:0}`;K.attributes.push(Q.jsxAttribute(Q.jsxIdentifier("data-om-id"),Q.stringLiteral(C)))}}}))}const Z=["transform-react-jsx-source",$];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((Q,W)=>{const X=Q.getAttribute("data-plugins")||"";const K=Z.filter((z)=>X.indexOf(z)<0);if(K.length){Q.setAttribute("data-plugins",X?`${X},${K.join(",")}`:K.join(","))}if(!Q.hasAttribute("data-filename")){Q.setAttribute("data-filename",Q.getAttribute("src")||`inline-${W}`)}})});var b=window.parent;if(b&&b!==window){const V=(z,k)=>{try{b.postMessage({__omelette_log:true,type:z,data:k},"*")}catch{}};["log","warn","error"].forEach((z)=>{const k=console[z];console[z]=(...C)=>{const J=C.map((w)=>{try{return typeof w==="object"?JSON.stringify(w):String(w)}catch{try{return String(w)}catch{return"[unstringifiable]"}}}).join(" ");V(z,J);k.apply(console,C)}});window.addEventListener("error",(z)=>{const k=z.target;if(k&&k!==window&&k.tagName){const C=k.src||k.href||"";V("resource_error",`${k.tagName} failed to load: ${C}`)}else{V("error",`${z.message||"Unknown error"} at ${z.filename||"?"}:${z.lineno||0}:${z.colno||0}`)}},true);window.addEventListener("unhandledrejection",(z)=>{const k=z.reason;const C=k instanceof Error?`${k.message} ${k.stack}`:String(k);V("error",`Unhandled rejection: ${C}`)});const $=()=>{try{b.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(document.readyState==="complete")$();else window.addEventListener("load",$);if(window.ResizeObserver)new ResizeObserver($).observe(document.documentElement);const Z={};let Q=0;window.claude={complete(z){return new Promise((k,C)=>{if(!A.length){C(new Error("claude.complete: no parent origin"));return}const J=`c${++Q}`;const w=()=>setTimeout(()=>{delete Z[J];C(new Error(`claude.complete: no data for ${L/1000}s`))},L);const Y=w();Z[J]={resolve:k,reject:C,text:"",t:Y,arm:w};try{for(const F of A){b.postMessage({__om_api:true,id:J,body:z},F)}}catch(F){clearTimeout(Y);delete Z[J];C(F)}})}};const W={};let X=0;window.omelette={writeFile:(z,k)=>new Promise((C,J)=>{if(!A.length){C();return}const w=`f${++X}`;const Y=setTimeout(()=>{delete W[w];C()},u);W[w]={resolve:C,reject:J,t:Y};try{for(const F of A){b.postMessage({__om_file:true,id:w,op:"write",path:z,content:k},F)}}catch{clearTimeout(Y);delete W[w];C()}})};const K=(z)=>{try{return JSON.stringify(z)}catch{return JSON.stringify(String(z))}};window.addEventListener("message",(z)=>{if(A.indexOf(z.origin)<0)return;if(z.source!==b)return;const k=z.data;if(!k)return;if(k.__om_file_r){const w=W[k.id];if(!w)return;clearTimeout(w.t);delete W[k.id];if(k.ok)w.resolve();else w.reject(new Error(k.error||"write failed"));return}if(k.__om_api_r){const w=Z[k.id];if(!w)return;if(k.error!=null){clearTimeout(w.t);delete Z[k.id];w.reject(new Error(k.error));return}if(k.chunk!=null){clearTimeout(w.t);w.t=w.arm();w.text+=k.chunk;return}if(k.done){clearTimeout(w.t);delete Z[k.id];w.resolve(k.text!=null?k.text:w.text);return}return}if(!k.__om_eval)return;const C=k;const J=(w)=>{z.source.postMessage({...w,__om_eval_r:1,id:C.id},z.origin)};try{const w=(0,eval)(C.code);if(w&&typeof w.then==="function"){w.then((Y)=>J({ok:1,v:K(Y)}),(Y)=>J({ok:0,e:String(Y)}))}else{J({ok:1,v:K(w)})}}catch(w){J({ok:0,e:String(w)})}})}})();
-</script>
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Craiglands Hotel — Where the Moors Meet the Sky</title>
@@ -101,6 +98,53 @@
     background: var(--aged-brass);
     color: var(--forest-ink) !important;
   }
+
+  /* ===== Mobile menu toggle ===== */
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    width: 44px;
+    height: 44px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 102;
+    margin-left: auto;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.25s ease;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 18, 12, 0.55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 0;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 99;
+  }
+  .nav-backdrop.show {
+    display: block;
+    opacity: 1;
+  }
+  body.nav-open { overflow: hidden; }
 
   /* ===== HERO ===== */
   .hero {
@@ -737,6 +781,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 14px;
+  }
+  .conf-image-grid figure { margin: 0; position: relative; }
+  .conf-image-grid figcaption {
+    position: absolute;
+    left: 12px; bottom: 10px;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    padding: 4px 0;
   }
   .conf-image-grid img {
     width: 100%;
@@ -1516,6 +1572,25 @@
     margin-bottom: 18px;
     max-width: 520px;
   }
+  .dining-content p strong { color: var(--cream); font-weight: 500; }
+  .dining-hours {
+    margin: 12px 0 28px;
+    padding: 16px 20px;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 4px;
+    background: rgba(248, 243, 231, 0.04);
+    color: rgba(248, 243, 231, 0.78);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    max-width: 520px;
+  }
+  .dining-hours strong { color: var(--aged-brass); font-weight: 500; }
+  .dining-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 8px;
+  }
   .brass-link {
     display: inline-block;
     margin-top: 22px;
@@ -1597,6 +1672,15 @@
     color: var(--aged-brass);
     font-size: 1.15rem;
     margin-bottom: 28px;
+  }
+  .conf-list-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--aged-brass);
+    margin: 28px 0 12px;
   }
   .conf-content p {
     color: rgba(248, 243, 231, 0.78);
@@ -1706,21 +1790,41 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
   }
-  .festive-image.xmas-eve   { background: linear-gradient(135deg, #8B1A1A 0%, #B5512E 50%, #C9A84C 100%); }
-  .festive-image.xmas-day   { background: linear-gradient(135deg, #1A3D1A 0%, #5C722E 50%, #C9A84C 100%); }
-  .festive-image.boxing     { background: linear-gradient(135deg, #5C1A2E 0%, #A06A6A 50%, #F5EDD8 100%); }
-  .festive-image.dec-27     { background: linear-gradient(135deg, #2D3748 0%, #8A8E96 50%, #F5EDD8 100%); }
-  .festive-image.dec-30     { background: linear-gradient(135deg, #0F1B35 0%, #5C6F8F 50%, #B8C5D6 100%); }
+  .festive-image.xmas-eve   {
+    background:
+      linear-gradient(135deg, rgba(139,26,26,0.55) 0%, rgba(181,81,46,0.45) 50%, rgba(201,168,76,0.35) 100%),
+      url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=70&fit=crop') center/cover no-repeat;
+  }
+  .festive-image.xmas-day   {
+    background:
+      linear-gradient(135deg, rgba(26,61,26,0.55) 0%, rgba(92,114,46,0.40) 50%, rgba(201,168,76,0.30) 100%),
+      url('https://images.unsplash.com/photo-1482275548304-a58859dc31b7?w=800&q=70&fit=crop') center/cover no-repeat;
+  }
+  .festive-image.boxing     {
+    background:
+      linear-gradient(135deg, rgba(92,26,46,0.55) 0%, rgba(160,106,106,0.40) 50%, rgba(245,237,216,0.25) 100%),
+      url('https://images.unsplash.com/photo-1543353071-873f17a7a088?w=800&q=70&fit=crop') center/cover no-repeat;
+  }
+  .festive-image.dec-27     {
+    background:
+      linear-gradient(135deg, rgba(45,55,72,0.60) 0%, rgba(138,142,150,0.35) 50%, rgba(245,237,216,0.25) 100%),
+      url('https://images.unsplash.com/photo-1418985991508-e47386d96a71?w=800&q=70&fit=crop') center/cover no-repeat;
+  }
+  .festive-image.dec-30     {
+    background:
+      linear-gradient(135deg, rgba(15,27,53,0.60) 0%, rgba(92,111,143,0.40) 50%, rgba(184,197,214,0.25) 100%),
+      url('https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800&q=70&fit=crop') center/cover no-repeat;
+  }
   .festive-image.nye        {
     background:
-      radial-gradient(2px 2px at 20% 30%, rgba(201,168,76,0.85), transparent 60%),
-      radial-gradient(1.5px 1.5px at 70% 20%, rgba(248,243,231,0.7), transparent 60%),
-      radial-gradient(2px 2px at 40% 75%, rgba(201,168,76,0.7), transparent 60%),
-      radial-gradient(1.5px 1.5px at 85% 60%, rgba(248,243,231,0.65), transparent 60%),
-      radial-gradient(1.5px 1.5px at 55% 45%, rgba(201,168,76,0.7), transparent 60%),
-      linear-gradient(135deg, #0A0A0A 0%, #2A2110 50%, #C9A84C 100%);
+      linear-gradient(135deg, rgba(10,10,10,0.55) 0%, rgba(42,33,16,0.40) 50%, rgba(201,168,76,0.30) 100%),
+      url('https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=800&q=70&fit=crop') center/cover no-repeat;
   }
-  .festive-image.nyd        { background: linear-gradient(135deg, #E8A87C 0%, #EFC9A8 50%, #F5EDD8 100%); }
+  .festive-image.nyd        {
+    background:
+      linear-gradient(135deg, rgba(232,168,124,0.50) 0%, rgba(239,201,168,0.35) 50%, rgba(245,237,216,0.25) 100%),
+      url('https://images.unsplash.com/photo-1576919228236-a097c32a5cd4?w=800&q=70&fit=crop') center/cover no-repeat;
+  }
   .festive-card-body { padding: 24px 24px 26px; }
   .festive-card h3 {
     font-family: 'Playfair Display', serif;
@@ -1935,8 +2039,49 @@
   }
   @media (max-width: 768px) {
     nav.site-nav { padding: 14px 18px; }
-    .nav-links { gap: 14px; }
-    .nav-links a:not(.nav-reserve) { display: none; }
+
+    /* Mobile slide-in menu */
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(82vw, 340px);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 96px 28px 32px;
+      background: rgba(18, 28, 18, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-left: 1px solid rgba(201, 168, 76, 0.3);
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      z-index: 100;
+    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a:not(.nav-reserve) { display: block; }
+    .nav-links li {
+      width: 100%;
+      border-bottom: 1px solid rgba(248, 243, 231, 0.08);
+    }
+    .nav-links li:last-child { border-bottom: 0; }
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 16px 0;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      opacity: 0.9;
+    }
+    .nav-links .nav-reserve {
+      margin-top: 20px;
+      width: 100%;
+      text-align: center;
+      padding: 14px 22px;
+      border-radius: 50rem;
+    }
+
     .logo { font-size: 1.4rem; }
     .hero h1 { font-size: 52px; }
     .hero-eyebrow { font-size: 0.7rem; margin-bottom: 24px; }
@@ -1944,35 +2089,46 @@
     .btn { padding: 14px 22px; font-size: 0.75rem; }
     .section { padding: 80px 22px; }
     .story { padding: 90px 22px; }
-    .rooms-grid { grid-template-columns: 1fr; }
-    .rooms-grid-2x2 { grid-template-columns: 1fr; }
+
+    /* Horizontal-scroll grids on mobile (consistent pattern) */
+    .stay-grid,
+    .rooms-grid,
+    .rooms-grid-2x2,
+    .offers-grid,
+    .offers-grid.row-two,
+    .pricing-grid,
+    .wed-venues-grid,
+    .festive-grid,
+    .festive-section.light .festive-grid,
+    .experiences-grid,
+    .conf-image-grid {
+      display: grid;
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: 82%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding: 4px 22px 16px;
+      margin: 0 -22px;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+    .stay-card,
+    .room-card,
+    .offer-card,
+    .pricing-card,
+    .wed-venue-card,
+    .festive-card,
+    .exp-card,
+    .conf-image-grid figure { scroll-snap-align: start; }
+    .conf-image-grid img { height: 240px; }
+
     .conferences-inner { padding: 80px 22px; }
     .conf-list { grid-template-columns: 1fr; }
     .festive-section { padding: 80px 22px; }
-    .festive-grid,
-    .festive-section.light .festive-grid {
-      grid-template-columns: none;
-      grid-auto-flow: column;
-      grid-auto-columns: 78%;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 16px;
-      padding-bottom: 12px;
-    }
-    .festive-card { scroll-snap-align: start; }
     .festive-pricing { padding: 80px 22px; }
-    .pricing-grid { grid-template-columns: 1fr; }
     .cinematic-toggle { left: 24px; bottom: 100px; padding: 8px 14px; font-size: 0.6rem; }
-    .experiences-grid {
-      grid-template-columns: none;
-      grid-auto-flow: column;
-      grid-auto-columns: 78%;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 16px;
-      padding-bottom: 12px;
-    }
-    .exp-card { scroll-snap-align: start; }
     .dining-content { padding: 64px 24px; }
     .dining-subnav ul { gap: 22px; padding: 22px 16px; }
     .footer-top { grid-template-columns: 1fr 1fr; }
@@ -1986,7 +2142,10 @@
 <!-- ============= NAV ============= -->
 <nav class="site-nav" id="siteNav">
   <a href="#top" class="logo">Craiglands</a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#rooms">Rooms</a></li>
     <li><a href="#dining">Dining</a></li>
     <li><a href="#weddings">Weddings</a></li>
@@ -1998,6 +2157,7 @@
     <li><a href="#" class="enquiry-trigger" data-enquiry-type="General Enquiry">Enquire</a></li>
     <li><a href="https://www.bestwestern.co.uk/integrated-booking/the-craiglands-hotel-sure-hotel-collection-by-best-western-84222" target="_blank" rel="noopener" class="nav-reserve">Reserve</a></li>
   </ul>
+  <button class="nav-backdrop" id="navBackdrop" aria-hidden="true" tabindex="-1"></button>
 </nav>
 
 <!-- ============= HERO ============= -->
@@ -2099,247 +2259,8 @@
   </div>
 </section>
 
-<!-- ============= EVENTS / FUNCTION ROOMS ============= -->
-<section class="events-banner" data-screen-label="04 Events Banner">
-  <h2>Events &amp; <em>Banqueting</em></h2>
-</section>
-<section class="rooms-section" id="events" data-screen-label="04 Events">
-  <div class="section reveal">
-    <span class="section-label">Events</span>
-    <h2 class="section-title">Our <em>Function Rooms</em></h2>
-    <div class="rooms-grid rooms-grid-2x2">
-      <article class="room-card">
-        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/moorside-10-01.jpg" alt="The Moorside function suite" />
-        <div class="room-body">
-          <h3 class="room-name">The Moorside</h3>
-          <div class="room-subtitle">Breath Taking Function Suite</div>
-          <p class="room-desc">This breathtaking room will blow you away, with its high ornate ceilings, unique feature windows and bountiful character. The original features provide the perfect backdrop to unleash your creative flare. Fully licensed for all ceremonies up to 280 guests, accommodating a wedding breakfast party up to 228.</p>
-          <div class="room-footer">
-            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Moorside" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
-          </div>
-        </div>
-      </article>
-      <article class="room-card">
-        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-ballroom-10-01.jpg" alt="The Ballroom" />
-        <div class="room-body">
-          <h3 class="room-name">The Ballroom</h3>
-          <div class="room-subtitle">Show Stopping Function Suite</div>
-          <p class="room-desc">If you're looking for a show-stopping function space, you've just found it. With a capacity of 500, built-in stage, grand dance floor and striking chandelier features, this room will tick all your boxes. A room which truly impresses.</p>
-          <div class="room-footer">
-            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Ballroom" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
-          </div>
-        </div>
-      </article>
-      <article class="room-card">
-        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/banqueting-002.jpg" alt="The Conservatory function suite" />
-        <div class="room-body">
-          <h3 class="room-name">The Conservatory</h3>
-          <div class="room-subtitle">Light-Filled Function Suite</div>
-          <p class="room-desc">As the name suggests, this room is abundant with natural light from the expanse of windows. The smallest of the rooms but ready to go with a fully equipped bar, it's a blank canvas for you to transform.</p>
-          <div class="room-footer">
-            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Conservatory" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
-          </div>
-        </div>
-      </article>
-      <article class="room-card">
-        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-dales-10-01.jpg" alt="The Dales Room" />
-        <div class="room-body">
-          <h3 class="room-name">The Dales Room</h3>
-          <div class="room-subtitle">Intimate Function Suite</div>
-          <p class="room-desc">The smallest of our function suites, located on the first floor with spectacular views of the grounds and surrounding countryside. Ideal for small to medium private lunches or dinners. With full-length windows and air conditioning/heating.</p>
-          <div class="room-footer">
-            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Dales Room" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="events-cta-wrap">
-      <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Events &amp; Banqueting">Make an Enquiry →</button>
-    </div>
-  </div>
-</section>
-
-<!-- ============= DINING ============= -->
-<section class="dining-section" id="dining" data-screen-label="04 Dining">
-  <div class="dining-inner reveal">
-    <div class="dining-image"></div>
-    <div class="dining-content">
-      <span class="section-label">Dine</span>
-      <h2>The Conservatory <em>Restaurant</em></h2>
-      <p>Two AA Rosettes, an ever-changing menu rooted in seasonal Yorkshire produce — wild fallow deer, Whitby crab, heritage beetroot from our own kitchen garden.</p>
-      <p>Afternoon teas have been served in the Conservatory since 1859. Linen napkins, tiered cake stands, the same view of Ilkley Moor.</p>
-      <a href="#" class="brass-link">Reserve a Table →</a>
-    </div>
-  </div>
-  <nav class="dining-subnav">
-    <ul>
-      <li><a href="#" class="active">Overview</a></li>
-      <li><a href="#">The Menu</a></li>
-      <li><a href="#">Wine &amp; Bar</a></li>
-      <li><a href="#">Private Dining</a></li>
-    </ul>
-  </nav>
-</section>
-
-<!-- ============= CONFERENCES ============= -->
-<section class="conf-banner" data-screen-label="05 Conferences Banner">
-  <h2>Conferences <em>&amp; Meetings</em></h2>
-</section>
-<section class="conferences-section" id="conferences" data-screen-label="05 Conferences">
-  <div class="conferences-inner reveal">
-    <div class="conf-content">
-      <span class="section-label">Conference</span>
-      <h2>Business at <em>The Craiglands</em></h2>
-      <div class="conf-subhead">Conference · Meetings · Success</div>
-      <p>Our modern and versatile facilities can accommodate from 2 up to 500 delegates. Any of our 10 function rooms can be laid out in a variety of styles to meet individual requirements for all types of events.</p>
-      <p>Ilkley is easy to reach via the A65, with nearby motorway connections on the M62 and A1(M), plus rail links and Leeds Bradford Airport.</p>
-      <ul class="conf-list">
-        <li>Hire of the conference room</li>
-        <li>Dedicated conference support</li>
-        <li>Attention to individual requirements</li>
-        <li>Unlimited tea and coffee</li>
-        <li>Working lunch or dinner</li>
-        <li>AV equipment</li>
-        <li>Accommodation</li>
-        <li>Bespoke packages available</li>
-      </ul>
-      <div class="conf-cta-row">
-        <a href="https://www.craiglands.co.uk/conference/" target="_blank" rel="noopener" class="btn btn-ghost-dark">Download Brochure</a>
-        <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Conferences">Make an Enquiry →</button>
-      </div>
-      <div class="conf-contact">To find out more call us on 01943 430001</div>
-    </div>
-    <div class="conf-image">
-      <div class="conf-image-grid">
-        <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/conference-facilities-10-01.jpg" alt="Craiglands conference facility" />
-        <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/conference-facilities-10-02.jpg" alt="Craiglands conference room" />
-        <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/conference-facilities-10-03.jpg" alt="Craiglands meeting space" />
-        <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/09/ch-conferences-001.jpg" alt="Craiglands conference setup" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= EXPERIENCES ============= -->
-<section class="experiences-section" id="experiences" data-screen-label="05 Experiences">
-  <div class="section center reveal">
-    <span class="section-label">Beyond the Stay</span>
-    <h2 class="section-title">Beyond <em>the Room</em></h2>
-    <div class="experiences-grid">
-      <div class="exp-card">
-        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 26 9 16l5 6 4-8 8 12"/>
-          <circle cx="22" cy="7" r="2.5"/>
-        </svg>
-        <h3>Walking the Moors</h3>
-        <p>Guided routes from the doorstep — Cow &amp; Calf rocks, the Twelve Apostles, White Wells.</p>
-        <a href="#" class="exp-arrow">Discover →</a>
-      </div>
-      <div class="exp-card">
-        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h18v6a6 6 0 0 1-6 6H11a6 6 0 0 1-6-6v-6z"/>
-          <path d="M23 14h3a3 3 0 0 1 0 6h-3"/>
-          <path d="M9 8c0-2 2-2 2-4M14 8c0-2 2-2 2-4M19 8c0-2 2-2 2-4"/>
-        </svg>
-        <h3>Afternoon Tea</h3>
-        <p>Loose-leaf teas, warm scones, cakes from our pastry kitchen. Daily, 2pm–5pm.</p>
-        <a href="#" class="exp-arrow">Reserve →</a>
-      </div>
-      <div class="exp-card">
-        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 4c-2 4-6 6-6 12a6 6 0 0 0 12 0c0-6-4-8-6-12z"/>
-          <path d="M10 24c2 2 4 3 6 3s4-1 6-3"/>
-        </svg>
-        <h3>The Spa &amp; Wellness</h3>
-        <p>Hydrotherapy pool, Yorkshire-stone steam room, and treatments rooted in moorland botanicals.</p>
-        <a href="#" class="exp-arrow">Explore →</a>
-      </div>
-      <div class="exp-card">
-        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 12l10-6 10 6v14H6V12z"/>
-          <path d="M12 26v-8h8v8"/>
-          <path d="M2 12h28"/>
-        </svg>
-        <h3>Events &amp; Weddings</h3>
-        <p>Two ceremony spaces, the Conservatory for wedding breakfasts, and 30 acres of grounds.</p>
-        <a href="#" class="exp-arrow">Enquire →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= WEDDINGS ============= -->
-<section class="wed-banner" id="weddings" data-screen-label="06 Weddings Banner">
-  <div class="wed-banner-inner">
-    <div class="eyebrow">Weddings · Ilkley · Est. 1859</div>
-    <h2>Begin Your <em>Forever.</em></h2>
-    <p>From intimate ceremonies to grand celebrations — The Craiglands has held a special place in Yorkshire's love story since 1859.</p>
-    <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="Wedding">Make a Wedding Enquiry</button>
-  </div>
-</section>
-
-<section class="wed-intro" data-screen-label="06 Weddings Intro">
-  <div class="wed-intro-inner reveal">
-    <p class="wed-quote">"Your wedding day is the most important day of your life — and here at the Craiglands, we will ensure that no detail is overlooked."</p>
-    <div class="wed-intro-body">
-      <p>From your initial visit through to the finishing touches, our experienced Wedding Coordinator guides you every step. We combine expert knowledge with a setting that has held Yorkshire's finest celebrations for over 165 years.</p>
-      <p>The Moorside suite is fully licensed for all ceremonies up to 280 guests — and our four function spaces flex to whatever shape your day takes.</p>
-      <p>Call our Wedding Coordinator: <a href="tel:01943430001" class="wed-tel">01943 430001</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="wed-venues" data-screen-label="06 Weddings Venues">
-  <div class="wed-venues-grid reveal">
-    <article class="wed-venue-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/moorside-10-01.jpg" alt="The Moorside wedding suite" />
-      <div class="wed-venue-body">
-        <h3>The Moorside</h3>
-        <p>Up to 280 guests · Licensed for civil ceremonies</p>
-      </div>
-    </article>
-    <article class="wed-venue-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-ballroom-10-01.jpg" alt="The Ballroom" />
-      <div class="wed-venue-body">
-        <h3>The Ballroom</h3>
-        <p>Elegant ballroom for wedding breakfasts</p>
-      </div>
-    </article>
-    <article class="wed-venue-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-dales-10-01.jpg" alt="The Conservatory" />
-      <div class="wed-venue-body">
-        <h3>The Conservatory</h3>
-        <p>Natural light, garden views</p>
-      </div>
-    </article>
-    <article class="wed-venue-card">
-      <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/banqueting-002.jpg" alt="The Dales Room" />
-      <div class="wed-venue-body">
-        <h3>The Dales Room</h3>
-        <p>Intimate receptions &amp; private dining</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="wed-gallery" data-screen-label="06 Weddings Gallery">
-  <img src="https://www.craiglands.co.uk/wp-content/uploads/2025/03/weddings-026.jpg" alt="Craiglands wedding moment" />
-  <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/weddings-004.jpg" alt="Craiglands wedding ceremony" />
-  <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/10/weddings-007.jpg" alt="Craiglands wedding reception" />
-</section>
-
-<section class="wed-cta" data-screen-label="06 Weddings CTA">
-  <div class="wed-cta-inner reveal">
-    <h3>Download our Wedding Brochure or book a showround to see the magic for yourself.</h3>
-    <div class="wed-cta-buttons">
-      <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="Wedding">Make an Enquiry</button>
-      <a href="tel:01943430001" class="btn-secondary">Call 01943 430001</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============= OFFERS ============= -->
-<section class="offers-section" id="offers" data-screen-label="06 Offers">
+<!-- ============= OFFERS / BEDROOM PACKAGES ============= -->
+<section class="offers-section" id="offers" data-screen-label="03 Offers">
   <div class="offers-header reveal">
     <span class="eyebrow" style="color: var(--aged-brass-deep);">Offers · Packages · Deals</span>
     <h2>Something for <em>Everyone.</em></h2>
@@ -2428,8 +2349,97 @@
   </div>
 </section>
 
-<!-- ============= FULL MENU ============= -->
-<section class="menu-section" id="menu" data-screen-label="06 Menu">
+<!-- ============= EVENTS / FUNCTION ROOMS ============= -->
+<section class="events-banner" data-screen-label="04 Events Banner">
+  <h2>Events &amp; <em>Banqueting</em></h2>
+</section>
+<section class="rooms-section" id="events" data-screen-label="04 Events">
+  <div class="section reveal">
+    <span class="section-label">Events</span>
+    <h2 class="section-title">Our <em>Function Rooms</em></h2>
+    <div class="rooms-grid rooms-grid-2x2">
+      <article class="room-card">
+        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/moorside-10-01.jpg" alt="The Moorside function suite" />
+        <div class="room-body">
+          <h3 class="room-name">The Moorside</h3>
+          <div class="room-subtitle">Breath Taking Function Suite</div>
+          <p class="room-desc">This breathtaking room will blow you away, with its high ornate ceilings, unique feature windows and bountiful character. The original features provide the perfect backdrop to unleash your creative flare. Fully licensed for all ceremonies up to 280 guests, accommodating a wedding breakfast party up to 228.</p>
+          <div class="room-footer">
+            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Moorside" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
+          </div>
+        </div>
+      </article>
+      <article class="room-card">
+        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-ballroom-10-01.jpg" alt="The Ballroom" />
+        <div class="room-body">
+          <h3 class="room-name">The Ballroom</h3>
+          <div class="room-subtitle">Show Stopping Function Suite</div>
+          <p class="room-desc">If you're looking for a show-stopping function space, you've just found it. With a capacity of 500, built-in stage, grand dance floor and striking chandelier features, this room will tick all your boxes. A room which truly impresses.</p>
+          <div class="room-footer">
+            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Ballroom" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
+          </div>
+        </div>
+      </article>
+      <article class="room-card">
+        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/banqueting-002.jpg" alt="The Conservatory function suite" />
+        <div class="room-body">
+          <h3 class="room-name">The Conservatory</h3>
+          <div class="room-subtitle">Light-Filled Function Suite</div>
+          <p class="room-desc">As the name suggests, this room is abundant with natural light from the expanse of windows. The smallest of the rooms but ready to go with a fully equipped bar, it's a blank canvas for you to transform.</p>
+          <div class="room-footer">
+            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Conservatory" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
+          </div>
+        </div>
+      </article>
+      <article class="room-card">
+        <img class="room-photo" src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-dales-10-01.jpg" alt="The Dales Room" />
+        <div class="room-body">
+          <h3 class="room-name">The Dales Room</h3>
+          <div class="room-subtitle">Intimate Function Suite</div>
+          <p class="room-desc">The smallest of our function suites, located on the first floor with spectacular views of the grounds and surrounding countryside. Ideal for small to medium private lunches or dinners. With full-length windows and air conditioning/heating.</p>
+          <div class="room-footer">
+            <button type="button" class="room-link enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="The Dales Room" style="background:none;border:none;cursor:pointer;padding:0;">Make an Enquiry →</button>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="events-cta-wrap">
+      <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Events &amp; Banqueting">Make an Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============= DINING / BRASSERIE 1 ============= -->
+<section class="dining-section" id="dining" data-screen-label="04 Dining">
+  <div class="dining-inner reveal">
+    <div class="dining-image" style="background: url('https://www.craiglands.co.uk/wp-content/uploads/2023/09/ch-restaurant-001.jpg') center/cover no-repeat;"></div>
+    <div class="dining-content">
+      <span class="section-label">Dine</span>
+      <h2>Brasserie<em>1</em></h2>
+      <p>Informal, contemporary dining with French windows opening onto the gardens and a clear view across to the Yorkshire moors. A fireplace warms the room through winter; in summer the doors fold back onto the terrace.</p>
+      <p>Modern interpretations of classic dishes, built on locally sourced produce. Our signature is the award-winning pork sausage from David Lishman of Ilkley — served with colcannon and a grain mustard sauce.</p>
+      <p>Adjoining the restaurant is the recently renovated <strong>Antler Bar &amp; Lounge</strong> — a place to settle in with something good in the glass before or after dinner.</p>
+      <div class="dining-hours">
+        <strong>Brasserie1</strong> Tue–Sat 18:00–20:00 &nbsp;·&nbsp; <strong>Afternoon Tea</strong> 14:30–17:00 &nbsp;·&nbsp; <strong>The Antler Bar</strong> 11:00–Late
+      </div>
+      <div class="dining-cta-row">
+        <a href="tel:01943430001" class="btn btn-primary">Reserve · 01943 430001</a>
+        <a href="#menu" class="btn btn-ghost-dark">View the Menu →</a>
+      </div>
+    </div>
+  </div>
+  <nav class="dining-subnav">
+    <ul>
+      <li><a href="#dining" class="active">Brasserie1</a></li>
+      <li><a href="#menu">À La Carte</a></li>
+      <li><a href="#menu" data-menu-deep="afternoon">Afternoon Tea</a></li>
+      <li><a href="#menu" data-menu-deep="hot">The Antler Bar</a></li>
+    </ul>
+  </nav>
+</section>
+
+<!-- ============= FULL MENU (folded into Dining) ============= -->
+<section class="menu-section" id="menu" data-screen-label="04 Menu">
   <div class="menu-inner">
     <div class="menu-header reveal">
       <span class="eyebrow" style="color: var(--aged-brass-deep);">The Menu · Brasserie1</span>
@@ -2606,6 +2616,177 @@
   </div>
 </section>
 
+<!-- ============= CONFERENCES ============= -->
+<section class="conf-banner" data-screen-label="05 Conferences Banner">
+  <h2>Conferences <em>&amp; Meetings</em></h2>
+</section>
+<section class="conferences-section" id="conferences" data-screen-label="05 Conferences">
+  <div class="conferences-inner reveal">
+    <div class="conf-content">
+      <span class="section-label">Conference</span>
+      <h2>Business at <em>The Craiglands</em></h2>
+      <div class="conf-subhead">Conference · Meetings · Success</div>
+      <p>Modern, versatile spaces for 2 to 500 delegates. Ten function rooms, each laid out to suit your event — theatre, boardroom, cabaret, banquet, or anything in between.</p>
+      <p>Ilkley is easy to reach via the A65, with motorway links to the M62 and A1(M), rail connections, and Leeds Bradford Airport nearby.</p>
+      <h4 class="conf-list-heading">Every package includes</h4>
+      <ul class="conf-list">
+        <li>Dedicated conference support</li>
+        <li>Complimentary Wi-Fi</li>
+        <li>LCD projector &amp; screen</li>
+        <li>Flip chart &amp; delegate stationery</li>
+        <li>Unlimited tea, coffee &amp; mineral water</li>
+        <li>2-course buffet lunch or working finger buffet</li>
+        <li>Free on-site car parking</li>
+        <li>Air-conditioned function rooms</li>
+      </ul>
+      <h4 class="conf-list-heading">Beyond the meeting</h4>
+      <ul class="conf-list">
+        <li>Day delegate &amp; 24-hour delegate packages</li>
+        <li>Overnight accommodation across 90+ bedrooms</li>
+        <li>Training seminars, product launches, themed events</li>
+        <li>Christmas parties &amp; private celebrations</li>
+      </ul>
+      <div class="conf-cta-row">
+        <a href="https://www.craiglands.co.uk/conference/" target="_blank" rel="noopener" class="btn btn-ghost-dark">Download Brochure</a>
+        <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Conferences">Make an Enquiry →</button>
+      </div>
+      <div class="conf-contact">To find out more call us on 01943 430001</div>
+    </div>
+    <div class="conf-image">
+      <div class="conf-image-grid">
+        <figure>
+          <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/conference-facilities-10-01.jpg" alt="Craiglands conference facility" />
+          <figcaption>Theatre &amp; banquet styles</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/conference-facilities-10-02.jpg" alt="Craiglands conference room" />
+          <figcaption>Boardroom &amp; cabaret</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/conference-facilities-10-03.jpg" alt="Craiglands meeting space" />
+          <figcaption>Breakout spaces</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.craiglands.co.uk/wp-content/uploads/2023/09/ch-conferences-001.jpg" alt="Craiglands conference setup" />
+          <figcaption>Set for delegates</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= EXPERIENCES ============= -->
+<section class="experiences-section" id="experiences" data-screen-label="05 Experiences">
+  <div class="section center reveal">
+    <span class="section-label">Beyond the Stay</span>
+    <h2 class="section-title">Beyond <em>the Room</em></h2>
+    <div class="experiences-grid">
+      <div class="exp-card">
+        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 26 9 16l5 6 4-8 8 12"/>
+          <circle cx="22" cy="7" r="2.5"/>
+        </svg>
+        <h3>Walking the Moors</h3>
+        <p>Guided routes from the doorstep — Cow &amp; Calf rocks, the Twelve Apostles, White Wells.</p>
+        <a href="#" class="exp-arrow">Discover →</a>
+      </div>
+      <div class="exp-card">
+        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h18v6a6 6 0 0 1-6 6H11a6 6 0 0 1-6-6v-6z"/>
+          <path d="M23 14h3a3 3 0 0 1 0 6h-3"/>
+          <path d="M9 8c0-2 2-2 2-4M14 8c0-2 2-2 2-4M19 8c0-2 2-2 2-4"/>
+        </svg>
+        <h3>Afternoon Tea</h3>
+        <p>Loose-leaf teas, warm scones, cakes from our pastry kitchen. Daily, 2pm–5pm.</p>
+        <a href="#" class="exp-arrow">Reserve →</a>
+      </div>
+      <div class="exp-card">
+        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4c-2 4-6 6-6 12a6 6 0 0 0 12 0c0-6-4-8-6-12z"/>
+          <path d="M10 24c2 2 4 3 6 3s4-1 6-3"/>
+        </svg>
+        <h3>The Spa &amp; Wellness</h3>
+        <p>Hydrotherapy pool, Yorkshire-stone steam room, and treatments rooted in moorland botanicals.</p>
+        <a href="#" class="exp-arrow">Explore →</a>
+      </div>
+      <div class="exp-card">
+        <svg class="exp-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 12l10-6 10 6v14H6V12z"/>
+          <path d="M12 26v-8h8v8"/>
+          <path d="M2 12h28"/>
+        </svg>
+        <h3>Events &amp; Weddings</h3>
+        <p>Two ceremony spaces, the Conservatory for wedding breakfasts, and 30 acres of grounds.</p>
+        <a href="#" class="exp-arrow">Enquire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= WEDDINGS ============= -->
+<section class="wed-banner" id="weddings" data-screen-label="06 Weddings Banner">
+  <div class="wed-banner-inner">
+    <div class="eyebrow">Weddings · Ilkley · Est. 1859</div>
+    <h2>Begin Your <em>Forever.</em></h2>
+    <p>From intimate ceremonies to grand celebrations — The Craiglands has held a special place in Yorkshire's love story since 1859.</p>
+    <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="Wedding">Make a Wedding Enquiry</button>
+  </div>
+</section>
+
+<section class="wed-intro" data-screen-label="06 Weddings Intro">
+  <div class="wed-intro-inner reveal">
+    <p class="wed-quote">"Your wedding day is the most important day of your life — and here at the Craiglands, we will ensure that no detail is overlooked."</p>
+    <div class="wed-intro-body">
+      <p>From your initial visit through to the finishing touches, our experienced Wedding Coordinator guides you every step. We combine expert knowledge with a setting that has held Yorkshire's finest celebrations for over 165 years.</p>
+      <p>The Moorside suite is fully licensed for all ceremonies up to 280 guests — and our four function spaces flex to whatever shape your day takes.</p>
+      <p>Call our Wedding Coordinator: <a href="tel:01943430001" class="wed-tel">01943 430001</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="wed-venues" data-screen-label="06 Weddings Venues">
+  <div class="wed-venues-grid reveal">
+    <article class="wed-venue-card">
+      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/moorside-10-01.jpg" alt="The Moorside wedding suite" />
+      <div class="wed-venue-body">
+        <h3>The Moorside</h3>
+        <p>Up to 280 guests · Licensed for civil ceremonies</p>
+      </div>
+    </article>
+    <article class="wed-venue-card">
+      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-ballroom-10-01.jpg" alt="The Ballroom" />
+      <div class="wed-venue-body">
+        <h3>The Ballroom</h3>
+        <p>Elegant ballroom for wedding breakfasts</p>
+      </div>
+    </article>
+    <article class="wed-venue-card">
+      <img src="https://www.craiglands.co.uk/wp-content/uploads/2024/10/the-dales-10-01.jpg" alt="The Conservatory" />
+      <div class="wed-venue-body">
+        <h3>The Conservatory</h3>
+        <p>Natural light, garden views</p>
+      </div>
+    </article>
+    <article class="wed-venue-card">
+      <img src="https://www.craiglands.co.uk/wp-content/uploads/2021/08/banqueting-002.jpg" alt="The Dales Room" />
+      <div class="wed-venue-body">
+        <h3>The Dales Room</h3>
+        <p>Intimate receptions &amp; private dining</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="wed-cta" data-screen-label="06 Weddings CTA">
+  <div class="wed-cta-inner reveal">
+    <h3>Download our Wedding Brochure or book a showround to see the magic for yourself.</h3>
+    <div class="wed-cta-buttons">
+      <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Events &amp; Banqueting" data-enquiry-subtype="Wedding">Make an Enquiry</button>
+      <a href="tel:01943430001" class="btn-secondary">Call 01943 430001</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============= CHRISTMAS — DARK ============= -->
 <section class="xmas-banner" data-screen-label="07 Christmas Banner">
   <h2>Christmas <em>at The Craiglands</em></h2>
@@ -2719,10 +2900,6 @@
     <div class="festive-cta-wrap">
       <button type="button" class="btn btn-primary enquiry-trigger" data-enquiry-type="Christmas &amp; New Year">Enquire About Packages</button>
     </div>
-    <div class="xmas-feature-row">
-      <img src="https://images.unsplash.com/photo-1576919228236-a097c32a5cd4?w=900&q=80&fit=crop" alt="Festive dining atmosphere" />
-      <img src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=900&q=80&fit=crop" alt="New Year's Eve champagne celebration" />
-    </div>
   </div>
 </section>
 
@@ -2814,6 +2991,31 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Mobile menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  const navBackdrop = document.getElementById('navBackdrop');
+  const closeNav = () => {
+    if (!navLinks) return;
+    navLinks.classList.remove('open');
+    navToggle && navToggle.classList.remove('open');
+    navToggle && navToggle.setAttribute('aria-expanded', 'false');
+    navBackdrop && navBackdrop.classList.remove('show');
+    document.body.classList.remove('nav-open');
+  };
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navBackdrop && navBackdrop.classList.toggle('show', isOpen);
+      document.body.classList.toggle('nav-open', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeNav));
+    navBackdrop && navBackdrop.addEventListener('click', closeNav);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
+  }
 
   // Cinematic mode toggle
   const cinematicBtn = document.getElementById('cinematicToggle');
